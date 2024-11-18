@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Timber_Logo from "/Timber_logo.webp";
 import { CiSearch } from "react-icons/ci";
-
 import { BsPerson } from "react-icons/bs";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
@@ -39,10 +38,7 @@ const Header = () => {
           <div className="hidden md:flex justify-between items-center gap-9">
             <BsPerson size={30} className="text-slate-700" />
             <IoIosHeartEmpty size={30} className="text-slate-700" />
-            <PiShoppingCartSimpleLight
-              size={30}
-              className="text-slate-700 font-bold"
-            />
+            <PiShoppingCartSimpleLight size={30} className="text-slate-700 " />
           </div>
           <div className="md:hidden cursor-pointer text-black   mr-5">
             <div onClick={() => setNav(!nav)}>

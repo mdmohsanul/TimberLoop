@@ -41,26 +41,53 @@ export const socialIcons = [
   {
     id: 1,
     icon: instagram,
-    style: "h-16 w-16",
+    style: " aspect-[3/2] object-contain",
   },
   {
     id: 2,
     icon: facebook,
-    style: "h-16 w-16",
+    style: " aspect-[3/2] object-contain",
   },
   {
     id: 3,
     icon: twitter,
-    style: "h-16 w-16",
+    style: " aspect-[3/2] object-contain",
   },
   {
     id: 4,
     icon: youtube,
-    style: "h-16 w-16",
+    style: " aspect-[3/2] object-contain",
   },
   {
     id: 5,
     icon: linkedin,
-    style: "h-16 w-16",
+    style: " aspect-[3/2] object-contain",
+  },
+];
+
+export const footerLinks = [
+  {
+    id: 1,
+    linkName: "Whitehat",
+  },
+  {
+    id: 2,
+    linkName: "Sitemap",
+  },
+  {
+    id: 3,
+    linkName: "Terms Of Use",
+  },
+  {
+    id: 4,
+    linkName: "Privacy Policy",
+  },
+  {
+    id: 5,
+    linkName: "Your Data and Security",
+  },
+  {
+    id: 6,
+    linkName: "Grievance Redressal",
   },
 ];
