@@ -1,8 +1,5 @@
-# React + Vite
+## This is an e-commerce project named as Timber
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Timber is a online furniture selling web application where one can buy products directly from the list of products or can customized the products according to the need.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack used - React JS , Tailwind CSS, React Router, Node Js, Express Js, MongoDB
