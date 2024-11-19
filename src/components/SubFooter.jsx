@@ -5,7 +5,7 @@ const SubFooter = ({ header, iconList }) => {
     <>
       <div>
         <h2>{header}</h2>
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-6">
           {iconList.map((item) => (
             <img
               loading="lazy"
