@@ -21,7 +21,7 @@ const Product_Category = () => {
                   </div>
                 </div>
               </div>
-              <p className="text-xl text-slate-800 font-semibold">
+              <p className="text-lg md:text-xl text-slate-800 font-semibold">
                 {item.name}
               </p>
             </div>{" "}

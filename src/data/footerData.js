@@ -29,11 +29,12 @@ export const paymentsIcon = [
   {
     id: 4,
     icon: Walet,
+    style: "md:h-11 md:w-11 h-9 w-9",
   },
   {
     id: 5,
     icon: NetBanking,
-    style: "md:h-16 md:w-16 h-11 w-11",
+    style: "md:h-[50px] md:w-[50px] h-11 w-11",
   },
 ];
 

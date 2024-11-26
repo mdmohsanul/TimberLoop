@@ -6,7 +6,7 @@ import SubFooter from "./SubFooter";
 const Footer = () => {
   return (
     <>
-      <div className="w-full bg-slate-200 py-7">
+      <div className="w-full bg-slate-200 pt-7 pb-2">
         <div className="max-w-[1200px] mx-auto">
           <img
             loading="lazy"
@@ -22,7 +22,7 @@ const Footer = () => {
             />
           </div>
 
-          <div className="text-center text-slate-500 py-5">
+          <div className="text-center text-slate-500 ">
             <ul className="flex flex-col md:flex-row items-center justify-center gap-7 py-4">
               {footerLinks.map((item) => (
                 <li key={item.id}>{item.linkName}</li>

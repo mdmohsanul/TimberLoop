@@ -38,7 +38,7 @@ export const productCategories = [
     id: 5,
     imageSrc: Lamp,
     altText: "Lamps & Lightnings",
-    name: "Lamps & Lightnings",
+    name: "Lamps",
     linkName: "lamps",
   },
   {
