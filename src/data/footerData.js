@@ -41,27 +41,27 @@ export const socialIcons = [
   {
     id: 1,
     icon: instagram,
-    style: " aspect-[3/2] object-contain md:h-16 md:w-16 h-11 w-11",
+    style: " aspect-[3/2] object-contain  h-[53px] w-[53px]",
   },
   {
     id: 2,
     icon: facebook,
-    style: " aspect-[3/2] object-contain md:h-16 md:w-16 h-11 w-11",
+    style: " aspect-[3/2] object-contain  h-11 w-11",
   },
   {
     id: 3,
     icon: twitter,
-    style: " aspect-[3/2] object-contain md:h-16 md:w-16 h-11 w-11",
+    style: " aspect-[3/2] object-contain h-11 w-11",
   },
   {
     id: 4,
     icon: youtube,
-    style: " aspect-[3/2] object-contain md:h-16 md:w-16 h-11 w-11",
+    style: " aspect-[3/2] object-contain h-11 w-11",
   },
   {
     id: 5,
     icon: linkedin,
-    style: " aspect-[3/2] object-contain md:h-16 md:w-16 h-11 w-11",
+    style: " aspect-[3/2] object-contain  h-11 w-11",
   },
 ];
 

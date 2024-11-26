@@ -1,0 +1,1127 @@
+[
+    {
+      
+        "xpress_shipping": 1,
+       
+        "price": 18180,
+        "you_pay_price": 12599,
+     
+        "color_swatch": "Grey",
+        "entity_id": 2005077,
+      
+        "name": "Nebula Fabric 2 Seater Sofa in Charcoal Grey Colour",
+
+        "product_rating": 4,
+        "total_discount_percentage": 31,
+        "total_discount_amount": 5581,
+        "coupon": {
+            "amount": 0,
+            "code": "NOV240",
+            "deep_discount": true,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 12599,
+ 
+        "url": "product/nebula-fabric-2-seater-sofa-in-charcoal-grey-colour-2005077.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "n/e/494x544/nebula-fabric-2-seater-sofa-in-charcoal-grey-colour-nebula-fabric-2-seater-sofa-in-charcoal-grey-col-5iw7au.jpg",
+        "brands_name": "Febonic",
+       
+      
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 23999,
+        "you_pay_price": 19999,
+     
+        "entity_id": 1768841,
+      
+        "name": "Udine Sheesham Wood 1 Seater Sofa in Scratch Resistant Honey Oak Finish",
+  
+        "product_rating": 5,
+        "total_discount_percentage": 17,
+        "total_discount_amount": 4000,
+        "coupon": {
+            "amount": 3529,
+            "code": "NOV2415",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 23528,
+    
+        "pepperfry_assured": "Yes",
+        "url": "product/udine-sheesham-wood-1-seater-sofa-in-honey-oak-finish-1768841.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "u/d/494x544/udine-sheesham-wood-1-seater-sofa-in-scratch-resistant-honey-oak-finish-udine-sheesham-wood-1-seater-hnv5xi.jpg",
+        "brands_name": "Woodsworth from Pepperfry",
+       
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+        "time_to_warehouse": 4,
+        "xpress_shipping": 1,
+       
+        "price": 26999,
+        "you_pay_price": 18299,
+        "color_swatch": "Pink",
+        "entity_id": 2083032,
+      
+        "name": "Java Fabric 2 Seater Sofa In Pink Colour",
+     
+        "product_rating": 5,
+        "total_discount_percentage": 32,
+        "total_discount_amount": 8700,
+        "coupon": {
+            "amount": 0,
+            "code": "NOV240",
+            "deep_discount": true,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 18299,
+  
+        "url": "product/java-fabric-2-seater-sofa-in-pink-colour-2083032.html",
+        "time_to_ship_text": "Ships in 4 days",
+        "image": "j/a/494x544/java-fabric-2-seater-sofa-in-pink-colour-java-fabric-2-seater-sofa-in-pink-colour-fav2go.jpg",
+        "brands_name": "Trevi Furniture",
+        "is_inhouse_brand": 0,
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "Extra 5% Coupon Inside",
+        "frontend_label_color_code": "#ED6A65"
+    },
+    {
+      
+        "xpress_shipping": 1,
+      
+        "price": 40999,
+        "you_pay_price": 24499,
+        "color_swatch": "Green",
+        "entity_id": 1895769,
+      
+        "name": "Elina Fabric 2 Seater Sofa In Sea Green Colour",
+      
+        "product_rating": 4.5,
+        "total_discount_percentage": 40,
+        "total_discount_amount": 16500,
+        "coupon": {
+            "amount": 6125,
+            "code": "NOV2420",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 30624,
+     
+        "pepperfry_assured": "Yes",
+        "url": "product/elina-fabric-2-seater-sofa-in-sea-green-colour-1895769.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "e/l/494x544/elina-fabric-2-seater-sofa-in-sea-green-colour-elina-fabric-2-seater-sofa-in-sea-green-colour-nl1nvh.jpg",
+        "brands_name": "Casacraft from Pepperfry",
+       
+        "brand_url": "brands/casacraft.html",
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+       
+        "xpress_shipping": 0,
+        "price": 54999,
+        "you_pay_price": 38999,
+     
+        "color_swatch": "Black",
+        "entity_id": 1964864,
+      
+        "name": "Adalia Leatherette 3 Seater Sofa In Black",
+
+        "product_rating": 4.5,
+        "total_discount_percentage": 29,
+        "total_discount_amount": 16000,
+        "coupon": {
+            "amount": 13000,
+            "code": "NOV2425",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 51999,
+   
+        "pepperfry_assured": "Yes",
+        "url": "product/adalia-leatherette-3-seater-sofa-in-black-1964864.html",
+        "time_to_ship_text": "Made To Order, Ships in 9 days",
+        "image": "a/d/494x544/adalia-leatherette-3-seater-sofa-in-black-adalia-leatherette-3-seater-sofa-in-black-sf2wpp.jpg",
+        "brands_name": "Casacraft from Pepperfry",
+       
+        
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+       
+        "xpress_shipping": 0,
+       
+        "price": 27306,
+        "you_pay_price": 21599,
+        "color_swatch": "Beige",
+        "entity_id": 2011960,
+      
+        "name": "Obeisance Fabric 1 Seater Sofa in Beige Colour",
+      
+        "product_rating": 4.5,
+        "total_discount_percentage": 21,
+        "total_discount_amount": 5707,
+        "coupon": {
+            "amount": 0,
+            "code": "NOV240",
+            "deep_discount": true,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 21599,
+  
+        "url": "product/obeisance-fabric-1-seater-sofa-in-beige-colour-2011960.html",
+        "time_to_ship_text": "Ships in 7 days",
+        "image": "o/b/494x544/obeisance-fabric-1-seater-sofa-in-beige-colour-obeisance-fabric-1-seater-sofa-in-beige-colour-xnxkgg.jpg",
+        "brands_name": "Dreamzz Furniture",
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "Extra 5% Coupon Inside",
+        "frontend_label_color_code": "#ED6A65"
+    },
+    {
+        "time_to_warehouse": 5,
+        "xpress_shipping": 0,
+
+        "price": 10999,
+        "you_pay_price": 8999,
+        "color_swatch": "Blue",
+        "entity_id": 2023646,
+      
+        "name": "Murdock Fabric 1 Seater Sofa in Blue Colour",
+    
+        "product_rating": 4.5,
+        "total_discount_percentage": 18,
+        "total_discount_amount": 2000,
+        "coupon": {
+            "amount": 0,
+            "code": "NOV240",
+            "deep_discount": true,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 8999,
+     
+        "url": "product/murdock-fabric-1-seater-sofa-in-blue-colour-2023646.html",
+        "time_to_ship_text": "Ships in 5 days",
+        "image": "m/u/494x544/murdock-fabric-1-seater-sofa-in-blue-colour-murdock-fabric-1-seater-sofa-in-blue-colour-bf4occ.jpg",
+        "brands_name": "Adorn India",
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+        "time_to_warehouse": 11,
+        "xpress_shipping": 0,
+      
+        "price": 52999,
+        "you_pay_price": 37999,
+     
+        "color_swatch": "Red",
+        "entity_id": 1599672,
+      
+        "name": "Fuego Fabric 3 Seater Sofa In Garnet Red Colour",
+     
+        "product_rating": 4.5,
+        "total_discount_percentage": 28,
+        "total_discount_amount": 15000,
+        "coupon": {
+            "amount": 12666,
+            "code": "NOV2425",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 50665,
+     
+        "pepperfry_assured": "Yes",
+        "url": "product/fuego-fabric-3-seater-sofa-in-garnet-red-colour-1599672.html",
+        "time_to_ship_text": "Made To Order, Ships in 11 days",
+        "image": "f/u/494x544/fuego-fabric-3-seater-sofa-in-garnet-red-colour-fuego-fabric-3-seater-sofa-in-garnet-red-colour-blgxmh.jpg",
+        "brands_name": "Woodsworth from Pepperfry",
+       
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+
+
+ 
+    {
+      
+        "xpress_shipping": 1,
+        "price": 33999,
+        "you_pay_price": 26999,
+     
+        "entity_id": 2112096,
+      
+        "name": "Antibes Sheesham Wood 1 Seater Sofa In Scratch Resistant Rustic Teak Finish",
+    
+        "product_rating": 5,
+        "total_discount_percentage": 21,
+        "total_discount_amount": 7000,
+        "coupon": {
+            "amount": 6750,
+            "code": "NOV2420",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 33749,
+ 
+        "pepperfry_assured": "Yes",
+        "url": "product/antibes-sheesham-wood-1-seater-sofa-in-rustic-teak-finish-2112096.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "a/n/494x544/antibes-sheesham-wood-1-seater-sofa-in-rustic-teak-finish-antibes-sheesham-wood-1-seater-sofa-in-rus-i4xskd.jpg",
+        "brands_name": "Woodsworth from Pepperfry",
+       
+     
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 42499,
+        "you_pay_price": 34499,
+     
+        "color_swatch": "Blue",
+        "entity_id": 1745591,
+      
+        "name": "Miranda Fabric 2 Seater Sofa In Navy Blue Colour",
+  
+        "product_rating": 5,
+        "total_discount_percentage": 19,
+        "total_discount_amount": 8000,
+        "coupon": {
+            "amount": 6088,
+            "code": "NOV2415",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 40587,
+ 
+        "pepperfry_assured": "Yes",
+        "url": "product/miranda-fabric-2-seater-sofa-in-navy-blue-colour-1745591.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "m/i/494x544/miranda-fabric-2-seater-sofa-in-navy-blue-colour-miranda-fabric-2-seater-sofa-in-navy-blue-colour-rqhnef.jpg",
+        "brands_name": "Woodsworth from Pepperfry",
+       
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 22900,
+        "you_pay_price": 16399,
+     
+        "color_swatch": "Blue",
+        "entity_id": 2194042,
+      
+        "name": "BIngo Fabric 2 Seater Sofa In Cool Cobalt Colour",
+     
+        "product_rating": 3.5,
+        "total_discount_percentage": 28,
+        "total_discount_amount": 6501,
+        "coupon": {
+            "amount": 2894,
+            "code": "NOV2415",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 19293,
+    
+        "pepperfry_assured": "Yes",
+        "url": "product/bingo-fabric-2-seater-sofa-in-cool-cobalt-colour-2194042.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "b/i/494x544/bingo-fabric-2-seater-sofa-in-cool-cobalt-colour-bingo-fabric-2-seater-sofa-in-cool-cobalt-colour-bbh6py.jpg",
+        "brands_name": "Mintwud from Pepperfry",
+       
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "New",
+        "frontend_label_color_code": "#FF7F41"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 26999,
+        "you_pay_price": 20999,
+     
+        "entity_id": 2105950,
+      
+        "name": "Buzet Sheesham Wood 1 Seater Sofa In Brown Colour",
+
+        "product_rating": 4,
+        "total_discount_percentage": 22,
+        "total_discount_amount": 6000,
+        "coupon": {
+            "amount": 5250,
+            "code": "NOV2420",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 26249,
+   
+        "pepperfry_assured": "Yes",
+        "url": "product/grane-sheesham-wood-1-seater-sofa-in-provincial-teak-finish-2105950.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "g/r/494x544/grane-sheesham-wood-1-seater-sofa-in-provincial-teak-finish-grane-sheesham-wood-1-seater-sofa-in-pro-dke2jc.jpg",
+        "brands_name": "Woodsworth from Pepperfry",
+       
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+      
+        "price": 49499,
+        "you_pay_price": 34999,
+     
+        "color_swatch": "Pink",
+        "entity_id": 1857287,
+      
+        "name": "Kaylee Velvet 1 Seater Sofa In Blush Pink Colour",
+    
+        "product_rating": 5,
+        "total_discount_percentage": 29,
+        "total_discount_amount": 14500,
+        "coupon": {
+            "amount": 11666,
+            "code": "NOV2425",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 46665,
+    
+        "pepperfry_assured": "Yes",
+        "url": "product/kaylee-velvet-1-seater-sofa-in-blush-pink-colour-1857287.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "k/a/494x544/kaylee-velvet-1-seater-sofa-in-blush-pink-colour-kaylee-velvet-1-seater-sofa-in-blush-pink-colour-q0x71u.jpg",
+        "brands_name": "Casacraft from Pepperfry",
+       
+        
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 29346,
+        "you_pay_price": 14999,
+        "color_swatch": "Green",
+        "entity_id": 1985218,
+      
+        "name": "Daroo Velvet 1 Seater Sofa in Pine Green Colour",
+     
+        "product_rating": 4,
+        "total_discount_percentage": 49,
+        "total_discount_amount": 14347,
+        "coupon": {
+            "amount": 0,
+            "code": "NOV240",
+            "deep_discount": true,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 14999,
+    
+        "url": "product/daroo-velvet-1-seater-sofa-in-pine-green-colour-1985218.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "d/a/494x544/daroo-velvet-1-seater-sofa-in-pine-green-colour-daroo-velvet-1-seater-sofa-in-pine-green-colour-bvwc12.jpg",
+        "brands_name": "Febonic",
+        
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 15999,
+        "you_pay_price": 10499,
+        "color_swatch": "Beige",
+        "entity_id": 1955555,
+      
+        "name": "Dallas Fabric 1 Seater Sofa in Beige Colour",
+     
+        "product_rating": 4.5,
+        "total_discount_percentage": 34,
+        "total_discount_amount": 5500,
+        "coupon": {
+            "amount": 553,
+            "code": "NOV245",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 11052,
+   
+        "url": "product/dallas-fabric-1-seater-sofa-in-beige-colour-1955555.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "d/a/494x544/dallas-fabric-1-seater-sofa-in-beige-colour-dallas-fabric-1-seater-sofa-in-beige-colour-kazkv1.jpg",
+        "brands_name": "Mintwud from Pepperfry",
+       
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 38041,
+        "you_pay_price": 19999,
+        "color_swatch": "Brown",
+        "entity_id": 1985210,
+      
+        "name": "Daroo Velvet 2 Seater Sofa in Mocha Brown Colour",
+  
+        "product_rating": 4.5,
+        "total_discount_percentage": 47,
+        "total_discount_amount": 18042,
+        "coupon": {
+            "amount": 0,
+            "code": "NOV240",
+            "deep_discount": true,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 19999,
+    
+        "url": "product/daroo-velvet-2-seater-sofa-in-mocha-brown-colour-1985210.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "d/a/494x544/daroo-velvet-2-seater-sofa-in-mocha-brown-colour-daroo-velvet-2-seater-sofa-in-mocha-brown-colour-cb3um8.jpg",
+        "brands_name": "Febonic",
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+       
+        "price": 36999,
+        "you_pay_price": 27499,
+     
+        "color_swatch": "Blue",
+        "entity_id": 1745701,
+      
+        "name": "Diego Fabric 1 Seater Sofa In Denim Blue Colour",
+      
+        "product_rating": 4.5,
+        "total_discount_percentage": 26,
+        "total_discount_amount": 9500,
+        "coupon": {
+            "amount": 9166,
+            "code": "NOV2425",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 36665,
+     
+        "pepperfry_assured": "Yes",
+        "url": "product/diego-fabric-1-seater-sofa-in-denim-blue-colour-1745701.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "d/i/494x544/diego-fabric-1-seater-sofa-in-denim-blue-colour-diego-fabric-1-seater-sofa-in-denim-blue-colour-2aetb7.jpg",
+        "brands_name": "Woodsworth from Pepperfry",
+       
+        
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 30999,
+        "you_pay_price": 22999,
+     
+        "entity_id": 2105952,
+      
+        "name": "Grane Sheesham Wood 1 Seater Sofa In Beige Color",
+     
+        "product_rating": 5,
+        "total_discount_percentage": 26,
+        "total_discount_amount": 8000,
+        "coupon": {
+            "amount": 7666,
+            "code": "NOV2425",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 30665,
+     
+        "pepperfry_assured": "Yes",
+        "url": "product/grane-sheesham-wood-1-seater-sofa-in-provincial-teak-finish-2105952.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "g/r/494x544/grane-sheesham-wood-1-seater-sofa-in-provincial-teak-finish-grane-sheesham-wood-1-seater-sofa-in-pro-besyut.jpg",
+        "brands_name": "Woodsworth from Pepperfry",
+       
+        
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 18599,
+        "you_pay_price": 14399,
+     
+        "color_swatch": "Yellow",
+        "entity_id": 2056586,
+      
+        "name": "Marq Fabric 2 Seater Sofa in Bold Yellow Colour",
+    
+        "product_rating": 5,
+        "total_discount_percentage": 23,
+        "total_discount_amount": 4200,
+        "coupon": {
+            "amount": 0,
+            "code": "NOV240",
+            "deep_discount": true,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 14399,
+     
+        "url": "product/marq-fabric-2-seater-sofa-in-bold-yellow-colour-2056586.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "m/a/494x544/marq-fabric-2-seater-sofa-in-bold-yellow-colour-marq-fabric-2-seater-sofa-in-bold-yellow-colour-pvqi9n.jpg",
+        "brands_name": "Febonic",
+        "is_inhouse_brand": 0,
+        "brand_url": "brands/febonic.html",
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 51999,
+        "you_pay_price": 40999,
+        "entity_id": 2105954,
+      
+        "name": "Grane Sheesham Wood 2 Seater Sofa In Beige Color",
+     
+        "product_rating": 5,
+        "total_discount_percentage": 21,
+        "total_discount_amount": 11000,
+        "coupon": {
+            "amount": 10250,
+            "code": "NOV2420",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 51249,
+     
+        "pepperfry_assured": "Yes",
+        "url": "product/grane-sheesham-wood-2-seater-sofa-in-provincial-teak-finish-2105954.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "g/r/494x544/grane-sheesham-wood-2-seater-sofa-in-provincial-teak-finish-grane-sheesham-wood-2-seater-sofa-in-pro-gwtr1c.jpg",
+        "brands_name": "Woodsworth from Pepperfry",
+       
+        "brand_url": "brands/woodsworth.html",
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 36499,
+        "you_pay_price": 25999,
+        "color_swatch": "Grey",
+        "entity_id": 1745511,
+      
+        "name": "Amanda Fabric 1 Seater Sofa In Charcoal Grey Colour",
+     
+        "product_rating": 5,
+        "total_discount_percentage": 29,
+        "total_discount_amount": 10500,
+        "coupon": {
+            "amount": 8666,
+            "code": "NOV2425",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 34665,
+    
+        "pepperfry_assured": "Yes",
+        "url": "product/amanda-fabric-1-seater-sofa-in-charcoal-grey-colour-1745511.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "a/m/494x544/amanda-fabric-1-seater-sofa-in-charcoal-grey-colour-amanda-fabric-1-seater-sofa-in-charcoal-grey-col-2azzta.jpg",
+        "brands_name": "Casacraft from Pepperfry",
+       
+        "brand_url": "brands/casacraft.html",
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 38041,
+        "you_pay_price": 19999,
+     
+        "color_swatch": "Grey",
+        "entity_id": 2010819,
+      
+        "name": "Daroo Velvet 2 Seater Sofa in Davy Grey Colour",
+     
+        "product_rating": 4.5,
+        "total_discount_percentage": 47,
+        "total_discount_amount": 18042,
+        "coupon": {
+            "amount": 0,
+            "code": "NOV240",
+            "deep_discount": true,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 19999,
+    
+        "url": "product/daroo-velvet-2-seater-sofa-in-davy-grey-colour-2010819.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "d/a/494x544/daroo-velvet-2-seater-sofa-in-davy-grey-colour-daroo-velvet-2-seater-sofa-in-davy-grey-colour-y6o5po.jpg",
+        "brands_name": "Febonic",
+        "is_inhouse_brand": 0,
+        "brand_url": "brands/febonic.html",
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 51999,
+        "you_pay_price": 42999,
+     
+        "color_swatch": "Blue",
+        "entity_id": 1745600,
+      
+        "name": "Miranda Fabric 3 Seater Sofa In Navy Blue Colour",
+     
+        "product_rating": 4.5,
+        "total_discount_percentage": 17,
+        "total_discount_amount": 9000,
+        "coupon": {
+            "amount": 7588,
+            "code": "NOV2415",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 50587,
+    
+        "pepperfry_assured": "Yes",
+        "url": "product/miranda-fabric-3-seater-sofa-in-navy-blue-colour-1745600.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "m/i/494x544/miranda-fabric-3-seater-sofa-in-navy-blue-colour-miranda-fabric-3-seater-sofa-in-navy-blue-colour-bgpyyg.jpg",
+        "brands_name": "Woodsworth from Pepperfry",
+       
+        
+        "is_in_cart": 0,
+        "frontend_label": "Best Seller",
+        "frontend_label_color_code": "#A080BC"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 18599,
+        "you_pay_price": 14399,
+        "color_swatch": "Green",
+        "entity_id": 2056584,
+        "name": "Marq Fabric 2 Seater Sofa in Sea Green Colour",
+    
+        "product_rating": 4.5,
+        "total_discount_percentage": 23,
+        "total_discount_amount": 4200,
+        "coupon": {
+            "amount": 0,
+            "code": "NOV240",
+            "deep_discount": true,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 14399,
+    
+        "url": "product/marq-fabric-2-seater-sofa-in-sea-green-colour-2056584.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "m/a/494x544/marq-fabric-2-seater-sofa-in-sea-green-colour-marq-fabric-2-seater-sofa-in-sea-green-colour-nitkeh.jpg",
+        "brands_name": "Febonic",
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 48999,
+        "you_pay_price": 39499,
+     
+        "color_swatch": "Beige",
+        "entity_id": 1745924,
+      
+        "name": "Andres Fabric 3 Seater Sofa In Beige Colour",
+     
+        "product_rating": 4.5,
+        "total_discount_percentage": 19,
+        "total_discount_amount": 9500,
+        "coupon": {
+            "amount": 6970,
+            "code": "NOV2415",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 46469,
+    
+        "pepperfry_assured": "Yes",
+        "url": "product/andres-fabric-3-seater-sofa-in-beige-colour-1745924.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "a/n/494x544/andres-fabric-3-seater-sofa-in-beige-colour-andres-fabric-3-seater-sofa-in-beige-colour-fmfedx.jpg",
+        "brands_name": "Woodsworth from Pepperfry",
+       
+        "brand_url": "brands/woodsworth.html",
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "Extra 5% Coupon Inside",
+        "frontend_label_color_code": "#ED6A65"
+    },
+    {
+      
+        "xpress_shipping": 1,
+    
+        "price": 51999,
+        "you_pay_price": 35499,
+        "color_swatch": "Grey",
+        "entity_id": 1599715,
+      
+        "name": "Santiago Fabric 2 Seater Sofa In Ash Grey Colour",
+      
+        "product_rating": 4,
+        "total_discount_percentage": 32,
+        "total_discount_amount": 16500,
+        "coupon": {
+            "amount": 15214,
+            "code": "NOV2430",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 50713,
+     
+        "pepperfry_assured": "Yes",
+        "url": "product/santiago-fabric-2-seater-sofa-in-ash-grey-colour-1599715.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "s/a/494x544/santiago-2-seater-sofa-in-ash-grey-colour-by-casacraft-santiago-2-seater-sofa-in-ash-grey-colour-by--9ei3u6.jpg",
+        "brands_name": "Casacraft from Pepperfry",
+       
+        "brand_url": "brands/casacraft.html",
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+
+
+
+    {
+      
+        "xpress_shipping": 1,
+        "price": 18332,
+        "you_pay_price": 11999,
+     
+        "entity_id": 2177058,
+      
+        "name": "Bingo Fabric 1 Seater Sofa In Mahogany Colour",
+     
+        "product_rating": 5,
+        "total_discount_percentage": 35,
+        "total_discount_amount": 6333,
+        "coupon": {
+            "amount": 3000,
+            "code": "NOV2420",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 14999,
+   
+        "pepperfry_assured": "Yes",
+        "url": "product/bingo-fabric-1-seater-sofa-in-mahogany-colour-2177058.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "b/i/494x544/bingo-fabric-1-seater-sofa-in-mahogany-colour-bingo-fabric-1-seater-sofa-in-mahogany-colour-clrnpu.jpg",
+        "brands_name": "Mintwud from Pepperfry",
+       
+        "brand_url": "brands/mintwud.html",
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+       
+        "price": 18180,
+        "you_pay_price": 12599,
+     
+        "color_swatch": "Grey",
+        "entity_id": 2005077,
+      
+        "name": "Nebula Fabric 2 Seater Sofa in Charcoal Grey Colour",
+    
+        "product_rating": 4,
+        "total_discount_percentage": 31,
+        "total_discount_amount": 5581,
+        "coupon": {
+            "amount": 0,
+            "code": "NOV240",
+            "deep_discount": true,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 12599,
+
+        "url": "product/nebula-fabric-2-seater-sofa-in-charcoal-grey-colour-2005077.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "n/e/494x544/nebula-fabric-2-seater-sofa-in-charcoal-grey-colour-nebula-fabric-2-seater-sofa-in-charcoal-grey-col-5iw7au.jpg",
+        "brands_name": "Febonic",
+        
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+       
+        "price": 24999,
+        "you_pay_price": 17999,
+        "color_swatch": "Brown",
+        "entity_id": 1599497,
+      
+        "name": "Alfredo Fabric 1 Seater Sofa In Chestnut Brown Colour",
+    
+        "product_rating": 4,
+        "total_discount_percentage": 28,
+        "total_discount_amount": 7000,
+        "coupon": {
+            "amount": 6000,
+            "code": "NOV2425",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 23999,
+    
+        "pepperfry_assured": "Yes",
+        "url": "product/alfredo-fabric-1-seater-sofa-in-chestnut-brown-colour-1599497.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "a/l/494x544/alfredo-fabric-1-seater-sofa-in-chestnut-brown-colour-alfredo-fabric-1-seater-sofa-in-chestnut-brown-fgdbbw.jpg",
+        "brands_name": "Casacraft from Pepperfry",
+       
+       
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 30999,
+        "you_pay_price": 28999,
+     
+        "entity_id": 1914649,
+      
+        "name": "Kumud Sheesham Wood 2 Seater Sofa In Provincial Teak Finish",
+     
+        "product_rating": 4.5,
+        "total_discount_percentage": 6,
+        "total_discount_amount": 2000,
+        "coupon": {
+            "amount": 1526,
+            "code": "NOV245",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 30525,
+   
+        "pepperfry_assured": "Yes",
+        "url": "product/kumud-sheesham-wood-2-seater-sofa-in-provincial-teak-finish-1914649.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "k/u/494x544/kumud-sheesham-wood-2-seater-sofa-in-provincial-teak-finish-kumud-sheesham-wood-2-seater-sofa-in-pro-67pqxe.jpg",
+        "brands_name": "Mudramark from Pepperfry",
+       
+        "brand_url": "brands/mudramark.html",
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    },
+    {
+      
+        "xpress_shipping": 1,
+        "price": 18332,
+        "you_pay_price": 11999,
+     
+        "entity_id": 2177056,
+      
+        "name": "Bingo Fabric 1 Seater Sofa In Cool Cobalt Colour",
+      
+        "product_rating": 5,
+        "total_discount_percentage": 35,
+        "total_discount_amount": 6333,
+        "coupon": {
+            "amount": 3000,
+            "code": "NOV2420",
+            "deep_discount": false,
+            "cashback_amount": 0,
+            "label": "MAKEOVER",
+            "coupon_end_date": "2024-11-26 23:59:59"
+        },
+        "type_id": "simple",
+        "special_price": 14999,
+    
+        "pepperfry_assured": "Yes",
+        "url": "product/bingo-fabric-1-seater-sofa-in-cool-cobalt-colour-2177056.html",
+        "time_to_ship_text": "Express Shipping in 1 days",
+        "image": "b/i/494x544/bingo-fabric-1-seater-sofa-in-cool-cobalt-colour-bingo-fabric-1-seater-sofa-in-cool-cobalt-colour-smmjdq.jpg",
+        "brands_name": "Mintwud from Pepperfry",
+       
+        "brand_url": "brands/mintwud.html",
+        "is_in_wishlist": 0,
+        "is_in_cart": 0,
+        "frontend_label": "",
+        "frontend_label_color_code": "#FFA500"
+    }
+]

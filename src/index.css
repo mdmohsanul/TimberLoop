@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.circleBackground {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 165, 0, 0.2),
+    rgba(255, 165, 0, 0.5)
+  );
+  border-radius: 50%;
+}
