@@ -31,9 +31,19 @@ const Product = () => {
     setSelectedCategory([]);
     setSelectedRating([]);
   };
-  useEffect(() => {}, [clearHandler]);
-  console.log(selectedRating);
-  console.log(selectedCategory);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  async function fetchData() {
+    const response = await fetch(
+      "https://timber-backend.vercel.app/api/products"
+    );
+    const data = await response.json();
+    console.log(data);
+  }
+  // console.log(selectedRating);
+  // console.log(selectedCategory);
   return (
     <>
       <div className="max-w-7xl mx-auto pt-16">
