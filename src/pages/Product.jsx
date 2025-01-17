@@ -32,8 +32,18 @@ const Product = () => {
       ? []
       : [...productsLists].slice().sort((a, b) => {
           if (sortFilter === "Relevance") return true;
-          if (sortFilter === "lowToHigh") return a?.price - b?.price;
-          if (sortFilter === "highToLow") return b?.price - a?.price;
+          if (sortFilter === "lowToHigh")
+            return (
+              a.price -
+              (a.price * a.discount) / 100 -
+              (b.price - (b.price * b.discount) / 100)
+            );
+          if (sortFilter === "highToLow")
+            return (
+              b.price -
+              (b.price * b.discount) / 100 -
+              (a.price - (a.price * a.discount) / 100)
+            );
           return 0;
         });
 
