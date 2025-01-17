@@ -12,3 +12,11 @@
     - Wardrobes
     - Lamps & Lightnings
     - Home Decor
+
+## Image Link - https://i.pinimg.com/
+
+## Components and Functaionality
+
+- Infinite Scrolling
+- Search Bar
+- Accordian

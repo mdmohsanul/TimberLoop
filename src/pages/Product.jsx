@@ -1,107 +1,90 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { category, ratingIcon } from "../data/product";
+import Product_Card from "../components/Product_Card";
+import Product_Filters from "../components/Product_Filters";
+import ShimerUI_ProductsPage from "../components/ShimmerUI/ShimerUI_ProductsPage";
+import { fetchProducts, setCheckBoxFilter } from "../features/productSlice";
 
 const Product = () => {
   const { productName } = useParams();
-  const [selectedCategory, setSelectedCategory] = useState([productName]);
-  const [selectedRating, setSelectedRating] = useState([]);
+  const dispatch = useDispatch();
 
-  const categoryHandler = (e) => {
-    const { checked, value } = e.target;
-    if (checked) {
-      setSelectedCategory((prev) => [...prev, value]);
-    } else {
-      setSelectedCategory((prev) =>
-        selectedCategory.filter((item) => item != value)
+  const {
+    products,
+    status,
+    error,
+    checkBoxFilter,
+    sortFilter,
+    assuredFilter,
+    ratingFilter,
+    searchFilter,
+  } = useSelector((state) => state.products);
+  console.log(searchFilter);
+  const productsLists = checkBoxFilter.includes("All")
+    ? products?.products
+    : products?.products?.filter((product) =>
+        checkBoxFilter.includes(product.category)
       );
-    }
-  };
-  const ratingHandler = (e) => {
-    const { checked, value } = e.target;
-    if (checked) {
-      setSelectedRating((prev) => [...prev, value]);
-    } else {
-      setSelectedRating((prev) =>
-        selectedRating.filter((item) => item != value)
-      );
-    }
-  };
-  const clearHandler = () => {
-    setSelectedCategory([]);
-    setSelectedRating([]);
-  };
+
+  const sortedProducts =
+    productsLists === undefined
+      ? []
+      : [...productsLists].slice().sort((a, b) => {
+          if (sortFilter === "Relevance") return true;
+          if (sortFilter === "lowToHigh") return a?.price - b?.price;
+          if (sortFilter === "highToLow") return b?.price - a?.price;
+          return 0;
+        });
+
+  const assuredProducts =
+    assuredFilter !== true
+      ? sortedProducts
+      : sortedProducts.filter((product) => product.timber_assured === true);
+
+  const ratingFilterProduct =
+    ratingFilter.length === 0
+      ? assuredProducts
+      : assuredProducts.filter((product) =>
+          ratingFilter.some((item) => item <= product.rating)
+        );
+  const searchedProducts = products?.products?.filter((product) =>
+    product.category
+      .toLowerCase()
+      .includes(
+        searchFilter.toLowerCase() ||
+          product.name.toLowerCase().includes(searchFilter.toLowerCase())
+      )
+  );
 
   useEffect(() => {
-    fetchData();
-  }, []);
-  async function fetchData() {
-    const response = await fetch(
-      "https://timber-backend.vercel.app/api/products"
-    );
-    const data = await response.json();
-    console.log(data);
-  }
-  // console.log(selectedRating);
-  // console.log(selectedCategory);
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
+  }, [status, dispatch]);
   return (
     <>
-      <div className="max-w-7xl mx-auto pt-16">
-        {/* <div className="h-16"></div> */}
-        <div className=" w-60  my-4 pr-3 border-r-8 border-slate-400  rounded-t-lg ">
-          <div className="flex items-center justify-between text-xl font-semibold text-slate-800 pb-3">
-            <p>Filters</p>
-            <button className="text-lg" onClick={clearHandler}>
-              Clear
-            </button>
-          </div>
-          <label htmlFor="category" className="font-semibold text-slate-800">
-            Category
-          </label>
-          <br />
-          {category.map((item) => (
-            <div key={item.id}>
-              <input
-                type="checkbox"
-                name="category"
-                className="mr-2 "
-                value={item.value}
-                checked={selectedCategory.includes(item)}
-                onChange={categoryHandler}
-              />
-              <span className="text-slate-500">{item.name}</span>
-            </div>
-          ))}
-          <p>{selectedCategory}</p>
-          <div className="py-4">
-            <label
-              htmlFor="price"
-              className="font-semibold text-slate-800 pt-6"
-            >
-              Price
-            </label>
-            <br />
-            <input type="range" name="" id="" />
+      {status === "loading" && <ShimerUI_ProductsPage />}
+      {error && <p>{error}</p>}
+      {status === "success" && (
+        <div className="relative pt-16 min-h-screen ">
+          <div className="bg-[#FAFAFA] hidden sticky top-16 z-10 lg:flex">
+            <p>{ratingFilterProduct.length}</p>
+            <Product_Filters productName={productName} />
           </div>
 
-          <label htmlFor="rating" className="font-semibold text-slate-800">
-            Rating
-          </label>
-          <br />
-          {ratingIcon.map((item, i) => (
-            <div className="flex" key={item.id}>
-              <input
-                type="checkbox"
-                name="rating"
-                className="mr-2 "
-                value={ratingIcon.length - i}
-                onChange={ratingHandler}
-              />
-              <span className="text-yellow-400 flex gap-1">{item.icon}</span>
+          <div className="lg:pl-72">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 xl:ml-5">
+              {(searchFilter == []
+                ? ratingFilterProduct
+                : searchedProducts
+              ).map((product) => (
+                <Product_Card key={product._id} product={product} />
+              ))}
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

@@ -1,62 +1,63 @@
 import { FaStar } from "react-icons/fa";
 
+// this data is used in checkbox filter in filter page
 export const category = [
   {
     id: 1,
     name: "All",
-    value: "all",
+    value: "All",
   },
   {
     id: 2,
     name: "Beds",
-    value: "beds",
+    value: "Bed",
   },
   {
     id: 3,
     name: "Sofas & Sittings",
-    value: "sofas",
+    value: "Sofa",
   },
   {
     id: 4,
     name: "Wardrobes",
-    value: "wardrobes",
+    value: "Wardrobe",
   },
   {
     id: 5,
     name: "Mattresses",
-    value: "mattresses",
+    value: "Mattress",
   },
   {
     id: 6,
     name: "Home Decor",
-    value: "homeDecor",
+    value: "HomeDecor",
   },
   {
     id: 7,
     name: "Lamps & Lightnings",
-    value: "lamps",
+    value: "Lightning",
   },
 ];
 
 export const ratingIcon = [
   {
     id: 1,
-    icon: [<FaStar />, <FaStar />, <FaStar />, <FaStar />, <FaStar />],
+    icon: <FaStar />,
+    ratingValue: 4,
   },
   {
     id: 2,
-    icon: [<FaStar />, <FaStar />, <FaStar />, <FaStar />],
+    icon: <FaStar />,
+    ratingValue: 3,
   },
   {
     id: 3,
-    icon: [<FaStar />, <FaStar />, <FaStar />],
+    icon: <FaStar />,
+    ratingValue: 2,
   },
   {
     id: 4,
-    icon: [<FaStar />, <FaStar />],
-  },
-  {
-    id: 5,
-    icon: [<FaStar />],
+    icon: <FaStar />,
+    ratingValue: 1,
   },
 ];

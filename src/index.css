@@ -1,7 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@tailwind base;
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply font-[Poppins,Rubik];
+  }
+  li {
+    @apply px-4;
+    @apply cursor-pointer;
+  }
+}
 .circleBackground {
   width: 260px;
   height: 260px;

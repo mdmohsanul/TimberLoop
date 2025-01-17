@@ -6,7 +6,7 @@ import SubFooter from "./SubFooter";
 const Footer = () => {
   return (
     <>
-      <div className="w-full bg-slate-200 pt-7 pb-2">
+      <div className="w-screen bg-slate-200 pt-7 z-10 pb-2 relative">
         <div className="max-w-[1200px] mx-auto">
           <img
             loading="lazy"

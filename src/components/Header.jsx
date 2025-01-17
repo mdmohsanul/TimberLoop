@@ -15,7 +15,7 @@ const Header = () => {
   };
   return (
     <>
-      <div className="w-full fixed top-0 bg-white z-20 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+      <div className="w-full fixed top-0 bg-white z-30 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
         <div className="max-w-[1200px] mx-auto ">
           <div className="flex justify-between items-center">
             <Link to="/">

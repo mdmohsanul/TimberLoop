@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import { createBrowserRouter, Router, Outlet } from "react-router-dom";
 import Product from "./pages/Product";
+import Test from "./pages/Test";
 function App() {
   return (
     <>
@@ -24,8 +25,16 @@ const appRouter = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/:productName",
+        path: "/products",
         element: <Product />,
+      },
+      {
+        path: "products/:productName",
+        element: <Product />,
+      },
+      {
+        path: "test",
+        element: <Test />,
       },
     ],
   },
