@@ -40,12 +40,20 @@ const Header = () => {
               />
             </div>
             <div className="hidden md:flex justify-between items-center gap-9">
-              <BsPerson size={30} className="text-slate-700" />
-              <IoIosHeartEmpty size={30} className="text-slate-700" />
-              <PiShoppingCartSimpleLight
-                size={30}
-                className="text-slate-700 "
-              />
+              <Link to="/login">
+                <BsPerson size={30} className="text-slate-700" />
+              </Link>
+              <Link to="/wishlist">
+                {" "}
+                <IoIosHeartEmpty size={30} className="text-slate-700" />
+              </Link>
+              <Link to="/cart">
+                {" "}
+                <PiShoppingCartSimpleLight
+                  size={30}
+                  className="text-slate-700 "
+                />
+              </Link>
             </div>
             <div className="md:hidden cursor-pointer text-black   mr-5">
               <div onClick={() => setNav(!nav)}>
@@ -82,22 +90,30 @@ const Header = () => {
                         className="py-2 pr-4  hover:outline-none outline-none  border-b border-slate-600"
                       />
                     </div>
-
-                    <span className="flex items-center gap-4">
-                      <BsPerson size={30} className="text-slate-700" />
-                      Sign Up
-                    </span>
-                    <span className="flex items-center gap-4">
-                      <IoIosHeartEmpty size={30} className="text-slate-700" />
-                      WishList
-                    </span>
-                    <span className="flex items-center gap-4">
-                      <PiShoppingCartSimpleLight
-                        size={30}
-                        className="text-slate-700"
-                      />
-                      Cart
-                    </span>
+                    <Link to="/login">
+                      {" "}
+                      <span className="flex items-center gap-4">
+                        <BsPerson size={30} className="text-slate-700" />
+                        Sign Up
+                      </span>
+                    </Link>{" "}
+                    <Link to="/wishlist">
+                      {" "}
+                      <span className="flex items-center gap-4">
+                        <IoIosHeartEmpty size={30} className="text-slate-700" />
+                        WishList
+                      </span>
+                    </Link>
+                    <Link to="/cart">
+                      {" "}
+                      <span className="flex items-center gap-4">
+                        <PiShoppingCartSimpleLight
+                          size={30}
+                          className="text-slate-700"
+                        />
+                        Cart
+                      </span>
+                    </Link>
                   </div>
                 </ul>
               </div>

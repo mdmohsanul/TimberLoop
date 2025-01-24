@@ -45,6 +45,9 @@ const Product_Card = ({ product }) => {
             <IoHeartSharp size={27} />
           </span>
         </div>
+        <div className="flex items-center justify-center bg-gray-500 py-1 text-white cursor-pointer">
+          <button>Add To Cart</button>
+        </div>
       </div>
     </>
   );

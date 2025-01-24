@@ -11,7 +11,7 @@ const Home = () => {
           <Home_Top_Banner />
           <Product_Category />
           <div className="flex items-center justify-center py-5">
-            <Link to="/products">
+            <Link to="/api/products">
               <button className="py-2 px-4 bg-orange-300 rounded-md">
                 View All Products
               </button>

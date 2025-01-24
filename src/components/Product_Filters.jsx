@@ -70,7 +70,6 @@ const Product_Filters = ({ productName }) => {
     assured,
     selectedRating,
     searchTerm,
-
     clearHandler,
   ]);
   return (

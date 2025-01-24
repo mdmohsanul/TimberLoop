@@ -21,6 +21,15 @@ const Product = () => {
     searchFilter,
   } = useSelector((state) => state.products);
   console.log(searchFilter);
+
+  const searchedProducts = products?.products?.filter((product) =>
+    product.category
+      .toLowerCase()
+      .includes(
+        searchFilter.toLowerCase() ||
+          product.name.toLowerCase().includes(searchFilter.toLowerCase())
+      )
+  );
   const productsLists = checkBoxFilter.includes("All")
     ? products?.products
     : products?.products?.filter((product) =>
@@ -58,14 +67,6 @@ const Product = () => {
       : assuredProducts.filter((product) =>
           ratingFilter.some((item) => item <= product.rating)
         );
-  const searchedProducts = products?.products?.filter((product) =>
-    product.category
-      .toLowerCase()
-      .includes(
-        searchFilter.toLowerCase() ||
-          product.name.toLowerCase().includes(searchFilter.toLowerCase())
-      )
-  );
 
   useEffect(() => {
     if (status === "idle") {
