@@ -1,6 +1,7 @@
 import React from "react";
 import { FaStar } from "react-icons/fa6";
 import { IoHeartSharp } from "react-icons/io5";
+import { HiOutlineShoppingCart } from "react-icons/hi2";
 
 const Product_Card = ({ product }) => {
   const productDiscountPrice = (
@@ -9,30 +10,32 @@ const Product_Card = ({ product }) => {
   ).toFixed(2);
   return (
     <>
-      <div className="w-48 md:w-64 h-auto m-3 hover:shadow-[0px_16px_28px_10px_#00000024] shadow-[0px_10px_11px_0px_#00000024] p-3 transition duration-500 cursor-pointer ">
-        <img
-          src={`https://i.pinimg.com/${product?.image}`}
-          alt=""
-          //   className="w-full h-52 transform transition duration-500 hover:scale-95"
-          className="w-full md:h-52 h-44 "
-        />
-        <div className="pt-4 relative">
-          <h5 className="text-[#212121] text-sm">{product?.name}</h5>
-          <p className="text-[#878787]">By {product?.brand_name}</p>
-          <div className="py-3 flex  border-b-[1px]">
-            <div className="flex items-center justify-center  bg-red-600 text-white py-[2px] px-2 gap-1 rounded-[4px] ">
-              <span className="  text-[12px] ">{product?.rating}</span>
-              <span>
-                {" "}
-                <FaStar className="text-[12px]" />
-              </span>
+      <div className="w-44 md:w-[250px] h-96 relative hover:shadow-[0px_16px_28px_10px_#00000024] shadow-[0px_10px_11px_0px_#00000024] transition duration-500 cursor-pointer group">
+        <div>
+          <img
+            src={`https://i.pinimg.com/${product?.image}`}
+            alt=""
+            //   className="w-full h-52 transform transition duration-500 hover:scale-95"
+            className="w-full md:h-52 h-44 transition-transform duration-700 ease-out group-hover:scale-95"
+          />
+        </div>
+        <div className="pt-4 px-2 relative">
+          <h5 className="text-[#212121] text-[16px] truncate">
+            {product?.name}
+          </h5>
+          <p className="text-[#878787] text-sm ">By {product?.brand_name}</p>
+          <div className="py-2 flex items-center justify-start  border-b-[1px]">
+            <div className="flex flex-wrap items-center justify-center  bg-red-600 text-white py-[2px] px-2 gap-1 rounded-[4px] ">
+              <p className="  text-[12px] ">{product?.rating}</p>
+
+              <FaStar className="text-[12px]" />
             </div>
 
-            <span className="pl-5">
+            <p className="pl-5 text-green-600">
               {product?.timber_assured ? "Assured" : ""}
-            </span>
+            </p>
           </div>
-          <p className="text-[16px] py-3">
+          <p className="text-[16px] py-2">
             <span className="font-semibold">₹{productDiscountPrice} </span>
             <span className="text-[14px] line-through text-[#878792] px-2">
               ₹{product?.price}
@@ -45,8 +48,11 @@ const Product_Card = ({ product }) => {
             <IoHeartSharp size={27} />
           </span>
         </div>
-        <div className="flex items-center justify-center bg-gray-500 py-1 text-white cursor-pointer">
-          <button>Add To Cart</button>
+        <div className="flex items-center justify-center absolute bottom-0  w-full bg-blue-600 hover:bg-blue-700 py-1 text-white cursor-pointer">
+          <button className="flex items-center justify-center gap-3">
+            <HiOutlineShoppingCart />
+            Add To Cart
+          </button>
         </div>
       </div>
     </>

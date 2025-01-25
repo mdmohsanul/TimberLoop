@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Timber_Logo from "/Timber_logo.webp";
 import { CiSearch } from "react-icons/ci";
 import { BsPerson } from "react-icons/bs";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchFilter } from "../features/productSlice";
 
 const Header = () => {
+  const { products } = useSelector((state) => state.products);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [nav, setNav] = useState(false);
-  const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
+  const handleInputChange = (value) => {
+    navigate("/products");
+    setSearchTerm(value);
   };
+
+  useEffect(() => {
+    dispatch(setSearchFilter(searchTerm));
+  }, [searchTerm]);
   return (
     <>
       <div className="w-full fixed top-0 bg-white z-30 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
@@ -34,7 +44,7 @@ const Header = () => {
                 type="text"
                 name=""
                 value={searchTerm}
-                onChange={handleInputChange}
+                onChange={(e) => handleInputChange(e.target.value)}
                 placeholder={`Search`}
                 className="py-2 pr-4  hover:outline-none outline-none  border-b border-slate-600"
               />

@@ -8,7 +8,7 @@ export const fetchProducts = createAsyncThunk(
       "https://timber-backend.vercel.app/api/products"
     );
     // console.log(response.data.data);
-    return response.data.data;
+    return response.data.data.products;
   }
 );
 export const productSlice = createSlice({
@@ -22,6 +22,7 @@ export const productSlice = createSlice({
     assuredFilter: false,
     ratingFilter: [],
     searchFilter: "",
+    rangeFilter: "",
   },
   reducers: {
     setCheckBoxFilter: (state, action) => {
@@ -38,6 +39,9 @@ export const productSlice = createSlice({
     },
     setSearchFilter: (state, action) => {
       state.searchFilter = action.payload;
+    },
+    setRangeFilter: (state, action) => {
+      state.rangeFilter = action.payload;
     },
   },
   extraReducers: (builders) => {
@@ -61,5 +65,6 @@ export const {
   setRatingFilter,
   setSearchFilter,
   setSearch,
+  setRangeFilter,
 } = productSlice.actions;
 export default productSlice.reducer;

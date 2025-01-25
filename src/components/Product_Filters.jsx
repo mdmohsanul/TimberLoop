@@ -8,18 +8,20 @@ import {
   setAssuredFilter,
   setRatingFilter,
   setSearchFilter,
+  setRangeFilter,
 } from "../features/productSlice";
 import { CiSearch } from "react-icons/ci";
 
-const Product_Filters = ({ productName }) => {
+const Product_Filters = ({ categoryName }) => {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState([
-    productName === undefined ? "All" : productName,
+    categoryName === undefined ? "All" : categoryName,
   ]);
   const [selectedSortBy, setSelectedSortBy] = useState("Relevance");
   const [assured, setAssured] = useState();
   const [selectedRating, setSelectedRating] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [rangevalue, setRangevalue] = useState("");
 
   const categoryHandler = (e) => {
     const { checked, value } = e.target;
@@ -52,25 +54,24 @@ const Product_Filters = ({ productName }) => {
   const clearHandler = () => {
     dispatch(fetchProducts());
   };
-  const searchHandler = (e) => {
-    let searchText = e.target.value;
 
-    setSearchTerm(searchText);
+  const rangeHandler = (e) => {
+    setRangevalue(e.target.value);
   };
-
   useEffect(() => {
     dispatch(setCheckBoxFilter(selectedCategory));
     dispatch(setSortBy(selectedSortBy));
     dispatch(setAssuredFilter(assured));
     dispatch(setRatingFilter(selectedRating));
-    dispatch(setSearchFilter(searchTerm));
+    dispatch(setRangeFilter(rangevalue));
+    // dispatch(setSearchFilter(searchTerm));
   }, [
     selectedCategory,
     selectedSortBy,
     assured,
     selectedRating,
     searchTerm,
-    clearHandler,
+    rangevalue,
   ]);
   return (
     <>
@@ -100,21 +101,6 @@ const Product_Filters = ({ productName }) => {
               </span>
             </label>
           </div>
-          <div className="col-span-3">
-            <div className=" relative inline-block ">
-              <div className="absolute  end-0 inset-y-0 flex items-center ps-3 pointer-events-none">
-                <CiSearch className="text-slate-500 font-semibold" size={20} />
-              </div>
-              <input
-                type="text"
-                name=""
-                value={searchTerm}
-                onChange={searchHandler}
-                placeholder={`Search`}
-                className="py-2 pr-4  hover:outline-none outline-none bg-[#FAFAFA] border-b border-slate-600"
-              />
-            </div>
-          </div>
 
           <div className="col-span-3">
             <label htmlFor="sortBy" className="text-[16px] pr-2  text-gray-900">
@@ -133,10 +119,10 @@ const Product_Filters = ({ productName }) => {
         </div>
 
         <div className="flex ">
-          <div className=" w-60 h-screen min-h-72 fixed left-10 top-[107px] my-4 pr-3 border-r-8 border-slate-400   ">
+          <div className=" w-56 h-screen min-h-72 fixed left-10 top-[107px] my-4 pr-3 border-r-8 border-slate-400   ">
             <label
               htmlFor="category"
-              className="font-medium text-[16px] text-slate-800 "
+              className="font-medium text-lg text-slate-800 "
             >
               Category
             </label>
@@ -151,7 +137,7 @@ const Product_Filters = ({ productName }) => {
                   checked={selectedCategory.includes(item.value)}
                   onChange={categoryHandler}
                 />
-                <span className="text-slate-500 text-sm">{item.name}</span>
+                <span className="text-slate-500 text-[16px]">{item.name}</span>
               </div>
             ))}
 
@@ -163,7 +149,14 @@ const Product_Filters = ({ productName }) => {
                 Price
               </label>
               <br />
-              <input type="range" name="" id="" />
+              <input
+                type="range"
+                name="price"
+                min="5000"
+                max="100000"
+                value={rangevalue}
+                onChange={rangeHandler}
+              />
             </div>
 
             <label htmlFor="rating" className="font-medium text-slate-800">

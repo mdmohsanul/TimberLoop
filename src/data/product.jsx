@@ -61,3 +61,42 @@ export const ratingIcon = [
     ratingValue: 1,
   },
 ];
+
+export const productDetailsAccordian = [
+  {
+    id: 1,
+    accordianHeader: "ProductDetails",
+    accordianContent:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quam est odit unde quis nulla et ex voluptatem impedit reiciendis.",
+  },
+  {
+    id: 2,
+    accordianHeader: "Specifications",
+    accordianContent:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quam est odit unde quis nulla et ex voluptatem impedit reiciendis.",
+  },
+  {
+    id: 3,
+    accordianHeader: "Brand & Collection Overview",
+    accordianContent:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quam est odit unde quis nulla et ex voluptatem impedit reiciendis.",
+  },
+  {
+    id: 4,
+    accordianHeader: "Care & Maintenance",
+    accordianContent:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quam est odit unde quis nulla et ex voluptatem impedit reiciendis.",
+  },
+  {
+    id: 5,
+    accordianHeader: "Seller",
+    accordianContent:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quam est odit unde quis nulla et ex voluptatem impedit reiciendis.",
+  },
+  {
+    id: 6,
+    accordianHeader: "Warranty",
+    accordianContent:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati quam est odit unde quis nulla et ex voluptatem impedit reiciendis.",
+  },
+];
