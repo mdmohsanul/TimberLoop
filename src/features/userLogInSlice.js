@@ -9,7 +9,7 @@ export const loginUser = createAsyncThunk(
       { email, password }
     );
     const response = await request.data;
-    console.log(response.username);
+    localStorage.setItem("userId", response.user._id);
     localStorage.setItem("adminToken", response.token);
     return response;
   }

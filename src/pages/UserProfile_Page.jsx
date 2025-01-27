@@ -9,6 +9,8 @@ const UserProfile_Page = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
+    localStorage.removeItem("userId");
+
     navigate("/login");
   };
   return (

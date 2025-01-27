@@ -8,11 +8,13 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchFilter } from "../features/productSlice";
+import { setTotalProducts } from "../features/cartSlice";
 
 const Header = () => {
-  const { products } = useSelector((state) => state.products);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { cartProducts, status } = useSelector((state) => state.cart);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [nav, setNav] = useState(false);
   const handleInputChange = (value) => {
@@ -57,12 +59,17 @@ const Header = () => {
                 {" "}
                 <IoIosHeartEmpty size={30} className="text-slate-700" />
               </Link>
-              <Link to="/cart">
+              <Link to="/cart" className="relative">
                 {" "}
                 <PiShoppingCartSimpleLight
                   size={30}
                   className="text-slate-700 "
                 />
+                {status === "success" && (
+                  <p className="bg-gray-800 text-white absolute -top-2 -right-1 m-0 px-[2px] rounded-md">
+                    {cartProducts?.length}
+                  </p>
+                )}
               </Link>
             </div>
             <div className="md:hidden cursor-pointer text-black   mr-5">

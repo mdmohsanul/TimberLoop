@@ -143,10 +143,7 @@ const Product = () => {
                 ? rangeFilterProduct
                 : searchRangeFilterProduct
               ).map((product) => (
-                <Link to={`/products/${product._id}`} key={product._id}>
-                  {" "}
-                  <Product_Card key={product._id} product={product} />
-                </Link>
+                <Product_Card key={product._id} product={product} />
               ))}
             </div>
           </div>

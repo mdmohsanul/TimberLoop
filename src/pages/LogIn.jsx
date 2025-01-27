@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../features/userLogInSlice";
 import { signUpUser } from "../features/userSignUpSlice";
 
@@ -11,12 +11,24 @@ const LogIn = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
+  const location = useLocation();
+
+  // Get the 'from' location or default to the homepage
+  const from = location.state?.from?.pathname || "/userProfile";
+
+  useEffect(() => {
+    if (localStorage.getItem("adminToken")) {
+      navigate("/userProfile");
+    }
+  }, []);
+
   const handleLogin = () => {
     dispatch(loginUser({ email, password })).then((result) => {
       if (result.payload) {
         setEmail("");
         setPassword("");
-        navigate("/userProfile");
+        navigate(from, { replace: true });
+        // navigate("/userProfile");
       }
     });
   };
@@ -40,6 +52,7 @@ const LogIn = () => {
                   type="Email"
                   placeholder="Email or Phone"
                   value={email}
+                  autoComplete="true"
                   onChange={(e) => setEmail(e.target.value)}
                   className="px-3 py-4 mb-5 w-full tracking-wider bg-gray-800 rounded-md text-white focus:outline-none"
                 />

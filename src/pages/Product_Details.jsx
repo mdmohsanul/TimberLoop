@@ -1,18 +1,32 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { GoHeart } from "react-icons/go";
 import { PiStarFill, PiStarHalfFill } from "react-icons/pi";
 import { productDetailsAccordian } from "../data/product";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { addProduct } from "../features/cartSlice";
 
 const Product_Details = () => {
   const { productId } = useParams();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.userLogIn);
+
   const { products, status, error } = useSelector((state) => state.products);
   const findProduct = products.find((product) => product._id === productId);
-  const [quantity, setQuantity] = useState("1");
+
+  const [quantity, setQuantity] = useState(1);
   const [activeId, setActiveId] = useState(false);
+  const cartHandler = (productId) => {
+    const cartDetails = {
+      userId: user?.user?._id,
+      productId: productId,
+      quantity: quantity,
+    };
+
+    dispatch(addProduct(cartDetails));
+  };
   const priceAfterDiscount = (
     findProduct?.price -
     (findProduct?.price * findProduct?.discount) / 100
@@ -99,7 +113,10 @@ const Product_Details = () => {
               </div>
 
               <div className="flex w-full md:space-x-4 md:mb-6 fixed bottom-0 right-0 z-30 md:static">
-                <button className="bg-indigo-600 flex w-2/4 md:w-auto gap-2 items-center text-white px-6 py-3 md:rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <button
+                  className="bg-indigo-600 flex w-2/4 md:w-auto gap-2 items-center text-white px-6 py-3 md:rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  onClick={() => cartHandler(findProduct._id)}
+                >
                   <HiOutlineShoppingCart size={23} />
                   Add to Cart
                 </button>
@@ -111,7 +128,7 @@ const Product_Details = () => {
 
               <div className="md:w-11/12">
                 {productDetailsAccordian.map((item) => (
-                  <div className="border-b-[1px] border-gray-300">
+                  <div className="border-b-[1px] border-gray-300" key={item.id}>
                     <div
                       className="flex items-center justify-between py-4"
                       onClick={() => handleButton(item.id)}
