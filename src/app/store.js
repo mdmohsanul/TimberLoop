@@ -4,6 +4,7 @@ import userSignUpSlice from "../features/userSignUpSlice";
 import userLogInSlice from "../features/userLogInSlice";
 import addressSlice from "../features/addressSlice";
 import cartSlice from "../features/cartSlice";
+import wishlistSlice from "../features/wishlistSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     userLogIn: userLogInSlice,
     addresses: addressSlice,
     cart: cartSlice,
+    wishlist: wishlistSlice,
   },
 });
 

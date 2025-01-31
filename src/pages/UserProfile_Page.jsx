@@ -1,9 +1,13 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { fetchCart } from "../features/cartSlice";
+import { fetchWishlist } from "../features/wishlistSlice";
 
 const UserProfile_Page = () => {
+  const dispatch = useDispatch();
   const { state, error, user } = useSelector((state) => state.userLogIn);
+
   const navigate = useNavigate();
   const btnClasses = "py-2 px-4 bg-slate-500 text-white rounded-md text-xl";
 
@@ -13,6 +17,10 @@ const UserProfile_Page = () => {
 
     navigate("/login");
   };
+  useEffect(() => {
+    dispatch(fetchCart(user?.user?._id));
+    dispatch(fetchWishlist(user?.user?._id));
+  }, []);
   return (
     <>
       <div className="w-full min-h-screen pt-20">

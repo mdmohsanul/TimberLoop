@@ -2,8 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchCart = createAsyncThunk("cart/fetchCart", async (userId) => {
-  console.log(userId);
-
   const response = await axios.get(
     `https://timber-backend.vercel.app/api/cart/${userId}`
   );
@@ -18,7 +16,7 @@ export const addProduct = createAsyncThunk(
       "https://timber-backend.vercel.app/api/cart",
       cartDetails
     );
-    console.log(response.data);
+
     return response.data.products[response.data.products.length - 1];
   }
 );
@@ -68,14 +66,13 @@ const cartSlice = createSlice({
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
         state.status = "success";
-        console.log("fetch cart", action.payload);
+
         state.cartProducts = action.payload;
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.error = action.error.message;
       }),
       builders.addCase(addProduct.fulfilled, (state, action) => {
-        console.log("add product", action.payload);
         state?.cartProducts?.push(action.payload);
       }),
       builders.addCase(removeProduct.fulfilled, (state, action) => {

@@ -5,15 +5,16 @@ import { loginUser } from "../features/userLogInSlice";
 import { signUpUser } from "../features/userSignUpSlice";
 
 const LogIn = () => {
-  const { status, error } = useSelector((state) => state.userLogIn);
+  const dispatch = useDispatch();
+  const { user, status, error } = useSelector((state) => state.userLogIn);
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
 
   const location = useLocation();
 
-  // Get the 'from' location or default to the homepage
+  // Get the 'from' location or default to the userprofile Page
   const from = location.state?.from?.pathname || "/userProfile";
 
   useEffect(() => {
@@ -65,9 +66,7 @@ const LogIn = () => {
                   className="px-3 py-4 mb-4 w-full tracking-wider bg-gray-800 rounded-md text-white focus:outline-none"
                 />
 
-                {error && (
-                  <p className="text-red-800">Please Enter Valid Details</p>
-                )}
+                {error && <p className="text-red-800">User not exists!</p>}
                 <button
                   className="px-3 py-4 mt-7 bg-red-700 text-white rounded-md tracking-wider"
                   onClick={handleLogin}

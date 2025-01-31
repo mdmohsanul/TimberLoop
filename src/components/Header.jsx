@@ -14,6 +14,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cartProducts, status } = useSelector((state) => state.cart);
+  const { wishlistProducts } = useSelector((state) => state.wishlist);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [nav, setNav] = useState(false);
@@ -55,9 +56,14 @@ const Header = () => {
               <Link to="/login">
                 <BsPerson size={30} className="text-slate-700" />
               </Link>
-              <Link to="/wishlist">
+              <Link to="/wishlist" className="relative">
                 {" "}
                 <IoIosHeartEmpty size={30} className="text-slate-700" />
+                {status === "success" && (
+                  <p className="bg-gray-800 text-white absolute -top-2 -right-1 m-0 px-[2px] rounded-md">
+                    {wishlistProducts?.length}
+                  </p>
+                )}
               </Link>
               <Link to="/cart" className="relative">
                 {" "}

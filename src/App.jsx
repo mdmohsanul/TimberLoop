@@ -21,6 +21,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   const dispatch = useDispatch();
   const { status, error } = useSelector((state) => state.products);
+
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchProducts());
@@ -81,7 +82,8 @@ const appRouter = createBrowserRouter([
         path: "/wishlist",
         element: (
           <ProtectedRoute>
-            <Wishlist_Page />{" "}
+            {" "}
+            <Wishlist_Page />
           </ProtectedRoute>
         ),
       },

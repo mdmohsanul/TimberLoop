@@ -21,7 +21,7 @@ const SignUp_Page = () => {
 
       return;
     }
-    if (error === null) {
+    if (error !== null) {
       console.log("hiiii");
       setEmail("");
       setPassword("");

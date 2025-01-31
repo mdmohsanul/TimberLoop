@@ -17,7 +17,7 @@ const Cart_Page = () => {
   const { cartProducts, status, error } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.userLogIn);
   // console.log(user?.user?._id);
-  console.log(cartProducts);
+ 
   const [quantityValue, setQuantityValue] = useState(1);
 
   const cartTotalQuantity = () => {
@@ -70,9 +70,9 @@ const Cart_Page = () => {
   }, [dispatch]);
   return (
     <>
-      <section className="bg-white py-8 pt-7 antialiased dark:bg-gray-900 md:py-20">
+      <section className="bg-white py-8 pt-20 antialiased dark:bg-gray-900 md:py-20">
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
+          <h2 className="text-center text-3xl font-medium text-gray-700 py-2">
             Cart Items
           </h2>
           {status === "loading" && <p>Loading...</p>}
