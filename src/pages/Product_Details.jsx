@@ -7,37 +7,56 @@ import { PiStarFill, PiStarHalfFill } from "react-icons/pi";
 import { productDetailsAccordian } from "../data/product";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { addProduct } from "../features/cartSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Product_Details = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userLogIn);
-
   const { products, status, error } = useSelector((state) => state.products);
+  const { cartProducts } = useSelector((state) => state.cart);
+
   const findProduct = products.find((product) => product._id === productId);
 
   const [quantity, setQuantity] = useState(1);
   const [activeId, setActiveId] = useState(false);
-  const cartHandler = (productId) => {
-    const cartDetails = {
-      userId: user?.user?._id,
-      productId: productId,
-      quantity: quantity,
-    };
 
-    dispatch(addProduct(cartDetails));
+  // dispatch the product to cart
+  const cartHandler = (productId) => {
+    console.log("productId", productId);
+    console.log("cartProducts", cartProducts);
+    const isInCart = cartProducts
+      .map((item) => item.productId._id)
+      .includes(productId);
+    console.log(isInCart);
+    if (!isInCart) {
+      const cartDetails = {
+        userId: user?.user?._id,
+        productId: productId,
+        quantity: quantity,
+      };
+      dispatch(addProduct(cartDetails));
+    } else {
+      toast.error("Product already in cart!");
+    }
   };
+
+  // calculating the final price by discount percentage
   const priceAfterDiscount = (
     findProduct?.price -
     (findProduct?.price * findProduct?.discount) / 100
   ).toFixed(2);
   const productTotalPriceWithQuantity = priceAfterDiscount * quantity;
+
+  // accordian handler
   const handleButton = (id) => {
     setActiveId((prevId) => (prevId === id ? false : id));
   };
   return (
     <>
       <div className="bg-gray-100 pt-20 pb-5">
+        <ToastContainer />
         <div className="container mx-auto px-4 py-0 md:py-8 relative">
           <div className="flex flex-wrap -mx-4">
             {/* Product Images */}

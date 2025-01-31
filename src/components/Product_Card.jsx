@@ -4,7 +4,7 @@ import { IoHeartSharp } from "react-icons/io5";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../features/cartSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import { addWishlistProduct } from "../features/wishlistSlice";
 import { ToastContainer, toast } from "react-toastify";
@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Product_Card = ({ product }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { cartProducts } = useSelector((state) => state.cart);
   const { wishlistProducts } = useSelector((state) => state.wishlist);
   const { user } = useSelector((state) => state.userLogIn);
@@ -20,28 +21,28 @@ const Product_Card = ({ product }) => {
 
   //
   const cartHandler = (productId) => {
-    console.log("productId", productId);
-    console.log("cartProducts", cartProducts);
-    const isInCart = cartProducts
-      .map((item) => item.productId._id)
-      .includes(productId);
-    console.log(isInCart);
-    if (!isInCart) {
-      const cartDetails = {
-        userId: user?.user?._id,
-        productId: productId,
-        quantity: 1,
-      };
-      setCheckProduct(productId);
-      dispatch(addProduct(cartDetails));
+    if (localStorage.getItem("adminToken")) {
+      const isInCart = cartProducts
+        .map((item) => item.productId._id)
+        .includes(productId);
+      console.log(isInCart);
+      if (!isInCart) {
+        const cartDetails = {
+          userId: user?.user?._id,
+          productId: productId,
+          quantity: 1,
+        };
+        setCheckProduct(productId);
+        dispatch(addProduct(cartDetails));
+      } else {
+        toast.error("Product already in cart!");
+      }
     } else {
-      toast.error("Product already in cart!");
+      navigate("/login");
     }
   };
 
   const wishListHandler = (productId) => {
-    console.log("productId", productId);
-    console.log("wishlistProducts", wishlistProducts);
     const isInWishList = wishlistProducts
       .map((item) => item._id)
       .includes(productId);
