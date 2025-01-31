@@ -33,6 +33,7 @@ const Product_Card = ({ product }) => {
           quantity: 1,
         };
         setCheckProduct(productId);
+
         dispatch(addProduct(cartDetails));
       } else {
         toast.error("Product already in cart!");

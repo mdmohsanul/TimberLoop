@@ -53,6 +53,12 @@ const addressSlice = createSlice({
     addresses: [],
     status: "idle",
     error: null,
+    defaultAddress: {},
+  },
+  reducers: {
+    setDefaultAddress: (state, action) => {
+      state.defaultAddress = action.payload;
+    },
   },
   // extraReducers handles asynchronous requests,
   extraReducers: (builders) => {
@@ -77,6 +83,7 @@ const addressSlice = createSlice({
           );
         })
         .addCase(removeAddress.rejected, (state, action) => {
+          state.status = "error";
           state.error = action.error.message;
         }),
       builders.addCase(editAddress.fulfilled, (state, action) => {
@@ -91,4 +98,5 @@ const addressSlice = createSlice({
   },
 });
 
+export const { setDefaultAddress } = addressSlice.actions;
 export default addressSlice.reducer;

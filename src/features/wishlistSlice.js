@@ -55,6 +55,7 @@ const wishlistSlice = createSlice({
         state.wishlistProducts = action.payload;
       })
       .addCase(fetchWishlist.rejected, (state, action) => {
+        state.status = "error";
         state.error = action.error.message;
       }),
       builders.addCase(addWishlistProduct.fulfilled, (state, action) => {

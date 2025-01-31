@@ -98,9 +98,9 @@ const Product_Details = () => {
                 </span>
               </div>
               <p className="text-gray-700 mb-6">
-                Experience premium sound quality and industry-leading noise
-                cancellation with these wireless headphones. Perfect for music
-                lovers and frequent travelers.
+                Enhance your living space with premium-quality furniture
+                designed for comfort and style. Perfect for modern homes,
+                offices, and cozy retreats.
               </p>
 
               <div className="mb-6">

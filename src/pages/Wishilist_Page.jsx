@@ -9,8 +9,7 @@ const Wishilist_Page = () => {
   const { status, error, wishlistProducts } = useSelector(
     (state) => state.wishlist
   );
-  console.log("wishlistProducts", wishlistProducts);
-
+  console.log(wishlistProducts);
   useEffect(() => {
     dispatch(fetchWishlist(user?.user?._id));
   }, [dispatch]);
@@ -18,12 +17,12 @@ const Wishilist_Page = () => {
     <>
       <div className="w-full min-h-screen pt-20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-center text-3xl font-medium text-gray-700 py-2">
+          <h2 className="text-center md:text-3xl text-2xl font-medium text-gray-700 py-2">
             Wishlist
           </h2>
           <p>Home / Products / Wishlist</p>
           {status === "loading" && <p>Loading.....</p>}
-          {error && <p>{error}</p>}
+          {status === "error" && <p>{error}</p>}
           {status === "success" && (
             <div className="py-4 grid gap-y-7 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 md:justify-items-center">
               {wishlistProducts?.map((item) => (

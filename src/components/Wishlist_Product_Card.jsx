@@ -17,7 +17,7 @@ const Wishlist_Product_Card = ({ product }) => {
     console.log("productId", productId);
     console.log("cartProducts", cartProducts);
     const isInCart = cartProducts
-      .map((item) => item.productId)
+      .map((item) => item.productId._id)
       .includes(productId);
     console.log(isInCart);
     if (!isInCart) {

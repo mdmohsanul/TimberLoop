@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./features/productSlice";
 import ShimerUI_ProductsPage from "./components/ShimmerUI/ShimerUI_ProductsPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Checkout_Page from "./pages/Checkout_Page";
 function App() {
   const dispatch = useDispatch();
   const { status, error } = useSelector((state) => state.products);
@@ -94,6 +95,10 @@ const appRouter = createBrowserRouter([
             <Cart_Page />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/cart/checkout",
+        element: <Checkout_Page />,
       },
       {
         path: "/order",

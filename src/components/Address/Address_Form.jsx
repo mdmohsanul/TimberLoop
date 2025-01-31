@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addAddress, editAddress } from "../features/addressSlice";
+import {
+  addAddress,
+  editAddress,
+  fetchAddress,
+} from "../../features/addressSlice";
 
-const Address_Form = ({ setAddressForm, existingAddress = null }) => {
+const Address_Form = ({
+  setAddressForm,
+  setEditId,
+  editId,
+  existingAddress = null,
+}) => {
+  console.log(editId);
+  console.log(existingAddress);
+
   const dispatch = useDispatch();
   const [inputAddress, setInputAddress] = useState({
     name: existingAddress?.name || "",
@@ -23,14 +35,22 @@ const Address_Form = ({ setAddressForm, existingAddress = null }) => {
     dispatch(addAddress(inputAddress));
   };
   const updateHandler = () => {
-    dispatch(editAddress({ id: existingAddress._id, ...inputAddress }));
+    console.log(inputAddress);
+    dispatch(
+      editAddress({
+        id: existingAddress._id || existingAddress.id,
+        ...inputAddress,
+      })
+    );
+    // dispatch(fetchAddress());
   };
+
   return (
     <>
-      <div className="py-2 px-6 w-4/5 ">
+      <div className="py-2 md:px-6 md:w-4/5 ">
         <form onSubmit={(e) => e.preventDefault()}>
-          <div className="grid grid-flow-col grid-rows-5 gap-4 ">
-            <div className="col-span-2 border border-gray-300 outline-none">
+          <div className="md:grid md:grid-flow-col md:grid-rows-5 gap-4 mx-3 md:mx-0 flex flex-col ">
+            <div className="md:col-span-2 col-span-1 border border-gray-300 outline-none ">
               <input
                 type="text"
                 name="name"
@@ -40,7 +60,7 @@ const Address_Form = ({ setAddressForm, existingAddress = null }) => {
                 placeholder="Name"
               />
             </div>
-            <div className="col-span-2 border border-gray-300 outline-none">
+            <div className="md:col-span-2 border border-gray-300 outline-none">
               <input
                 type="text"
                 name="pincode"
@@ -50,7 +70,7 @@ const Address_Form = ({ setAddressForm, existingAddress = null }) => {
                 placeholder="Pincode"
               />
             </div>
-            <div className="row-span-2 col-span-4 border h-full border-gray-300">
+            <div className="md:row-span-2 md:col-span-4 col-span-1 border h-full border-gray-300">
               <textarea
                 name="fullAddress"
                 onChange={changeHandler}
@@ -102,7 +122,7 @@ const Address_Form = ({ setAddressForm, existingAddress = null }) => {
               />
             </div>
           </div>
-          <div className="py-4 pl-1 text-sm ">
+          <div className="py-4 pl-1 text-sm mx-4 md:mx-0">
             <label htmlFor="addressType" className="text-gray-500">
               Address Type
             </label>
@@ -124,18 +144,22 @@ const Address_Form = ({ setAddressForm, existingAddress = null }) => {
             />
             Work
           </div>
-          <div className="my-4">
+          <div className="my-4 mx-4 md:mx-0 md:flex ">
             <button
-              className="py-4 px-20 bg-blue-500 text-white text-sm"
+              className="py-4 px-20 bg-blue-500 text-white text-sm w-48 h-14 flex items-center justify-center mb-4 md:mb-0"
               onClick={existingAddress ? updateHandler : saveHandler}
             >
               {existingAddress ? "UPDATE" : "SAVE"}
             </button>
             <button
-              className="py-4 px-20 bg-green-400 ml-4 text-white text-sm"
-              onClick={() => setAddressForm(false)}
+              className="py-4 px-20 bg-green-400 md:ml-4 text-white text-sm w-48 h-14 flex items-center justify-center"
+              onClick={
+                existingAddress
+                  ? () => setEditId(null)
+                  : () => setAddressForm(false)
+              }
             >
-              Cancel
+              CANCEL
             </button>
           </div>
         </form>

@@ -16,7 +16,6 @@ export const addProduct = createAsyncThunk(
       "https://timber-backend.vercel.app/api/cart",
       cartDetails
     );
-
     return response.data.products[response.data.products.length - 1];
   }
 );
@@ -24,9 +23,6 @@ export const addProduct = createAsyncThunk(
 export const removeProduct = createAsyncThunk(
   "cart/removeProduct",
   async ({ userId, productId }) => {
-    // console.log("userID", userId);
-    // console.log("productId", productId);
-
     const response = await axios.delete(
       `https://timber-backend.vercel.app/api/cart/user/${userId}/products/${productId}`
     );
@@ -40,6 +36,10 @@ const cartSlice = createSlice({
     cartProducts: [],
     status: "idle",
     error: null,
+    cartTotalPrice: 0,
+    cartTotalQuantity: 0,
+    cartTotalDiscount: 0,
+    cartTotalSavings: 0,
   },
   reducers: {
     incrementQuantity: (state, action) => {
@@ -58,6 +58,34 @@ const cartSlice = createSlice({
         item.quantity--;
       }
     },
+    getCartTotalPrice: (state, action) => {
+      let totalPrice = 0;
+      state.cartProducts?.forEach((item) => {
+        totalPrice +=
+          (
+            item?.productId?.price -
+            (item?.productId?.price * item?.productId?.discount) / 100
+          ).toFixed(2) * item.quantity;
+      });
+      state.cartTotalPrice = totalPrice;
+    },
+    getCartTotalQuantity: (state, action) => {
+      let totalQuantity = 0;
+      state.cartProducts?.forEach((item) => {
+        totalQuantity += item.quantity;
+      });
+      state.cartTotalQuantity = totalQuantity;
+    },
+    getCartTotalSavings: (state, action) => {
+      let totalDiscountPrice = 0;
+      state.cartProducts?.forEach((item) => {
+        totalDiscountPrice +=
+          ((item?.productId?.price * item?.productId?.discount) / 100).toFixed(
+            2
+          ) * item.quantity;
+      });
+      state.cartTotalSavings = totalDiscountPrice;
+    },
   },
   extraReducers: (builders) => {
     builders
@@ -70,6 +98,7 @@ const cartSlice = createSlice({
         state.cartProducts = action.payload;
       })
       .addCase(fetchCart.rejected, (state, action) => {
+        state.status = "error";
         state.error = action.error.message;
       }),
       builders.addCase(addProduct.fulfilled, (state, action) => {
@@ -82,6 +111,12 @@ const cartSlice = createSlice({
       });
   },
 });
-export const { incrementQuantity, decrementQuantity, setTotalProducts } =
-  cartSlice.actions;
+export const {
+  incrementQuantity,
+  decrementQuantity,
+  setTotalProducts,
+  getCartTotalPrice,
+  getCartTotalQuantity,
+  getCartTotalSavings,
+} = cartSlice.actions;
 export default cartSlice.reducer;
