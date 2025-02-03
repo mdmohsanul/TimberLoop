@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { category, ratingIcon } from "../data/product";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,21 +7,37 @@ import {
   setSortBy,
   setAssuredFilter,
   setRatingFilter,
-  setSearchFilter,
   setRangeFilter,
 } from "../features/productSlice";
-import { CiSearch } from "react-icons/ci";
+import { setStickyBottom } from "../features/footerSlice";
 
-const Product_Filters = ({ categoryName }) => {
+const Product_Filters = ({ categoryName, footerRef }) => {
   const dispatch = useDispatch();
+  const filterRef = useRef(null);
+  const { isStickyBottom } = useSelector((state) => state.footer);
+  console.log(isStickyBottom);
   const [selectedCategory, setSelectedCategory] = useState([
     categoryName === undefined ? "All" : categoryName,
   ]);
   const [selectedSortBy, setSelectedSortBy] = useState("Relevance");
   const [assured, setAssured] = useState();
   const [selectedRating, setSelectedRating] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
   const [rangevalue, setRangevalue] = useState("");
+
+  // footer scroll condition
+  useEffect(() => {
+    const handleScroll = () => {
+      if (filterRef.current && footerRef.current) {
+        const filterBottom = filterRef.current.getBoundingClientRect().bottom;
+        const footerTop = footerRef.current.getBoundingClientRect().top;
+
+        dispatch(setStickyBottom(filterBottom >= footerTop));
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [dispatch]);
 
   const categoryHandler = (e) => {
     const { checked, value } = e.target;
@@ -65,14 +81,7 @@ const Product_Filters = ({ categoryName }) => {
     dispatch(setRatingFilter(selectedRating));
     dispatch(setRangeFilter(rangevalue));
     // dispatch(setSearchFilter(searchTerm));
-  }, [
-    selectedCategory,
-    selectedSortBy,
-    assured,
-    selectedRating,
-    searchTerm,
-    rangevalue,
-  ]);
+  }, [selectedCategory, selectedSortBy, assured, selectedRating, rangevalue]);
   return (
     <>
       <div className="max-w-7xl mx-auto ">
@@ -88,9 +97,14 @@ const Product_Filters = ({ categoryName }) => {
           </div>
 
           <div className="col-span-3 pt-3 place-self-start">
-            <label className="inline-flex items-center cursor-pointer">
+            <label
+              className="inline-flex items-center cursor-pointer"
+              htmlFor="timberAssured"
+            >
               <input
                 type="checkbox"
+                name="timberAssured"
+                id="timberAssured"
                 value=""
                 className="sr-only peer"
                 onChange={(e) => setAssured(e.target.checked)}
@@ -108,6 +122,7 @@ const Product_Filters = ({ categoryName }) => {
             </label>
             <select
               name="sortBy"
+              id="sortBy"
               className="text-sm text-gray-500 py-1 hover:outline-none outline-none"
               onChange={(e) => setSelectedSortBy(e.target.value)}
             >
@@ -119,7 +134,12 @@ const Product_Filters = ({ categoryName }) => {
         </div>
 
         <div className="flex ">
-          <div className=" w-56 h-screen min-h-72 fixed left-10 top-[107px] my-4 pr-3 border-r-8 border-slate-400   ">
+          <div
+            ref={filterRef}
+            className={`w-56 h-screen min-h-72  left-10 fixed bottom-0 top-[107px] overflow-y-auto transition-all my-4 pr-3 border-r-8 border-slate-400 ${
+              isStickyBottom ? " " : ""
+            }`}
+          >
             <label
               htmlFor="category"
               className="font-medium text-lg text-slate-800 "
@@ -132,6 +152,7 @@ const Product_Filters = ({ categoryName }) => {
                 <input
                   type="checkbox"
                   name="category"
+                  id={`category-${item.id}`}
                   className="mr-2 "
                   value={item.value}
                   checked={selectedCategory.includes(item.value)}
@@ -151,6 +172,7 @@ const Product_Filters = ({ categoryName }) => {
               <br />
               <input
                 type="range"
+                id="price"
                 name="price"
                 min="5000"
                 max="100000"
@@ -168,6 +190,7 @@ const Product_Filters = ({ categoryName }) => {
                 <input
                   type="checkbox"
                   name="rating"
+                  id={`rating-${item.id}`}
                   className="mr-2 "
                   value={item.ratingValue}
                   onChange={ratingHandler}

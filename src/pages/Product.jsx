@@ -1,19 +1,28 @@
-import React, { useState, useEffect, useLocation } from "react";
+import React, { useEffect } from "react";
+import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Product_Card from "../components/Product_Card";
 import Product_Filters from "../components/Product_Filters";
 import ShimerUI_ProductsPage from "../components/ShimmerUI/ShimerUI_ProductsPage";
-import { fetchProducts, setCheckBoxFilter } from "../features/productSlice";
 
 const Product = () => {
+  /* 
+   user can map to this page in 3 ways
+   - by using searchbar
+   - by selecting particular productcategory
+   - by clicking on "View All Products" button
+  */
+
+  //  get parameter from URL
   const { categoryName } = useParams();
   const dispatch = useDispatch();
-
+  const footerRef = useRef(null);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // getting all state variables from productSlice
   const {
     products,
     status,
@@ -26,7 +35,7 @@ const Product = () => {
     rangeFilter,
   } = useSelector((state) => state.products);
 
-  // search filter
+  // filters - if user come by searching product
   const searchedProducts = products?.filter((product) =>
     product.category
       .toLowerCase()
@@ -82,7 +91,8 @@ const Product = () => {
       : searchRatingFilterProduct.filter(
           (item) => item.price < parseInt(rangeFilter)
         );
-  // route based filter
+
+  // filters - if a user comes by selecting product category
   const productsLists = checkBoxFilter.includes("All")
     ? products
     : products?.filter((product) => checkBoxFilter.includes(product.category));
@@ -126,15 +136,23 @@ const Product = () => {
           (item) => item.price < parseInt(rangeFilter)
         );
 
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
+  }, []);
   return (
     <>
       {status === "loading" && <ShimerUI_ProductsPage />}
       {error && <p>{error}</p>}
       {status === "success" && (
-        <div className="relative pt-16 min-h-screen ">
+        <section className="relative pt-16 min-h-screen ">
           <div className="bg-[#FAFAFA] hidden sticky top-16 z-10 lg:flex">
             <p>{rangeFilterProduct.length}</p>
-            <Product_Filters categoryName={categoryName} />
+            <Product_Filters
+              categoryName={categoryName}
+              footerRef={footerRef}
+            />
           </div>
 
           <div className="lg:pl-[279px] my-5 ">
@@ -147,8 +165,9 @@ const Product = () => {
               ))}
             </div>
           </div>
-        </div>
+        </section>
       )}
+      <div ref={footerRef}></div>
     </>
   );
 };

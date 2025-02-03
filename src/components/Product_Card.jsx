@@ -17,15 +17,14 @@ const Product_Card = ({ product }) => {
   const { wishlistProducts } = useSelector((state) => state.wishlist);
   const { user } = useSelector((state) => state.userLogIn);
   const [checkProduct, setCheckProduct] = useState("");
-  // console.log(user?.user?._id);
+  const [checkWishlistProduct, setCheckWishlistProduct] = useState("");
 
-  //
   const cartHandler = (productId) => {
     if (localStorage.getItem("adminToken")) {
       const isInCart = cartProducts
         .map((item) => item.productId._id)
         .includes(productId);
-      console.log(isInCart);
+
       if (!isInCart) {
         const cartDetails = {
           userId: user?.user?._id,
@@ -44,17 +43,22 @@ const Product_Card = ({ product }) => {
   };
 
   const wishListHandler = (productId) => {
-    const isInWishList = wishlistProducts
-      .map((item) => item._id)
-      .includes(productId);
-    if (!isInWishList) {
-      const wishlistDetails = {
-        userId: user?.user?._id,
-        productId: productId,
-      };
-      dispatch(addWishlistProduct(wishlistDetails));
+    if (localStorage.getItem("adminToken")) {
+      const isInWishList = wishlistProducts
+        .map((item) => item._id)
+        .includes(productId);
+      if (!isInWishList) {
+        const wishlistDetails = {
+          userId: user?.user?._id,
+          productId: productId,
+        };
+        setCheckWishlistProduct(productId);
+        dispatch(addWishlistProduct(wishlistDetails));
+      } else {
+        toast.error("Product already in wishlist!");
+      }
     } else {
-      toast.error("Product already in wishlist!");
+      navigate("/login");
     }
   };
   const productDiscountPrice = (
@@ -106,20 +110,26 @@ const Product_Card = ({ product }) => {
             </div>
           </div>
         </Link>
-        <span
-          className="md:p-[5px] p-[3px] text-gray-600 hover:text-white absolute top-5 right-4 bg-slate-200 rounded-full bg-opacity-60 hover:bg-black  hover:bg-opacity-55 transform transition duration-500"
+        <button
+          className="md:p-[5px] p-[3px] text-gray-600 hover:text-white absolute top-5 right-4 bg-slate-200 rounded-full bg-opacity-60 hover:bg-black  hover:bg-opacity-55 transform transition duration-500 disabled:bg-gray-600 disabled:text-slate-200"
           onClick={() => wishListHandler(product?._id)}
+          disabled={checkWishlistProduct === product?._id}
         >
           <IoHeartSharp size={27} />
-        </span>
+        </button>
         <div className="flex items-center justify-center absolute bottom-0  w-full bg-blue-600 hover:bg-blue-700 py-1 text-white cursor-pointer">
           <button
+            type="button"
             className="flex items-center justify-center gap-3"
-            onClick={() => cartHandler(product._id)}
+            onClick={() => {
+              checkProduct === product._id
+                ? navigate("/cart")
+                : cartHandler(product._id);
+            }}
           >
             <HiOutlineShoppingCart />
 
-            {checkProduct == product._id ? "Go To Cart" : "Add To Cart"}
+            {checkProduct === product._id ? "Go To Cart" : "Add To Cart"}
           </button>
         </div>
       </div>

@@ -28,7 +28,7 @@ const Header = () => {
   }, [searchTerm]);
   return (
     <>
-      <div className="w-full fixed top-0 bg-white z-30 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+      <header className="w-full fixed top-0 bg-white z-30 shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
         <div className="max-w-[1200px] mx-auto ">
           <div className="flex justify-between items-center">
             <Link to="/">
@@ -104,14 +104,16 @@ const Header = () => {
                           size={20}
                         />
                       </div>
-                      <input
-                        type="text"
-                        name=""
-                        value={searchTerm}
-                        onChange={handleInputChange}
-                        placeholder={`Search`}
-                        className="py-2 pr-4  hover:outline-none outline-none  border-b border-slate-600"
-                      />
+                      <label htmlFor="searchBar">
+                        <input
+                          type="text"
+                          name="searchBar"
+                          value={searchTerm}
+                          onChange={handleInputChange}
+                          placeholder={`Search`}
+                          className="py-2 pr-4  hover:outline-none outline-none  border-b border-slate-600"
+                        />
+                      </label>
                     </div>
                     <Link to="/login">
                       {" "}
@@ -143,7 +145,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+      </header>
     </>
   );
 };

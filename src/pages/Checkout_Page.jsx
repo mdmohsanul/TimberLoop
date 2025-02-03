@@ -18,13 +18,19 @@ const Checkout_Page = () => {
   console.log(user);
   console.log(cartTotalPrice);
   console.log(cartTotalQuantity);
-
+  const placeOrderHandler = () => {
+    /* 
+      remove all cart items
+      add placed order to order API
+      
+    */
+  };
   return (
     <>
-      <div className=" max-w-6xl mx-auto min-h-screen pt-20">
-        <div className="grid md:grid-cols-3 py-5 gap-8 justify-items-center">
+      <section className=" max-w-6xl mx-auto min-h-screen pt-20 px-3">
+        <div className="grid md:grid-cols-3 py-5 md:gap-8 justify-items-stretch">
           <div className="md:col-span-2">
-            <div className="border border-gray-300 mb-4">
+            <div className="border border-gray-300 mb-0">
               <p className="bg-blue-500 py-2 px-4 text-lg text-white">LOGIN</p>
               <div className="px-4 py-3 flex items-center justify-between">
                 <p>
@@ -63,11 +69,18 @@ const Checkout_Page = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className=" mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
             <Order_Summary />
+            <button
+              disabled={true}
+              className="flex w-full items-center justify-center rounded-lg text-white bg-blue-700 px-5 py-2.5 text-sm font-medium  hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              onClick={placeOrderHandler}
+            >
+              Place Order
+            </button>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

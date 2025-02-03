@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Empty_Products from "../components/Empty_Products";
 import Wishlist_Product_Card from "../components/Wishlist_Product_Card";
 import { fetchWishlist } from "../features/wishlistSlice";
 
@@ -15,7 +16,7 @@ const Wishilist_Page = () => {
   }, [dispatch]);
   return (
     <>
-      <div className="w-full min-h-screen pt-20">
+      <section className="w-full min-h-screen pt-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-center md:text-3xl text-2xl font-medium text-gray-700 py-2">
             Wishlist
@@ -23,7 +24,9 @@ const Wishilist_Page = () => {
           <p>Home / Products / Wishlist</p>
           {status === "loading" && <p>Loading.....</p>}
           {status === "error" && <p>{error}</p>}
-          {status === "success" && (
+          {status === "success" && wishlistProducts?.length === 0 ? (
+            <Empty_Products name="wishlist" />
+          ) : (
             <div className="py-4 grid gap-y-7 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 md:justify-items-center">
               {wishlistProducts?.map((item) => (
                 <Wishlist_Product_Card product={item} key={item._id} />
@@ -31,7 +34,7 @@ const Wishilist_Page = () => {
             </div>
           )}
         </div>
-      </div>
+      </section>
     </>
   );
 };

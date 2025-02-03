@@ -33,7 +33,7 @@ const SignUp_Page = () => {
   };
   return (
     <>
-      <div className="w-full min-h-screen ">
+      <section className="w-full min-h-screen ">
         <div className="bg-[url('/20250121_134247.webp')] bg-cover bg-no-repeat min-h-screen w-full bg-opacity-25">
           <div className="flex  items-center justify-center md:justify-end ">
             <div className=" bg-black bg-opacity-85 w-11/12 mt-24 mb-6 md:mr-14 md:w-5/12  py-8 px-[38px] md:py-8 md:px-[68px]">
@@ -96,7 +96,7 @@ const SignUp_Page = () => {
                 {" "}
                 <p className="text-gray-500 font-semibold ">
                   Already registered !
-                  <span className="text-white cursor-pointer hover:underline">
+                  <span className="text-white cursor-pointer hover:underline pl-2">
                     Sign In now
                   </span>
                 </p>
@@ -104,7 +104,7 @@ const SignUp_Page = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

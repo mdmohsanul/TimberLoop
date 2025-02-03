@@ -24,7 +24,7 @@ const UserProfile_Page = () => {
   }, []);
   return (
     <>
-      <div className="w-full min-h-screen pt-20">
+      <section className="w-full min-h-screen pt-20">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-center flex-col mx-5 md:mx-0">
             <p className="md:text-3xl text-2xl font-medium text-gray-700">
@@ -50,7 +50,7 @@ const UserProfile_Page = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

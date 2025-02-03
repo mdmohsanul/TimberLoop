@@ -33,7 +33,9 @@ function App() {
       {status === "loading" && <ShimerUI_ProductsPage />}
       {error && <p>{error}</p>}
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </>
   );

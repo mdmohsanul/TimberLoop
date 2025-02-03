@@ -10,8 +10,10 @@ const Order_Summary = () => {
     cartTotalQuantity,
     cartTotalSavings,
   } = useSelector((state) => state.cart);
+  let deliveryPrice = cartProducts.length === 0 ? 0 : 399;
+  let tax = cartProducts.length === 0 ? 0 : 799;
   const cartTotal = () => {
-    return cartTotalPrice + 399 + 799;
+    return cartTotalPrice + deliveryPrice + tax;
   };
   return (
     <>
@@ -45,7 +47,7 @@ const Order_Summary = () => {
                 Delivery Charges
               </dt>
               <dd className="text-base font-medium text-gray-900 dark:text-white">
-                ₹ 399
+                ₹ {deliveryPrice}
               </dd>
             </dl>
 
@@ -54,7 +56,7 @@ const Order_Summary = () => {
                 Tax
               </dt>
               <dd className="text-base font-medium text-gray-900 dark:text-white">
-                ₹ 799
+                ₹ {tax}
               </dd>
             </dl>
           </div>

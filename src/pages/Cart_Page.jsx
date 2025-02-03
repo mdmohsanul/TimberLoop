@@ -12,56 +12,18 @@ import {
   removeProduct,
 } from "../features/cartSlice";
 import { FiPlus, FiMinus } from "react-icons/fi";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Order_Summary from "../components/Order_Summary";
+import Empty_Products from "../components/Empty_Products";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart_Page = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {
-    cartProducts,
-    status,
-    error,
-    cartTotalPrice,
-    cartTotalQuantity,
-    cartTotalSavings,
-  } = useSelector((state) => state.cart);
+  const { cartProducts, status, error } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.userLogIn);
-
-  // const cartTotalQuantity = () => {
-  //   let total = 0;
-  //   cartProducts?.forEach((item) => {
-  //     total += item.quantity;
-  //   });
-  //   return total;
-  // };
-
-  // const getTotal = () => {
-  //   let totalQuantity = 0;
-  //   let totalPrice = 0;
-  //   cartProducts?.forEach((item) => {
-  //     totalQuantity += item.quantity;
-  //     totalPrice +=
-  //       (
-  //         item?.productId?.price -
-  //         (item?.productId?.price * item?.productId?.discount) / 100
-  //       ).toFixed(2) * item.quantity;
-  //   });
-  //   return { totalPrice, totalQuantity };
-  // };
-  // const getTotalDiscount = () => {
-  //   let totalQuantityProd = 0;
-  //   let totalDiscountPrice = 0;
-  //   cartProducts?.forEach((item) => {
-  //     totalQuantityProd += item.quantity;
-  //     totalDiscountPrice +=
-  //       ((item?.productId?.price * item?.productId?.discount) / 100).toFixed(
-  //         2
-  //       ) * item.quantity;
-  //   });
-  //   return { totalQuantityProd, totalDiscountPrice };
-  // };
-
+  const { wishlistProducts } = useSelector((state) => state.wishlist);
   const checkoutHandler = () => {
     if (cartProducts.length != 0) {
       navigate("/cart/checkout");
@@ -74,6 +36,20 @@ const Cart_Page = () => {
     };
     dispatch(removeProduct(data));
   };
+  const wishListHandler = (productId) => {
+    const isInWishList = wishlistProducts
+      .map((item) => item._id)
+      .includes(productId);
+    if (!isInWishList) {
+      const wishlistDetails = {
+        userId: user?.user?._id,
+        productId: productId,
+      };
+      dispatch(addWishlistProduct(wishlistDetails));
+    } else {
+      toast.error("Product already in wishlist!");
+    }
+  };
   useEffect(() => {
     dispatch(getCartTotalPrice());
     dispatch(getCartTotalQuantity());
@@ -85,18 +61,21 @@ const Cart_Page = () => {
   return (
     <>
       <section className="bg-white mt-16 md:mt-20  antialiased dark:bg-gray-900 mb-7">
+        <ToastContainer />
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <h2 className="text-center md:text-3xl text-2xl font-medium text-gray-700 py-2">
             Cart Items
           </h2>
           {status === "loading" && <p>Loading...</p>}
           {status === "error" && <p>{error}</p>}
-          <div className="mt-3 md:mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
-            <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
-              <div className="space-y-6">
-                <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
-                  {status === "success" &&
-                    cartProducts?.map((item) => (
+          {status === "success" && cartProducts?.length === 0 ? (
+            <Empty_Products name="cart" />
+          ) : (
+            <div className="mt-3 md:mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
+              <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
+                <div className="space-y-6">
+                  <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+                    {cartProducts?.map((item) => (
                       <div
                         key={item._id}
                         className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 mb-4 md:space-y-0"
@@ -164,6 +143,9 @@ const Cart_Page = () => {
                           <div className="flex items-center gap-4">
                             <button
                               type="button"
+                              onClick={() =>
+                                wishListHandler(item?.productId?._id)
+                              }
                               className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-white"
                             >
                               <IoHeartSharp size={20} />
@@ -184,20 +166,21 @@ const Cart_Page = () => {
                         </div>
                       </div>
                     ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
-              <Order_Summary />
-              <button
-                className="flex w-full items-center justify-center rounded-lg text-white bg-blue-700 px-5 py-2.5 text-sm font-medium  hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                onClick={checkoutHandler}
-              >
-                Proceed to Checkout
-              </button>
+              <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
+                <Order_Summary />
+                <button
+                  className="flex w-full items-center justify-center rounded-lg text-white bg-blue-700 px-5 py-2.5 text-sm font-medium  hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  onClick={checkoutHandler}
+                >
+                  Proceed to Checkout
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
     </>

@@ -55,7 +55,7 @@ const Product_Details = () => {
   };
   return (
     <>
-      <div className="bg-gray-100 pt-20 pb-5">
+      <section className="bg-gray-100 pt-20 pb-5">
         <ToastContainer />
         <div className="container mx-auto px-4 py-0 md:py-8 relative">
           <div className="flex flex-wrap -mx-4">
@@ -172,7 +172,7 @@ const Product_Details = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
