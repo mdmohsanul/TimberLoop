@@ -39,7 +39,10 @@ const UserProfile_Page = () => {
                 <span className="font-medium text-gray-700">Email: </span>{" "}
                 {user?.user?.email}
               </p>{" "}
-              <button className={btnClasses}>Orders</button>
+              <Link to="/orders">
+                {" "}
+                <button className={btnClasses}>Orders</button>
+              </Link>
               <Link to="/userProfile/address">
                 {" "}
                 <button className={`${btnClasses}  my-4 `}>Address</button>

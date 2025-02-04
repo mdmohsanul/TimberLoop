@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Product_Card from "../components/Product_Card";
 import Product_Filters from "../components/Product_Filters";
 import ShimerUI_ProductsPage from "../components/ShimmerUI/ShimerUI_ProductsPage";
+import { fetchProducts } from "../features/productSlice";
 
 const Product = () => {
   /* 

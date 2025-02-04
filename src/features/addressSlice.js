@@ -53,7 +53,7 @@ const addressSlice = createSlice({
     addresses: [],
     status: "idle",
     error: null,
-    defaultAddress: {},
+    defaultAddress: null,
   },
   reducers: {
     setDefaultAddress: (state, action) => {

@@ -29,7 +29,15 @@ export const removeProduct = createAsyncThunk(
     return productId;
   }
 );
-
+export const removeAllProducts = createAsyncThunk(
+  "cart/removeAllProduct",
+  async (userId) => {
+    const response = await axios.delete(
+      `https://timber-backend.vercel.app/api/cart/user/${userId}`
+    );
+    return userId;
+  }
+);
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -108,6 +116,9 @@ const cartSlice = createSlice({
         state.cartProducts = state?.cartProducts?.filter(
           (item) => item.productId._id !== action.payload
         );
+      }),
+      builders.addCase(removeAllProducts.fulfilled, (state, action) => {
+        state.cartProducts = [];
       });
   },
 });

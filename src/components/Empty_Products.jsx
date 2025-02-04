@@ -13,10 +13,10 @@ const Empty_Products = ({ name }) => {
         ) : (
           <BsClipboardHeart size={50} />
         )}
-        <p className="text-3xl">Your {name} is empty</p>
+        <p className="text-2xl">Your {name} is empty</p>
         <Link
           to="/products"
-          className="bg-blue-600 hover:bg-blue-700 text-white cursor-pointer rounded-md py-4 px-8 flex items-center justify-center"
+          className="bg-blue-600 hover:bg-blue-700 text-white cursor-pointer rounded-md py-3 px-5 flex items-center justify-center"
         >
           {name === "cart" ? (
             <span className="">Start Shopping</span>

@@ -15,7 +15,7 @@ const Product_Filters = ({ categoryName, footerRef }) => {
   const dispatch = useDispatch();
   const filterRef = useRef(null);
   const { isStickyBottom } = useSelector((state) => state.footer);
-  console.log(isStickyBottom);
+
   const [selectedCategory, setSelectedCategory] = useState([
     categoryName === undefined ? "All" : categoryName,
   ]);

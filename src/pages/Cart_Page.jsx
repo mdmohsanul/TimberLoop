@@ -9,6 +9,7 @@ import {
   getCartTotalQuantity,
   getCartTotalSavings,
   incrementQuantity,
+  removeAllProducts,
   removeProduct,
 } from "../features/cartSlice";
 import { FiPlus, FiMinus } from "react-icons/fi";
@@ -17,13 +18,17 @@ import Order_Summary from "../components/Order_Summary";
 import Empty_Products from "../components/Empty_Products";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useWishlistHandler from "../hooks/useWishlistHandler";
+import ShimerUI_ProductsPage from "../components/ShimmerUI/ShimerUI_ProductsPage";
 
 const Cart_Page = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cartProducts, status, error } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.userLogIn);
-  const { wishlistProducts } = useSelector((state) => state.wishlist);
+
+  const [checkWishlistProduct, setCheckWishlistProduct] = useState("");
+
   const checkoutHandler = () => {
     if (cartProducts.length != 0) {
       navigate("/cart/checkout");
@@ -36,20 +41,10 @@ const Cart_Page = () => {
     };
     dispatch(removeProduct(data));
   };
-  const wishListHandler = (productId) => {
-    const isInWishList = wishlistProducts
-      .map((item) => item._id)
-      .includes(productId);
-    if (!isInWishList) {
-      const wishlistDetails = {
-        userId: user?.user?._id,
-        productId: productId,
-      };
-      dispatch(addWishlistProduct(wishlistDetails));
-    } else {
-      toast.error("Product already in wishlist!");
-    }
-  };
+
+  // dispatch product to wishlist
+  const handleWishlist = useWishlistHandler();
+
   useEffect(() => {
     dispatch(getCartTotalPrice());
     dispatch(getCartTotalQuantity());
@@ -66,7 +61,8 @@ const Cart_Page = () => {
           <h2 className="text-center md:text-3xl text-2xl font-medium text-gray-700 py-2">
             Cart Items
           </h2>
-          {status === "loading" && <p>Loading...</p>}
+
+          {status === "loading" && <ShimerUI_ProductsPage />}
           {status === "error" && <p>{error}</p>}
           {status === "success" && cartProducts?.length === 0 ? (
             <Empty_Products name="cart" />
@@ -144,7 +140,10 @@ const Cart_Page = () => {
                             <button
                               type="button"
                               onClick={() =>
-                                wishListHandler(item?.productId?._id)
+                                handleWishlist(
+                                  item?.productId?._id,
+                                  setCheckWishlistProduct
+                                )
                               }
                               className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-white"
                             >

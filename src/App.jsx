@@ -19,6 +19,7 @@ import { fetchProducts } from "./features/productSlice";
 import ShimerUI_ProductsPage from "./components/ShimmerUI/ShimerUI_ProductsPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Checkout_Page from "./pages/Checkout_Page";
+import OrderSummary from "./pages/OrderSummary";
 function App() {
   const dispatch = useDispatch();
   const { status, error } = useSelector((state) => state.products);
@@ -103,7 +104,11 @@ const appRouter = createBrowserRouter([
         element: <Checkout_Page />,
       },
       {
-        path: "/order",
+        path: "/cart/checkout/orderSummary",
+        element: <OrderSummary />,
+      },
+      {
+        path: "/orders",
         element: <Orders_Page />,
       },
       {

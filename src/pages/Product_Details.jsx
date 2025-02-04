@@ -1,53 +1,45 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { GoHeart } from "react-icons/go";
 import { PiStarFill, PiStarHalfFill } from "react-icons/pi";
-import { productDetailsAccordian } from "../data/product";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { addProduct } from "../features/cartSlice";
+import { productDetailsAccordian } from "../data/product";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useCartHandler from "../hooks/useCartHandler";
+import useWishlistHandler from "../hooks/useWishlistHandler";
 
 const Product_Details = () => {
   const { productId } = useParams();
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.userLogIn);
-  const { products, status, error } = useSelector((state) => state.products);
-  const { cartProducts } = useSelector((state) => state.cart);
 
+  const navigate = useNavigate();
+
+  const { products, status, error } = useSelector((state) => state.products);
+  const [checkWishlistProduct, setCheckWishlistProduct] = useState("");
+
+  // finding product with the paramater
   const findProduct = products.find((product) => product._id === productId);
 
   const [quantity, setQuantity] = useState(1);
+
+  // for accordian
   const [activeId, setActiveId] = useState(false);
 
+  const [checkProduct, setCheckProduct] = useState("");
   // dispatch the product to cart
-  const cartHandler = (productId) => {
-    console.log("productId", productId);
-    console.log("cartProducts", cartProducts);
-    const isInCart = cartProducts
-      .map((item) => item.productId._id)
-      .includes(productId);
-    console.log(isInCart);
-    if (!isInCart) {
-      const cartDetails = {
-        userId: user?.user?._id,
-        productId: productId,
-        quantity: quantity,
-      };
-      dispatch(addProduct(cartDetails));
-    } else {
-      toast.error("Product already in cart!");
-    }
-  };
+  const handleCart = useCartHandler();
+
+  // dispatch product to wishlist
+  const handleWishlist = useWishlistHandler();
 
   // calculating the final price by discount percentage
   const priceAfterDiscount = (
     findProduct?.price -
     (findProduct?.price * findProduct?.discount) / 100
   ).toFixed(2);
-  const productTotalPriceWithQuantity = priceAfterDiscount * quantity;
 
   // accordian handler
   const handleButton = (id) => {
@@ -133,13 +125,25 @@ const Product_Details = () => {
 
               <div className="flex w-full md:space-x-4 md:mb-6 fixed bottom-0 right-0 z-30 md:static">
                 <button
+                  type="button"
                   className="bg-indigo-600 flex w-2/4 md:w-auto gap-2 items-center text-white px-6 py-3 md:rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  onClick={() => cartHandler(findProduct._id)}
+                  onClick={() => {
+                    checkProduct === findProduct._id
+                      ? navigate("/cart")
+                      : handleCart(findProduct._id, setCheckProduct, quantity);
+                  }}
                 >
                   <HiOutlineShoppingCart size={23} />
-                  Add to Cart
+                  {checkProduct === findProduct._id
+                    ? "Go To Cart"
+                    : "Add to Cart"}
                 </button>
-                <button className="bg-gray-200 flex gap-2 w-2/4 md:w-auto items-center  text-gray-800 px-6 py-3 md:rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                <button
+                  className="bg-gray-200 flex gap-2 w-2/4 md:w-auto items-center  text-gray-800 px-6 py-3 md:rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                  onClick={() =>
+                    handleWishlist(findProduct._id, setCheckWishlistProduct)
+                  }
+                >
                   <GoHeart size={23} />
                   Wishlist
                 </button>

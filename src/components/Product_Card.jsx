@@ -2,65 +2,20 @@ import React, { useState } from "react";
 import { FaStar } from "react-icons/fa6";
 import { IoHeartSharp } from "react-icons/io5";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
-import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../features/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute";
-import { addWishlistProduct } from "../features/wishlistSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useCartHandler from "../hooks/useCartHandler";
+import useWishlistHandler from "../hooks/useWishlistHandler";
 
 const Product_Card = ({ product }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { cartProducts } = useSelector((state) => state.cart);
-  const { wishlistProducts } = useSelector((state) => state.wishlist);
-  const { user } = useSelector((state) => state.userLogIn);
   const [checkProduct, setCheckProduct] = useState("");
   const [checkWishlistProduct, setCheckWishlistProduct] = useState("");
 
-  const cartHandler = (productId) => {
-    if (localStorage.getItem("adminToken")) {
-      const isInCart = cartProducts
-        .map((item) => item.productId._id)
-        .includes(productId);
+  const handleCart = useCartHandler();
+  const handleWishlist = useWishlistHandler();
 
-      if (!isInCart) {
-        const cartDetails = {
-          userId: user?.user?._id,
-          productId: productId,
-          quantity: 1,
-        };
-        setCheckProduct(productId);
-
-        dispatch(addProduct(cartDetails));
-      } else {
-        toast.error("Product already in cart!");
-      }
-    } else {
-      navigate("/login");
-    }
-  };
-
-  const wishListHandler = (productId) => {
-    if (localStorage.getItem("adminToken")) {
-      const isInWishList = wishlistProducts
-        .map((item) => item._id)
-        .includes(productId);
-      if (!isInWishList) {
-        const wishlistDetails = {
-          userId: user?.user?._id,
-          productId: productId,
-        };
-        setCheckWishlistProduct(productId);
-        dispatch(addWishlistProduct(wishlistDetails));
-      } else {
-        toast.error("Product already in wishlist!");
-      }
-    } else {
-      navigate("/login");
-    }
-  };
   const productDiscountPrice = (
     product.price -
     (product.price * product.discount) / 100
@@ -112,7 +67,7 @@ const Product_Card = ({ product }) => {
         </Link>
         <button
           className="md:p-[5px] p-[3px] text-gray-600 hover:text-white absolute top-5 right-4 bg-slate-200 rounded-full bg-opacity-60 hover:bg-black  hover:bg-opacity-55 transform transition duration-500 disabled:bg-gray-600 disabled:text-slate-200"
-          onClick={() => wishListHandler(product?._id)}
+          onClick={() => handleWishlist(product?._id, setCheckWishlistProduct)}
           disabled={checkWishlistProduct === product?._id}
         >
           <IoHeartSharp size={27} />
@@ -124,7 +79,7 @@ const Product_Card = ({ product }) => {
             onClick={() => {
               checkProduct === product._id
                 ? navigate("/cart")
-                : cartHandler(product._id);
+                : handleCart(product._id, setCheckProduct);
             }}
           >
             <HiOutlineShoppingCart />
