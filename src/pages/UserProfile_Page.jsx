@@ -16,7 +16,7 @@ const UserProfile_Page = () => {
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
     localStorage.removeItem("userId");
-
+    window.location.reload();
     navigate("/login");
   };
   useEffect(() => {

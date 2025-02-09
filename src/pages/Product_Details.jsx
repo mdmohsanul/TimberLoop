@@ -63,10 +63,12 @@ const Product_Details = () => {
 
             {/* Product Details */}
             <div className="w-full md:w-1/2 px-4">
-              <h2 className="text-3xl font-bold mb-2">{findProduct?.name}</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                {findProduct?.name}
+              </h2>
               <p className="text-gray-600 mb-4">SKU: WH1000XM4</p>
               <div className="mb-4">
-                <span className="text-2xl font-bold mr-2">
+                <span className="text-xl md:text-2xl font-bold mr-2">
                   ₹ {priceAfterDiscount}
                 </span>
                 <span className="text-gray-500 line-through mr-3">

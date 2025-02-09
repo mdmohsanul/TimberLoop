@@ -20,7 +20,10 @@ const Wishilist_Page = () => {
       <section className="w-full min-h-screen pt-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-center md:text-3xl text-2xl font-medium text-gray-700 py-2">
-            Wishlist
+            Wishlist{" "}
+            <span className="md:text-2xl text-xl">
+              ({wishlistProducts?.length})
+            </span>
           </h2>
 
           {status === "loading" && <ShimerUI_ProductsPage />}

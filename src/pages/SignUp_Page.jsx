@@ -36,7 +36,7 @@ const SignUp_Page = () => {
       <section className="w-full min-h-screen ">
         <div className="bg-[url('/20250121_134247.webp')] bg-cover bg-no-repeat min-h-screen w-full bg-opacity-25">
           <div className="flex  items-center justify-center md:justify-end ">
-            <div className=" bg-black bg-opacity-85 w-11/12 mt-24 mb-6 md:mr-14 md:w-5/12  py-8 px-[38px] md:py-8 md:px-[68px]">
+            <div className=" bg-black bg-opacity-85 w-11/12 mt-24 mb-6 md:mr-14 md:w-5/12  py-8 px-4 md:py-8 md:px-[68px]">
               <form
                 onClick={(e) => e.preventDefault()}
                 className=" flex flex-col"

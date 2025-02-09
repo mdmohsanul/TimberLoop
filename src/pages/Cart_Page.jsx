@@ -59,7 +59,10 @@ const Cart_Page = () => {
         <ToastContainer />
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <h2 className="text-center md:text-3xl text-2xl font-medium text-gray-700 py-2">
-            Cart Items
+            Cart Items{" "}
+            <span className="md:text-2xl text-xl">
+              ({cartProducts?.length})
+            </span>
           </h2>
 
           {status === "loading" && <ShimerUI_ProductsPage />}

@@ -28,8 +28,8 @@ const OrderSummary = () => {
           {status === "loading" && <p>Loading ....</p>}
 
           {status === "success" && (
-            <div className="border border-blue-600 rounded-md py-4 px-5 mb-8">
-              <h2 className="text-center text-gray-600 text-2xl pb-4">
+            <div className="border border-gray-600 rounded-md py-4 md:px-5 px-3 mb-8 mx-3">
+              <h2 className="text-center text-gray-600 text-xl md:text-2xl pb-4">
                 Thanks for shopping with us!
               </h2>
               <p>Order ID: {orders[0]?._id}</p>
@@ -38,12 +38,12 @@ const OrderSummary = () => {
                 {orders[0]?.products?.map((item) => (
                   <li
                     key={item._id}
-                    className="border border-gray-300 rounded-md mb-4 p-4 flex justify-start gap-6"
+                    className="border border-gray-300 rounded-md mb-4 md:p-4 p-2 flex justify-start md:gap-6 gap-3"
                   >
                     <img
                       src={`https://i.pinimg.com/${item?.productId?.image}`}
                       alt="product image"
-                      className="w-20 h-16 "
+                      className="md:w-20 md:h-16  w-16 h-14"
                     />
 
                     <p className="flex flex-col flex-1">
