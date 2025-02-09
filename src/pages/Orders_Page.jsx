@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchOrder } from "../features/orderSlice";
 import ShimerUI_ProductsPage from "../components/ShimmerUI/ShimerUI_ProductsPage";
-
+import Empty_Products from "../components/Empty_Products";
 const Orders_Page = () => {
   const dispatch = useDispatch();
   const { orders, status, error } = useSelector((state) => state.order);
   const { user } = useSelector((state) => state.userLogIn);
 
-  console.log(orders);
   useEffect(() => {
     dispatch(fetchOrder(user?.user?._id));
-  }, []);
+  }, [dispatch]);
+  console.log(orders);
   return (
     <>
       <section className="w-full min-h-screen  pt-20">
@@ -21,17 +21,17 @@ const Orders_Page = () => {
           </h2>
 
           {status === "loading" && <ShimerUI_ProductsPage />}
-          {status === "error" && <p>{error}</p>}
-          {status === "success" && orders?.length === 0 ? (
-            <Empty_Products name="order" />
-          ) : (
+          {orders?.length === 0 && <Empty_Products name="order" />}
+          {/* {error && <p>{error}</p>} */}
+          {/* {status === "error" && <p>{error}</p>} */}
+          {status === "success" &&
             orders?.map((item) => (
               <div
                 key={item._id}
-                className="border border-slate-300 rounded-md mb-3 p-4"
+                className="border border-slate-300 rounded-md mb-3 p-4 mx-3 md:mx-0"
               >
-                <div className="border-b border-gray-300 mb-3 pb-3">
-                  <p className="text-gray-600">
+                <div className="border-b border-gray-300 mb-3 pb-3 text-sm md:text-lg">
+                  <p className="text-gray-600 ">
                     <span className="font-semibold text-gray-700">
                       Order ID:{" "}
                     </span>{" "}
@@ -48,15 +48,15 @@ const Orders_Page = () => {
                 {item.products.map((product) => (
                   <div
                     key={product._id}
-                    className=" grid grid-cols-6 mb-2 gap-10 pb-2"
+                    className=" grid grid-cols-6 mb-2 md:gap-10 gap-3 pb-2"
                   >
                     <img
                       src={`https://i.pinimg.com/${product?.productId?.image}`}
                       alt="productImage"
-                      className="w-24 h-20"
+                      className="md:w-24 md:h-20 w-16 h-12"
                     />
 
-                    <div className="col-span-5 flex justify-between ">
+                    <div className="col-span-5 flex justify-between gap-2 text-sm md:text-lg">
                       <div className="place-self-start flex flex-col text-gray-700">
                         <span className="font-semibold">
                           {product?.productId?.name}
@@ -68,7 +68,7 @@ const Orders_Page = () => {
                           Qty: {product?.quantity}
                         </span>
                       </div>
-                      <p className="font-medium pr-10 flex flex-col">
+                      <p className="font-medium md:pr-10  flex flex-col">
                         <span className="text-gray-800">
                           ₹ {product?.price.toFixed(2)}
                         </span>
@@ -99,8 +99,7 @@ const Orders_Page = () => {
                   in this order.
                 </p>
               </div>
-            ))
-          )}
+            ))}
         </div>
       </section>
     </>

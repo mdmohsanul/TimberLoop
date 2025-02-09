@@ -7,7 +7,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 const Empty_Products = ({ name }) => {
   return (
     <>
-      <div className="flex flex-col gap-6 items-center justify-center min-h-screen ">
+      <div className="flex flex-col gap-6 items-center pt-20 min-h-screen ">
         {name === "cart" ? (
           <BsCartX size={50} />
         ) : (

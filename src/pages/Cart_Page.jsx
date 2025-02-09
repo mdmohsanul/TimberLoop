@@ -55,7 +55,7 @@ const Cart_Page = () => {
   }, [dispatch]);
   return (
     <>
-      <section className="bg-white mt-16 md:mt-20  antialiased dark:bg-gray-900 mb-7">
+      <section className="bg-white mt-16 md:mt-20 min-h-screen  antialiased dark:bg-gray-900 mb-7">
         <ToastContainer />
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <h2 className="text-center md:text-3xl text-2xl font-medium text-gray-700 py-2">
@@ -63,10 +63,9 @@ const Cart_Page = () => {
           </h2>
 
           {status === "loading" && <ShimerUI_ProductsPage />}
-          {status === "error" && <p>{error}</p>}
-          {status === "success" && cartProducts?.length === 0 ? (
-            <Empty_Products name="cart" />
-          ) : (
+          {cartProducts?.length === 0 && <Empty_Products name="cart" />}
+          {/* {error && <p>{error}</p>} */}
+          {status === "success" && cartProducts !== null && (
             <div className="mt-3 md:mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
               <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
                 <div className="space-y-6">

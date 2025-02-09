@@ -11,7 +11,7 @@ const Wishilist_Page = () => {
   const { status, error, wishlistProducts } = useSelector(
     (state) => state.wishlist
   );
-
+  console.log(wishlistProducts);
   useEffect(() => {
     dispatch(fetchWishlist(user?.user?._id));
   }, [dispatch]);
@@ -24,10 +24,9 @@ const Wishilist_Page = () => {
           </h2>
 
           {status === "loading" && <ShimerUI_ProductsPage />}
-          {status === "error" && <p>{error}</p>}
-          {status === "success" && wishlistProducts?.length === 0 ? (
-            <Empty_Products name="wishlist" />
-          ) : (
+          {wishlistProducts?.length === 0 && <Empty_Products name="wishlist" />}
+          {/* {status === "error" && <p>{error}</p>} */}
+          {status === "success" && (
             <div className="pt-4 pb-7 grid gap-y-7 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 md:justify-items-center">
               {wishlistProducts?.map((item) => (
                 <Wishlist_Product_Card key={item._id} product={item} />

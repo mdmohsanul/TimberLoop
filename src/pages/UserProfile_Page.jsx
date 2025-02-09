@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchCart } from "../features/cartSlice";
+import { fetchOrder } from "../features/orderSlice";
 import { fetchWishlist } from "../features/wishlistSlice";
 
 const UserProfile_Page = () => {
@@ -21,6 +22,7 @@ const UserProfile_Page = () => {
   useEffect(() => {
     dispatch(fetchCart(user?.user?._id));
     dispatch(fetchWishlist(user?.user?._id));
+    dispatch(fetchOrder(user?.user?._id));
   }, []);
   return (
     <>

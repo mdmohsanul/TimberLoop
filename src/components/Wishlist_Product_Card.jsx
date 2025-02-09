@@ -21,14 +21,14 @@ const Wishlist_Product_Card = ({ product }) => {
     dispatch(removeWishListProduct({ userId, productId }));
   };
   const productDiscountPrice = (
-    product.price -
-    (product.price * product.discount) / 100
+    product?.price -
+    (product?.price * product?.discount) / 100
   ).toFixed(2);
   return (
     <>
       <div className="mx-8 md:mx-0 md:w-[260px] h-[340px] relative hover:shadow-[0px_16px_28px_10px_#00000024] shadow-[0px_10px_11px_0px_#00000024] transition duration-500 cursor-pointer ">
         <ToastContainer />
-        <Link to={`/products/${product._id}`} key={product._id}>
+        <Link to={`/products/${product?._id}`} key={product?._id}>
           <div className="group">
             <div>
               <img
@@ -61,7 +61,7 @@ const Wishlist_Product_Card = ({ product }) => {
         <div className="flex items-center justify-center absolute bottom-0 w-full   cursor-pointer">
           <button
             className="flex items-center justify-center gap-2 bg-blue-600 border-t-[1px] border-blue-600  hover:bg-blue-700 w-2/4 py-1 text-white "
-            onClick={() => handleCart(product._id, setCheckProduct)}
+            onClick={() => handleCart(product?._id, setCheckProduct)}
           >
             <HiOutlineShoppingCart />
             Add To Cart
@@ -69,7 +69,7 @@ const Wishlist_Product_Card = ({ product }) => {
           <button
             className="flex items-center justify-center gap-3 w-2/4 hover:border-t-[1px] hover:border-gray-300 
              border-t-[1px] border-gray-300 py-1 hover:bg-red-500 hover:text-white"
-            onClick={() => productRemoveHandler(product._id)}
+            onClick={() => productRemoveHandler(product?._id)}
           >
             Remove
           </button>

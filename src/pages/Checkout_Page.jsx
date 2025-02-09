@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import Address_List from "../components/Address/Address_List";
 import Order_Summary from "../components/Order_Summary";
-import { addOrder } from "../features/orderSlice";
+import { addOrder, fetchOrder } from "../features/orderSlice";
 import { removeAllProducts } from "../features/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,27 +24,33 @@ const Checkout_Page = () => {
       (item?.productId?.price * item?.productId?.discount) / 100
     ).toFixed(2),
   }));
-
-  const placeOrderHandler = () => {
+  console.log(products);
+  console.log(cartProducts);
+  const placeOrderHandler = async () => {
     console.log("clicked");
     /* 
       remove all cart items
       add placed order to order API
     
     */
+    try {
+      // validate Address
+      if (defaultAddress !== null) {
+        const newOrder = {
+          userId: user?.user?._id,
+          products: products,
+        };
+        console.log(newOrder);
 
-    // validate Address
-    if (defaultAddress !== null) {
-      const newOrder = {
-        userId: user?.user?._id,
-        products: products,
-      };
-      console.log(newOrder);
-      console.log(defaultAddress);
-      dispatch(addOrder(newOrder));
-      dispatch(removeAllProducts(user?.user?._id));
-      toast.error("Select Address");
-      navigate("/cart/checkout/orderSummary");
+        dispatch(addOrder(newOrder));
+        dispatch(fetchOrder(user?.user?._id));
+        dispatch(removeAllProducts(user?.user?._id));
+        navigate("/cart/checkout/orderSummary");
+      } else {
+        toast.error("Select Address");
+      }
+    } catch (error) {
+      console.error("Error placing order:", error);
     }
   };
   return (

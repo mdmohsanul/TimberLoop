@@ -59,12 +59,9 @@ const wishlistSlice = createSlice({
         state.error = action.error.message;
       }),
       builders.addCase(addWishlistProduct.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.wishlistProducts.push(action.payload);
       }),
       builders.addCase(removeWishListProduct.fulfilled, (state, action) => {
-        console.log(action.payload);
-
         state.wishlistProducts = state?.wishlistProducts?.filter(
           (item) => item._id !== action.payload
         );
