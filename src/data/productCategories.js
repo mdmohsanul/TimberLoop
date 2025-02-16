@@ -11,7 +11,7 @@ export const productCategories = [
     id: 1,
     imageSrc: Bed,
     altText: "Bed",
-    name: "Furniture",
+    name: "Beds",
     linkName: "Bed",
   },
   {
