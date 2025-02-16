@@ -15,7 +15,6 @@ export const fetchWishlist = createAsyncThunk(
 export const addWishlistProduct = createAsyncThunk(
   "/api/addWishlist",
   async (wishlistDetails) => {
-    console.log("parameter", wishlistDetails);
     const response = await axios.post(
       `https://timber-backend.vercel.app/api/wishlist/`,
       wishlistDetails
@@ -28,8 +27,6 @@ export const addWishlistProduct = createAsyncThunk(
 export const removeWishListProduct = createAsyncThunk(
   "/api/removeProduct",
   async ({ userId, productId }) => {
-    console.log(userId);
-    console.log(productId);
     const response = await axios.delete(
       `https://timber-backend.vercel.app/api/wishlist/user/${userId}/product/${productId}`
     );

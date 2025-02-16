@@ -11,7 +11,7 @@ const Wishilist_Page = () => {
   const { status, error, wishlistProducts } = useSelector(
     (state) => state.wishlist
   );
-  console.log(wishlistProducts);
+
   useEffect(() => {
     dispatch(fetchWishlist(user?.user?._id));
   }, [dispatch]);

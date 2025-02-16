@@ -21,6 +21,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Checkout_Page from "./pages/Checkout_Page";
 import OrderSummary from "./pages/OrderSummary";
 import Bottom_Menu from "./components/Bottom_Menu";
+
 function App() {
   const dispatch = useDispatch();
   const { status, error } = useSelector((state) => state.products);

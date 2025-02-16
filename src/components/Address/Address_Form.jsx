@@ -12,9 +12,6 @@ const Address_Form = ({
   editId,
   existingAddress = null,
 }) => {
-  console.log(editId);
-  console.log(existingAddress);
-
   const dispatch = useDispatch();
   const [inputAddress, setInputAddress] = useState({
     name: existingAddress?.name || "",
@@ -33,15 +30,26 @@ const Address_Form = ({
   };
   const saveHandler = () => {
     dispatch(addAddress(inputAddress));
+    setInputAddress((prev) => ({
+      ...prev,
+      name: "",
+      locality: "",
+      city: "",
+      mobileNum: "",
+      pincode: "",
+      fullAddress: "",
+      addressType: "",
+      state: "",
+    }));
   };
   const updateHandler = () => {
-    console.log(inputAddress);
     dispatch(
       editAddress({
         id: existingAddress._id || existingAddress.id,
         ...inputAddress,
       })
     );
+    setAddressForm(false);
     // dispatch(fetchAddress());
   };
 

@@ -85,7 +85,7 @@ const Orders_Page = () => {
                   <span className="font-semibold text-gray-800">
                     Total Amount Paid:{" "}
                   </span>{" "}
-                  ₹ {item.totalPrice.toFixed(2)}
+                  ₹ {(item.totalPrice + 399 + 799).toFixed()}
                 </p>
                 <p className="text-red-500">
                   You Saved{" "}

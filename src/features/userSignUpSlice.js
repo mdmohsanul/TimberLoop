@@ -4,7 +4,6 @@ import axios from "axios";
 export const signUpUser = createAsyncThunk(
   "user/loginUser",
   async (userInput) => {
-    console.log(userInput);
     const response = await axios.post(
       "https://timber-backend.vercel.app/api/signup",
       userInput

@@ -24,10 +24,8 @@ const Checkout_Page = () => {
       (item?.productId?.price * item?.productId?.discount) / 100
     ).toFixed(2),
   }));
-  console.log(products);
-  console.log(cartProducts);
+
   const placeOrderHandler = async () => {
-    console.log("clicked");
     /* 
       remove all cart items
       add placed order to order API
@@ -40,17 +38,18 @@ const Checkout_Page = () => {
           userId: user?.user?._id,
           products: products,
         };
-        console.log(newOrder);
 
         dispatch(addOrder(newOrder));
         dispatch(fetchOrder(user?.user?._id));
         dispatch(removeAllProducts(user?.user?._id));
-        navigate("/cart/checkout/orderSummary");
+        setTimeout(() => {
+          navigate("/cart/checkout/orderSummary");
+        }, 4000);
       } else {
         toast.error("Select Address");
       }
     } catch (error) {
-      console.error("Error placing order:", error);
+      throw error;
     }
   };
   return (
@@ -62,9 +61,7 @@ const Checkout_Page = () => {
             <div className="border border-gray-300 mb-0">
               <p className="bg-blue-500 py-2 px-4 text-lg text-white">LOGIN</p>
               <div className="px-4 py-3 flex items-center justify-between">
-                <p>
-                  {user?.user?.userName} - {defaultAddress?.mobileNum}
-                </p>
+                <p>LoggedIn User: {user?.user?.userName}</p>
                 <button
                   className="cursor-pointer border py-2 px-4 text-blue-700"
                   onClick={() => navigate("/userProfile")}
@@ -77,7 +74,25 @@ const Checkout_Page = () => {
               <p className="bg-blue-500 py-2 px-4 text-lg text-white">
                 ADDRESS
               </p>
+
               <div className="px-4 py-3 ">
+                {defaultAddress ? (
+                  <div>
+                    <p> Default Address: </p>
+
+                    <p className="font-medium my-3">
+                      {defaultAddress?.name}{" "}
+                      <span className="pl-4">{defaultAddress?.mobileNum}</span>
+                    </p>
+                    <p>
+                      {defaultAddress?.fullAddress}, {defaultAddress?.city},{" "}
+                      {defaultAddress?.state}
+                    </p>
+                    <p className="font-medium">{defaultAddress?.pincode}</p>
+                  </div>
+                ) : (
+                  <p>Select Address</p>
+                )}
                 <Address_List />
                 {/* <span>
                   <p className="pb-2 font-medium">{defaultAddress?.name}</p>

@@ -7,7 +7,7 @@ export const fetchProducts = createAsyncThunk(
     const response = await axios.get(
       "https://timber-backend.vercel.app/api/products"
     );
-    // console.log(response.data.data);
+
     return response.data.data.products;
   }
 );

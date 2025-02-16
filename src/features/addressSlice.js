@@ -38,7 +38,7 @@ export const removeAddress = createAsyncThunk(
 export const editAddress = createAsyncThunk(
   "address/editAddress",
   async (updatedAddress) => {
-    console.log(updatedAddress);
+   
     const { id, ...rest } = updatedAddress;
     const response = await axios.put(
       `https://timber-backend.vercel.app/address/${id}`,
@@ -87,7 +87,7 @@ const addressSlice = createSlice({
           state.error = action.error.message;
         }),
       builders.addCase(editAddress.fulfilled, (state, action) => {
-        console.log(action.payload);
+       
         const index = state.addresses.findIndex(
           (s) => s._id === action.payload.id
         );

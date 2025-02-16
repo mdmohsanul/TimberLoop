@@ -7,7 +7,7 @@ export const fetchOrder = createAsyncThunk(
     const response = await axios.get(
       `https://timber-backend.vercel.app/api/order/${userId}`
     );
-    console.log("fetchOrder ", response.data);
+
     return response.data;
   }
 );
@@ -20,7 +20,7 @@ export const addOrder = createAsyncThunk(
       newOrder
     );
     dispatch(fetchOrder(newOrder.userId));
-    console.log("addOrder ", response.data);
+
     return response.data;
   }
 );

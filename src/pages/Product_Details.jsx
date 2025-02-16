@@ -29,6 +29,7 @@ const Product_Details = () => {
   const [activeId, setActiveId] = useState(false);
 
   const [checkProduct, setCheckProduct] = useState("");
+
   // dispatch the product to cart
   const handleCart = useCartHandler();
 

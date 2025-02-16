@@ -11,9 +11,6 @@ const OrderSummary = () => {
   const { orders, status, error } = useSelector((state) => state.order);
   const { user } = useSelector((state) => state.userLogIn);
 
-  // console.log("defaultAddress", defaultAddress);
-  console.log("orders", orders);
-  // console.log("user", user);
   useEffect(() => {
     dispatch(fetchOrder(user?.user?._id));
     // dispatch(setDefaultAddress(null));
@@ -73,7 +70,7 @@ const OrderSummary = () => {
                 ))}
               </ul>
 
-              <p>Total Amount: {orders[0]?.totalPrice}</p>
+              <p>Total Amount: {orders[0]?.totalPrice + 399 + 799}</p>
               <p className="text-red-500">
                 You Saved{" "}
                 {(
