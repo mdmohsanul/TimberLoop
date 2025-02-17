@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { addWishlistProduct } from "../features/wishlistSlice";
+import { addWishlistProduct, fetchWishlist } from "../features/wishlistSlice";
 
 const useWishlistHandler = () => {
   const dispatch = useDispatch();
