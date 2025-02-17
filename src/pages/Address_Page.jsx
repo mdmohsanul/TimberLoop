@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Address_List from "../components/Address/Address_List";
 
 const Address_Page = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section className="w-full min-h-screen bg-slate-100 md:pt-20 pt-16 pb-7">

@@ -15,6 +15,9 @@ const Wishilist_Page = () => {
   useEffect(() => {
     dispatch(fetchWishlist(user?.user?._id));
   }, [dispatch]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section className="w-full min-h-screen pt-20">

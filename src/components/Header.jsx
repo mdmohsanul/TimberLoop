@@ -36,7 +36,7 @@ const Header = () => {
                 loading="lazy"
                 src={Timber_Logo}
                 alt="Timber_Logo"
-                className="h-16 w-44 md:h-16 md:w-52 pl-4 md:pl-0 pt-2"
+                className="h-12 w-36 md:h-16 md:w-52 pl-4 md:pl-0 pt-2"
               />
             </Link>
             <div className="hidden md:flex relative ">
@@ -78,7 +78,11 @@ const Header = () => {
                 )}
               </Link>
             </div>
-            <div className="md:hidden cursor-pointer text-black   mr-5">
+            {/* Mobile Menu */}
+
+            {/* one more way to do */}
+            {/* nav &&  */}
+            {/* <div className="md:hidden cursor-pointer text-black   mr-5">
               <div onClick={() => setNav(!nav)}>
                 {nav ? (
                   <FaTimes size={30} className="text-slate-700" />
@@ -86,11 +90,8 @@ const Header = () => {
                   <FaBars size={30} className="text-slate-700" />
                 )}
 
-                {/* Mobile Menu */}
-
-                {/* one more way to do */}
-                {/* nav &&  */}
-                <ul
+               
+             <ul
                   className={`
         md:hidden bg-white z-10 fixed w-full md:w-fit sm:w-fit text-xl top-16 overflow-y-auto bottom-0 py-16  pl-4
         duration-500 ${nav ? "left-0" : "left-[-100%]"}
@@ -140,9 +141,9 @@ const Header = () => {
                       </span>
                     </Link>
                   </div>
-                </ul>
+                </ul> 
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>

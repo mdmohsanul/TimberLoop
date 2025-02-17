@@ -46,6 +46,8 @@ const Cart_Page = () => {
   const handleWishlist = useWishlistHandler();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     dispatch(getCartTotalPrice());
     dispatch(getCartTotalQuantity());
     dispatch(getCartTotalSavings());

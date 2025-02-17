@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Product_Card from "../components/Product_Card";
-import Product_Filters from "../components/Product_Filters";
+import Product_Filters from "../components/Product_Filters/Product_Filters";
 import ShimerUI_ProductsPage from "../components/ShimmerUI/ShimerUI_ProductsPage";
 import { fetchProducts } from "../features/productSlice";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Product = () => {
   /* 
@@ -19,6 +20,8 @@ const Product = () => {
   const { categoryName } = useParams();
   const dispatch = useDispatch();
   const footerRef = useRef(null);
+  const [nav, setNav] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -147,17 +150,43 @@ const Product = () => {
       {status === "loading" && <ShimerUI_ProductsPage />}
       {error && <p>{error}</p>}
       {status === "success" && (
-        <section className="relative pt-16 min-h-screen ">
+        <section className="relative pt-12 md:pt-16 min-h-screen ">
+          {/* Desktop filters */}
           <div className="bg-[#FAFAFA] hidden sticky top-16 z-10 lg:flex">
-            <p>{rangeFilterProduct.length}</p>
             <Product_Filters
               categoryName={categoryName}
               footerRef={footerRef}
             />
           </div>
+          {/* Mobile filters */}
+          <div className="bg-white h-14 md:hidden fixed w-full z-10 flex px-5">
+            <div
+              onClick={() => setNav(!nav)}
+              className="flex items-center gap-3 justify-center"
+            >
+              {nav ? (
+                <FaTimes size={25} className="text-slate-700" />
+              ) : (
+                <FaBars size={25} className="text-slate-700" />
+              )}{" "}
+              <span> Filters</span>
+            </div>
+            <div
+              className={`
+        md:hidden bg-white z-10 fixed w-full md:w-fit sm:w-fit text-xl top-24 overflow-y-auto bottom-0 py-4  pl-4
+        duration-500 ${nav ? "left-0" : "left-[-100%]"}
+        `}
+            >
+              <Product_Filters
+                categoryName={categoryName}
+                footerRef={footerRef}
+                setNav={setNav}
+              />
+            </div>
+          </div>
 
-          <div className="lg:pl-[279px] my-5 ">
-            <div className="grid grid-cols-2 md:grid-cols-3 content-center justify-items-center lg:grid-cols-4 xl:grid-cols-4 gap-y-5">
+          <div className="lg:pl-[279px] my-5 md:mt-0 mt-16">
+            <div className="grid grid-cols-2 md:grid-cols-3 content-center justify-items-center lg:grid-cols-3 xl:grid-cols-4 gap-y-5">
               {(searchFilter == []
                 ? rangeFilterProduct
                 : searchRangeFilterProduct

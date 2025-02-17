@@ -46,6 +46,9 @@ const Product_Details = () => {
   const handleButton = (id) => {
     setActiveId((prevId) => (prevId === id ? false : id));
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section className="bg-gray-100 pt-20 pb-5">
