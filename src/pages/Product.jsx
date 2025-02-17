@@ -140,11 +140,6 @@ const Product = () => {
           (item) => item.price < parseInt(rangeFilter)
         );
 
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchProducts());
-    }
-  }, []);
   return (
     <>
       {status === "loading" && <ShimerUI_ProductsPage />}
@@ -173,7 +168,7 @@ const Product = () => {
             </div>
             <div
               className={`
-        md:hidden bg-white z-10 fixed min-h-screen w-full md:w-fit sm:w-fit text-xl top-24 overflow-y-scroll bottom-0 py-4  pl-4
+        md:hidden bg-white z-10 fixed min-h-screen w-full md:w-fit sm:w-fit text-xl top-24 overflow-y-auto bottom-0 py-4  pl-4
         duration-500 ${nav ? "left-0" : "left-[-100%]"}
         `}
             >

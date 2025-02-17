@@ -23,8 +23,6 @@ const Product_Details = () => {
 
   // finding product with the paramater
   const findProduct = products.find((product) => product._id === productId);
-  console.log(productId);
-  console.log(products);
 
   const [quantity, setQuantity] = useState(1);
 
@@ -52,11 +50,8 @@ const Product_Details = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchProducts());
-    }
-  }, []);
+
+  if (!findProduct) return <p>Loading...</p>;
   return (
     <>
       <section className="bg-gray-100 pt-20 pb-5">
