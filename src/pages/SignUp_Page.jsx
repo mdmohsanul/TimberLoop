@@ -32,6 +32,9 @@ const SignUp_Page = () => {
       setIsSignInForm(false);
     }
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <section className="w-full min-h-screen ">
