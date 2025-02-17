@@ -38,7 +38,7 @@ const Product = () => {
     searchFilter,
     rangeFilter,
   } = useSelector((state) => state.products);
-
+  console.log(products);
   // filters - if user come by searching product
   const searchedProducts = products?.filter((product) =>
     product.category

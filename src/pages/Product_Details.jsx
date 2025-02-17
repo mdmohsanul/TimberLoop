@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
@@ -11,17 +11,20 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useCartHandler from "../hooks/useCartHandler";
 import useWishlistHandler from "../hooks/useWishlistHandler";
+import { fetchProducts } from "../features/productSlice";
 
 const Product_Details = () => {
   const { productId } = useParams();
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const { products, status, error } = useSelector((state) => state.products);
   const [checkWishlistProduct, setCheckWishlistProduct] = useState("");
 
   // finding product with the paramater
   const findProduct = products.find((product) => product._id === productId);
+  console.log(productId);
+  console.log(products);
 
   const [quantity, setQuantity] = useState(1);
 
@@ -48,6 +51,11 @@ const Product_Details = () => {
   };
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
   }, []);
   return (
     <>
