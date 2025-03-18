@@ -35,16 +35,16 @@ const Checkout_Page = () => {
       // validate Address
       if (defaultAddress !== null) {
         const newOrder = {
-          userId: user?.user?._id,
+          userId: user?._id,
           products: products,
         };
 
         dispatch(addOrder(newOrder));
-        dispatch(fetchOrder(user?.user?._id));
-        dispatch(removeAllProducts(user?.user?._id));
+        dispatch(fetchOrder(user?._id));
+        dispatch(removeAllProducts(user?._id));
         setTimeout(() => {
           navigate("/cart/checkout/orderSummary");
-        }, 4000);
+        }, 2000);
       } else {
         toast.error("Select Address");
       }
@@ -61,7 +61,7 @@ const Checkout_Page = () => {
             <div className="border border-gray-300 mb-0">
               <p className="bg-blue-500 py-2 px-4 text-lg text-white">LOGIN</p>
               <div className="px-4 py-3 flex items-center justify-between">
-                <p>LoggedIn User: {user?.user?.userName}</p>
+                <p>LoggedIn User: {user?.userName}</p>
                 <button
                   className="cursor-pointer border py-2 px-4 text-blue-700"
                   onClick={() => navigate("/userProfile")}

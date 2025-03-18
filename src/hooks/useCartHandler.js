@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { addProduct } from "../features/cartSlice";
 
-const useCartHandler = (productId) => {
+const useCartHandler = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cartProducts } = useSelector((state) => state.cart);
 
   const { user } = useSelector((state) => state.userLogIn);
 
-  const handleCart = (productId, setCheckProduct, quantity = 1) => {
+  const handleCart = async (productId, setCheckProduct, quantity = 1) => {
     if (localStorage.getItem("adminToken")) {
       const isInCart = cartProducts
         .map((item) => item.productId._id)
@@ -18,15 +18,20 @@ const useCartHandler = (productId) => {
 
       if (!isInCart) {
         const cartDetails = {
-          userId: user?.user?._id,
+          userId: user?._id,
           productId: productId,
           quantity: quantity,
         };
         setCheckProduct(productId);
 
-        dispatch(addProduct(cartDetails));
+        await dispatch(addProduct(cartDetails)).unwrap();
+        toast.success("Product added to cart!", {
+          autoClose: 1000,
+        });
       } else {
-        toast.error("Product already in cart!");
+        toast.error("Product already in cart!", {
+          autoClose: 1000,
+        });
       }
     } else {
       navigate("/login");

@@ -12,7 +12,7 @@ const OrderSummary = () => {
   const { user } = useSelector((state) => state.userLogIn);
 
   useEffect(() => {
-    dispatch(fetchOrder(user?.user?._id));
+    dispatch(fetchOrder(user?._id));
     // dispatch(setDefaultAddress(null));
   }, [dispatch]);
   return (
@@ -72,10 +72,10 @@ const OrderSummary = () => {
 
               <p>Total Amount: {orders[0]?.totalPrice + 399 + 799}</p>
               <p className="text-red-500">
-                You Saved{" "}
+                You Saved ₹
                 {(
                   orders[0]?.products.reduce(
-                    (sum, curr) => sum + curr?.productId?.price,
+                    (sum, curr) => sum + curr?.productId?.price * curr.quantity,
                     0
                   ) - orders[0]?.totalPrice
                 ).toFixed(2)}{" "}

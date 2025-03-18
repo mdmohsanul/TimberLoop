@@ -36,10 +36,13 @@ const Cart_Page = () => {
   };
   const removeProductHandler = (productId) => {
     const data = {
-      userId: user?.user?._id,
+      userId: user?._id,
       productId: productId,
     };
     dispatch(removeProduct(data));
+    toast("Product removed form cart", {
+      autoClose: 2000,
+    });
   };
 
   // dispatch product to wishlist
@@ -53,7 +56,7 @@ const Cart_Page = () => {
     dispatch(getCartTotalSavings());
   });
   useEffect(() => {
-    dispatch(fetchCart(user?.user?._id));
+    dispatch(fetchCart(user?._id));
   }, [dispatch]);
   return (
     <>
@@ -143,12 +146,13 @@ const Cart_Page = () => {
                           <div className="flex items-center gap-4">
                             <button
                               type="button"
-                              onClick={() =>
+                              onClick={() => {
                                 handleWishlist(
                                   item?.productId?._id,
                                   setCheckWishlistProduct
-                                )
-                              }
+                                );
+                                removeProductHandler(item?.productId?._id);
+                              }}
                               className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-white"
                             >
                               <IoHeartSharp size={20} />

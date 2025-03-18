@@ -3,12 +3,16 @@ import axios from "axios";
 
 export const signUpUser = createAsyncThunk(
   "user/loginUser",
-  async (userInput) => {
-    const response = await axios.post(
-      "https://timber-backend.vercel.app/api/signup",
-      userInput
-    );
-    return response.data;
+  async ({ userName, email, password }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        "https://timber-backend.vercel.app/api/signup",
+        { userName, email, password }
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || "Signup failed");
+    }
   }
 );
 const userSignUpSlice = createSlice({

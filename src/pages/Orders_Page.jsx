@@ -9,7 +9,7 @@ const Orders_Page = () => {
   const { user } = useSelector((state) => state.userLogIn);
 
   useEffect(() => {
-    dispatch(fetchOrder(user?.user?._id));
+    dispatch(fetchOrder(user?._id));
   }, [dispatch]);
 
   return (
@@ -88,7 +88,7 @@ const Orders_Page = () => {
                   ₹ {(item.totalPrice + 399 + 799).toFixed()}
                 </p>
                 <p className="text-red-500">
-                  You Saved{" "}
+                  You Saved ₹
                   {(
                     item?.products?.reduce(
                       (sum, curr) =>

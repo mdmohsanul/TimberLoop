@@ -6,32 +6,50 @@ import { signUpUser } from "../features/userSignUpSlice";
 
 const LogIn = () => {
   const dispatch = useDispatch();
-  const { user, status, error } = useSelector((state) => state.userLogIn);
-
   const navigate = useNavigate();
+  const location = useLocation();
+  const { user, status, error, token } = useSelector(
+    (state) => state.userLogIn
+  );
+  const [err, setErr] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLogIn, setIsLogIn] = useState(false);
 
-  const location = useLocation();
-
-  // Get the 'from' location or default to the userprofile Page
-  const from = location.state?.from?.pathname || "/userProfile";
+  // Get the 'from' location or default to the home Page
+  const from = location.state?.from || "/";
 
   useEffect(() => {
-    if (localStorage.getItem("adminToken")) {
-      navigate("/userProfile");
+    if (token) {
+      navigate("/");
     }
   }, []);
-
+  function validation() {
+    if (!email || !password) {
+      setErr("Enter valid email & password");
+      return false;
+    }
+    setErr("");
+    return true;
+  }
   const handleLogin = () => {
-    dispatch(loginUser({ email, password })).then((result) => {
-      if (result.payload) {
-        setEmail("");
-        setPassword("");
-        navigate(from, { replace: true });
-        // navigate("/userProfile");
-      }
-    });
+    if (!validation()) return;
+    setIsLogIn(true);
+    try {
+      dispatch(loginUser({ email, password })).then((result) => {
+        if (result?.error?.message === "Rejected") {
+          setErr(result.payload);
+          setIsLogIn(false);
+        } else {
+          setEmail("");
+          setPassword("");
+          navigate(from, { replace: true });
+          // navigate("/");
+        }
+      });
+    } catch (error) {
+      setErr(error || "Failed to Log In. Please try again.");
+    }
   };
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,12 +68,13 @@ const LogIn = () => {
                 <h1 className="text-3xl font-semibold text-white mb-8">
                   Sign In
                 </h1>
-
+                {err && <p className="text-red-800 pb-4">{err}</p>}
                 <input
                   type="Email"
-                  placeholder="Email or Phone"
+                  placeholder="Email"
                   value={email}
                   autoComplete="true"
+                  onFocus={() => setErr("")}
                   onChange={(e) => setEmail(e.target.value)}
                   className="px-3 py-4 mb-5 w-full tracking-wider bg-gray-800 rounded-md text-white focus:outline-none"
                 />
@@ -63,17 +82,21 @@ const LogIn = () => {
                   type="password"
                   placeholder="Password"
                   value={password}
+                  onFocus={() => setErr("")}
                   onChange={(e) => setPassword(e.target.value)}
                   autoComplete="off"
                   className="px-3 py-4 mb-4 w-full tracking-wider bg-gray-800 rounded-md text-white focus:outline-none"
                 />
 
-                {error && <p className="text-red-800">User not exists!</p>}
                 <button
-                  className="px-3 py-4 mt-7 bg-red-700 text-white rounded-md tracking-wider"
+                  className={`px-3 py-4 mt-7 bg-red-700 text-white rounded-md tracking-wider ${
+                    isLogIn ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                   onClick={handleLogin}
+                  type="submit"
+                  disabled={isLogIn}
                 >
-                  Sign In
+                  {isLogIn ? "Signing In..." : "Sign In"}
                 </button>
               </form>
 

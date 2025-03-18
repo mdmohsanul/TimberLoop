@@ -79,7 +79,7 @@ const Product_Card = ({ product }) => {
             onClick={() => {
               checkProduct === product._id
                 ? navigate("/cart")
-                : handleCart(product._id, setCheckProduct);
+                : handleCart(product?._id, setCheckProduct);
             }}
           >
             <HiOutlineShoppingCart />

@@ -9,7 +9,7 @@ const ShimerUI_ProductsPage = () => {
   const shimmerCardDummyArr = [5, 12, 8, 19, 27, 33, 14, 6, 21, 9, 42, 17];
   return (
     <>
-      <div className="mt-16 min-h-screen flex justify-around gap-3">
+      <div className=" min-h-screen flex justify-around gap-3">
         <div className="hidden md:flex">
           <ShimmerSideBar />
         </div>

@@ -20,8 +20,10 @@ const Empty_Products = ({ name }) => {
         >
           {name === "cart" ? (
             <span className="">Start Shopping</span>
-          ) : (
+          ) : name === "wishlist" ? (
             <span className="">Add Fav Products</span>
+          ) : (
+            <span className="">Start Ordering</span>
           )}
           <span>
             {" "}

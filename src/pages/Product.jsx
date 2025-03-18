@@ -38,7 +38,7 @@ const Product = () => {
     searchFilter,
     rangeFilter,
   } = useSelector((state) => state.products);
-  console.log(products);
+
   // filters - if user come by searching product
   const searchedProducts = products?.filter((product) =>
     product.category
@@ -180,6 +180,7 @@ const Product = () => {
             </div>
           </div>
 
+            {/* Product Cards */}
           <div className="lg:pl-[279px] my-5 md:mt-0 mt-16">
             <div className="grid grid-cols-2 md:grid-cols-3 content-center justify-items-center lg:grid-cols-3 xl:grid-cols-4 gap-y-5">
               {(searchFilter == []

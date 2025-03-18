@@ -7,29 +7,40 @@ import { signUpUser } from "../features/userSignUpSlice";
 const SignUp_Page = () => {
   const dispatch = useDispatch();
   const { status, error } = useSelector((state) => state.userSignUp);
+  const [err, setErr] = useState(false);
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
-  const handleSignup = async () => {
-    const userInput = { userName, email, password };
-    if (
-      userInput.userName !== "" &&
-      userInput.password !== "" &&
-      userInput.email !== ""
-    ) {
-      setTimeout(() => {
-        dispatch(signUpUser(userInput));
-        setSuccess(true);
-      }, 5000);
+  const [isLogIn, setIsLogIn] = useState(false);
+
+  function validateForm() {
+    if (!userName || !email || !password) {
+      setErr("Please fill all the fields");
+      return false;
     }
-    if (error !== null) {
-      setEmail("");
-      setPassword("");
-      setUsername("");
-      setIsSignInForm(true);
-    } else {
-      setIsSignInForm(false);
+    setErr("");
+    return true;
+  }
+  const handleSignup = async () => {
+    if (!validateForm()) return;
+    setIsLogIn(true);
+
+    try {
+      dispatch(signUpUser({ userName, email, password })).then((result) => {
+        console.log(result);
+        if (result?.error?.message === "Rejected") {
+          setErr(result.payload);
+          setIsLogIn(false);
+        } else {
+          setSuccess(true);
+          setEmail("");
+          setPassword("");
+          setPassword("");
+        }
+      });
+    } catch (error) {
+      setErr(error || "Failed to Log In. Please try again.");
     }
   };
   useEffect(() => {
@@ -62,11 +73,12 @@ const SignUp_Page = () => {
                     <h1 className="text-3xl font-semibold text-white mb-8">
                       Sign Up
                     </h1>
-
+                    {err && <p className="text-red-800 pb-4">{err}</p>}
                     <input
                       type="Name"
                       placeholder="Full Name"
                       value={userName}
+                      onFocus={() => setErr("")}
                       onChange={(e) => setUsername(e.target.value)}
                       className="px-3 py-4 mb-5 w-full tracking-wider bg-gray-800 rounded-md text-white focus:outline-none"
                     />
@@ -75,6 +87,7 @@ const SignUp_Page = () => {
                       type="Email"
                       placeholder="Email"
                       value={email}
+                      onFocus={() => setErr("")}
                       onChange={(e) => setEmail(e.target.value)}
                       className="px-3 py-4 mb-5 w-full tracking-wider bg-gray-800 rounded-md text-white focus:outline-none"
                     />
@@ -82,18 +95,19 @@ const SignUp_Page = () => {
                       type="password"
                       placeholder="Password"
                       value={password}
+                      onFocus={() => setErr("")}
                       onChange={(e) => setPassword(e.target.value)}
                       className="px-3 py-4 mb-4 w-full tracking-wider bg-gray-800 rounded-md text-white focus:outline-none"
                     />
 
-                    {error && (
-                      <p className="text-red-800">Please Enter Valid Details</p>
-                    )}
                     <button
-                      className="px-3 py-4 mt-7 bg-red-700 text-white rounded-md tracking-wider"
+                      className={`px-3 py-4 mt-7 bg-red-700 text-white rounded-md tracking-wider ${
+                        isLogIn ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
+                      disabled={isLogIn}
                       onClick={handleSignup}
                     >
-                      Sign Up
+                      {isLogIn ? "Signing Up..." : "Sign Up"}
                     </button>
                   </form>
 

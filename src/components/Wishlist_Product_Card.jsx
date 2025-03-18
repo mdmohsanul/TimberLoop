@@ -17,8 +17,11 @@ const Wishlist_Product_Card = ({ product }) => {
   const handleCart = useCartHandler();
 
   const productRemoveHandler = (productId) => {
-    const userId = user?.user?._id;
+    const userId = user?._id;
     dispatch(removeWishListProduct({ userId, productId }));
+    toast("Product removed from wishlist!", {
+      autoClose: 2000,
+    });
   };
   const productDiscountPrice = (
     product?.price -

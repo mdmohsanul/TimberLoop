@@ -8,7 +8,7 @@ import { fetchWishlist } from "../features/wishlistSlice";
 const UserProfile_Page = () => {
   const dispatch = useDispatch();
   const { state, error, user } = useSelector((state) => state.userLogIn);
-
+  console.log(user);
   const navigate = useNavigate();
   const btnClasses =
     "py-2 px-4 bg-blue-500 text-white rounded-md text-lg md:text-xl w-full";
@@ -20,10 +20,10 @@ const UserProfile_Page = () => {
     navigate("/login");
   };
   useEffect(() => {
-    dispatch(fetchCart(user?.user?._id));
-    dispatch(fetchWishlist(user?.user?._id));
-    dispatch(fetchOrder(user?.user?._id));
-  }, []);
+    dispatch(fetchCart(user?._id));
+    dispatch(fetchWishlist(user?._id));
+    dispatch(fetchOrder(user?._id));
+  }, [dispatch]);
   return (
     <>
       <section className="w-full min-h-screen pt-20">
@@ -35,11 +35,11 @@ const UserProfile_Page = () => {
             <div className=" border-2  md:mt-5 mt-2 px-5 py-4">
               <p className="text-lg md:text-xl text-gray-600">
                 <span className="font-medium text-gray-700">Name: </span>{" "}
-                {user?.user?.userName}
+                {user?.userName}
               </p>
               <p className="text-lg md:text-xl text-gray-600 pb-6">
                 <span className="font-medium text-gray-700">Email: </span>{" "}
-                {user?.user?.email}
+                {user?.email}
               </p>{" "}
               <Link to="/orders">
                 {" "}

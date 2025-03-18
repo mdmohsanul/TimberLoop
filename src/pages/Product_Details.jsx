@@ -6,12 +6,10 @@ import { GoHeart } from "react-icons/go";
 import { PiStarFill, PiStarHalfFill } from "react-icons/pi";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { productDetailsAccordian } from "../data/product";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useCartHandler from "../hooks/useCartHandler";
 import useWishlistHandler from "../hooks/useWishlistHandler";
-import { fetchProducts } from "../features/productSlice";
 
 const Product_Details = () => {
   const { productId } = useParams();
@@ -31,7 +29,7 @@ const Product_Details = () => {
 
   const [checkProduct, setCheckProduct] = useState("");
 
-  // dispatch the product to cart
+  // dispatch the product to cart with custom hook
   const handleCart = useCartHandler();
 
   // dispatch product to wishlist

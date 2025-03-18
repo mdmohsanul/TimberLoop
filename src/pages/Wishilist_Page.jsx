@@ -13,7 +13,7 @@ const Wishilist_Page = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchWishlist(user?.user?._id));
+    dispatch(fetchWishlist(user?._id));
   }, [dispatch]);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,7 +35,7 @@ const Wishilist_Page = () => {
           {status === "success" && (
             <div className="pt-4 pb-7 grid gap-y-7 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 md:justify-items-center">
               {wishlistProducts?.map((item) => (
-                <Wishlist_Product_Card key={item._id} product={item} />
+                <Wishlist_Product_Card key={item?._id} product={item} />
               ))}
             </div>
           )}
