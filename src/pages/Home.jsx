@@ -10,7 +10,7 @@ import { fetchWishlist } from "../features/wishlistSlice";
 const Home = () => {
   const dispatch = useDispatch();
   const { state, error, user } = useSelector((state) => state.userLogIn);
-
+  console.log(user);
   useEffect(() => {
     dispatch(fetchCart(user?._id));
     dispatch(fetchWishlist(user?._id));

@@ -14,8 +14,8 @@ export const loginUser = createAsyncThunk(
           },
         }
       );
-      localStorage.setItem("userId", JSON.stringify(response.data.user._id));
-      localStorage.setItem("adminToken", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", response.data.token);
 
       return response.data;
     } catch (error) {
@@ -27,29 +27,76 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
+export const fetchUser = createAsyncThunk(
+  "auth/fetchUser",
+  async (_, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token found");
+
+      const response = await axios.get(
+        "https://timber-backend.vercel.app/api/protected",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status !== 200) throw new Error("Failed to fetch user data");
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 const userLogInSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
-    token: localStorage.getItem("adminToken") || null,
+    token: localStorage.getItem("token") || null,
     status: "idle",
     error: null,
   },
+  reducers: {
+    loginSuccess: (state, action) => {
+      state.user = action.payload.user; // Save user details
+      state.token = action.payload.token; // Save token
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      localStorage.setItem("token", action.payload.token);
+    },
+  },
   extraReducers: (builders) => {
-    builders.addCase(loginUser.pending, (state, action) => {
-      state.status = "loading";
-    });
-    builders.addCase(loginUser.fulfilled, (state, action) => {
-      state.status = "success";
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-    });
-    builders.addCase(loginUser.rejected, (state, action) => {
-      state.status = "error";
-
-      state.error = action.error.message;
-    });
+    builders
+      .addCase(loginUser.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.status = "success";
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.status = "error";
+        state.error = action.error.message;
+      }),
+      builders
+        .addCase(fetchUser.pending, (state) => {
+          state.status = "loading";
+        })
+        .addCase(fetchUser.fulfilled, (state, action) => {
+          state.user = action.payload.user;
+          state.status = "Success";
+        })
+        .addCase(fetchUser.rejected, (state, action) => {
+          state.error = action.error.message;
+          state.status = "failed";
+        });
   },
 });
+
+export const { loginSuccess } = userLogInSlice.actions;
 
 export default userLogInSlice.reducer;

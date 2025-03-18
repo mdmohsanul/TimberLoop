@@ -11,7 +11,7 @@ const useWishlistHandler = () => {
   const { user } = useSelector((state) => state.userLogIn);
 
   const handleWishlist = async (productId, setCheckWishlistProduct) => {
-    if (localStorage.getItem("adminToken")) {
+    if (localStorage.getItem("token")) {
       const isInWishList = wishlistProducts
         .map((item) => item._id)
         .includes(productId);

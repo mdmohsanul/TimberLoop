@@ -13,6 +13,7 @@ const Address_Form = ({
   existingAddress = null,
 }) => {
   const dispatch = useDispatch();
+  const [err, setErr] = useState();
   const [inputAddress, setInputAddress] = useState({
     name: existingAddress?.name || "",
     locality: existingAddress?.locality || "",
@@ -28,19 +29,47 @@ const Address_Form = ({
     setInputAddress((prev) => ({ ...prev, [name]: value }));
     //    setAddressForm({...prev, [e.target.name]:e.target.value})
   };
+  function formValidation() {
+    if (
+      !(
+        inputAddress.name ||
+        inputAddress.locality ||
+        inputAddress.city ||
+        inputAddress.mobileNum ||
+        inputAddress.pincode ||
+        inputAddress.addressType ||
+        inputAddress.fullAddress
+      )
+    ) {
+      setErr("Please fill all the required fields");
+      return false;
+    }
+    setErr("");
+    return true;
+  }
   const saveHandler = () => {
-    dispatch(addAddress(inputAddress));
-    setInputAddress((prev) => ({
-      ...prev,
-      name: "",
-      locality: "",
-      city: "",
-      mobileNum: "",
-      pincode: "",
-      fullAddress: "",
-      addressType: "",
-      state: "",
-    }));
+    if (!formValidation()) return;
+    try {
+      dispatch(addAddress(inputAddress)).then((result) => {
+        if (result?.error?.message === "rejected") {
+          setErr(action.payload);
+        } else {
+          setInputAddress((prev) => ({
+            ...prev,
+            name: "",
+            locality: "",
+            city: "",
+            mobileNum: "",
+            pincode: "",
+            fullAddress: "",
+            addressType: "",
+            state: "",
+          }));
+        }
+      });
+    } catch (error) {
+      setErr(error || "Error submitting form");
+    }
   };
   const updateHandler = () => {
     dispatch(
@@ -56,6 +85,7 @@ const Address_Form = ({
   return (
     <>
       <div className="py-2 md:px-6 md:w-4/5 ">
+        {err && <p className="text-red-600 pb-4">{err}</p>}
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="md:grid md:grid-flow-col md:grid-rows-5 gap-4 mx-3 md:mx-0 flex flex-col ">
             <div className="md:col-span-2 col-span-1 border border-gray-300 outline-none ">

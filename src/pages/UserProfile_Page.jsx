@@ -14,8 +14,8 @@ const UserProfile_Page = () => {
     "py-2 px-4 bg-blue-500 text-white rounded-md text-lg md:text-xl w-full";
 
   const handleLogout = () => {
-    localStorage.removeItem("adminToken");
-    localStorage.removeItem("userId");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     window.location.reload();
     navigate("/login");
   };

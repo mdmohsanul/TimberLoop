@@ -4,6 +4,7 @@ import axios from "axios";
 export const fetchOrder = createAsyncThunk(
   "order/fetchOrder",
   async (userId) => {
+    console.log(userId);
     const response = await axios.get(
       `https://timber-backend.vercel.app/api/order/${userId}`
     );

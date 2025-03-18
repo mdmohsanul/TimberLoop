@@ -3,7 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
   const location = useLocation();
-  const isAuthenticated = !!localStorage.getItem("adminToken"); // Example: Check if token exists
+  const isAuthenticated = !!localStorage.getItem("token"); // Example: Check if token exists
   return isAuthenticated ? (
     children
   ) : (

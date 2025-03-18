@@ -11,7 +11,7 @@ const useCartHandler = () => {
   const { user } = useSelector((state) => state.userLogIn);
 
   const handleCart = async (productId, setCheckProduct, quantity = 1) => {
-    if (localStorage.getItem("adminToken")) {
+    if (localStorage.getItem("token")) {
       const isInCart = cartProducts
         .map((item) => item.productId._id)
         .includes(productId);

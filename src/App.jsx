@@ -21,11 +21,18 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Checkout_Page from "./pages/Checkout_Page";
 import OrderSummary from "./pages/OrderSummary";
 import Bottom_Menu from "./components/Bottom_Menu";
+import { fetchUser } from "./features/userLogInSlice";
 
 function App() {
   const dispatch = useDispatch();
   const { status, error } = useSelector((state) => state.products);
+  const { token } = useSelector((state) => state.userLogIn);
 
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUser(token));
+    }
+  }, [dispatch, token]);
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchProducts());
