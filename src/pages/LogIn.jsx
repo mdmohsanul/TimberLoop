@@ -37,6 +37,7 @@ const LogIn = () => {
     setIsLogIn(true);
     try {
       dispatch(loginUser({ email, password })).then((result) => {
+        console.log(result.payload);
         if (result?.error?.message === "Rejected") {
           setErr(result.payload);
           setIsLogIn(false);

@@ -27,12 +27,12 @@ function App() {
   const dispatch = useDispatch();
   const { status, error } = useSelector((state) => state.products);
   const { token } = useSelector((state) => state.userLogIn);
-
-  useEffect(() => {
-    if (token) {
-      dispatch(fetchUser(token));
-    }
-  }, [dispatch, token]);
+  console.log(token);
+  // useEffect(() => {
+  //   if (token) {
+  //     dispatch(fetchUser(token));
+  //   }
+  // }, [dispatch, token]);
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchProducts());
