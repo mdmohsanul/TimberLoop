@@ -17,8 +17,9 @@ const LogIn = () => {
   const [isLogIn, setIsLogIn] = useState(false);
 
   // Get the 'from' location or default to the home Page
-  const from = location.state?.from || "/";
-
+  const from =
+    location.state?.from === "/userProfile" ? "/" : location.state?.from;
+  // console.log(from);
   useEffect(() => {
     if (token) {
       navigate("/");
