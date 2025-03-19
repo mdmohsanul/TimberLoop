@@ -33,7 +33,7 @@ export const fetchUser = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("token");
-      console.log("slice ", token);
+
       if (!token) throw new Error("No token found");
 
       const response = await axios.get(
@@ -45,7 +45,7 @@ export const fetchUser = createAsyncThunk(
           },
         }
       );
-      console.log(response.data);
+
       if (response.status !== 200) throw new Error("Failed to fetch user data");
       return response.data;
     } catch (error) {

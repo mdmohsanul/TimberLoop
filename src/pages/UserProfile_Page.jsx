@@ -8,7 +8,7 @@ import { fetchWishlist } from "../features/wishlistSlice";
 const UserProfile_Page = () => {
   const dispatch = useDispatch();
   const { state, error, user } = useSelector((state) => state.userLogIn);
-  console.log(user);
+
   const navigate = useNavigate();
   const btnClasses =
     "py-2 px-4 bg-blue-500 text-white rounded-md text-lg md:text-xl w-full";
