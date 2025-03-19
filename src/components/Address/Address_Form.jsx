@@ -31,15 +31,13 @@ const Address_Form = ({
   };
   function formValidation() {
     if (
-      !(
-        inputAddress.name ||
-        inputAddress.locality ||
-        inputAddress.city ||
-        inputAddress.mobileNum ||
-        inputAddress.pincode ||
-        inputAddress.addressType ||
-        inputAddress.fullAddress
-      )
+      !inputAddress.name ||
+      !inputAddress.locality ||
+      !inputAddress.city ||
+      !inputAddress.mobileNum ||
+      !inputAddress.pincode ||
+      !inputAddress.addressType ||
+      !inputAddress.fullAddress
     ) {
       setErr("Please fill all the required fields");
       return false;
@@ -96,6 +94,7 @@ const Address_Form = ({
                 value={inputAddress.name}
                 className="w-full h-11 px-3 "
                 placeholder="Name"
+                onFocus={() => setErr()}
               />
             </div>
             <div className="md:col-span-2 border border-gray-300 outline-none">
@@ -106,6 +105,7 @@ const Address_Form = ({
                 onChange={changeHandler}
                 className="w-full h-11 px-3 "
                 placeholder="Pincode"
+                onFocus={() => setErr()}
               />
             </div>
             <div className="md:row-span-2 md:col-span-4 col-span-1 border h-full border-gray-300">
@@ -116,6 +116,7 @@ const Address_Form = ({
                 cols="25"
                 placeholder="Address (Area and Street)"
                 className="w-full h-full p-3"
+                onFocus={() => setErr()}
               ></textarea>
             </div>
             <div className="col-span-2 border border-gray-300 outline-none">
@@ -126,6 +127,7 @@ const Address_Form = ({
                 onChange={changeHandler}
                 className="w-full h-11 px-3 "
                 placeholder="City"
+                onFocus={() => setErr()}
               />
             </div>
 
@@ -137,6 +139,7 @@ const Address_Form = ({
                 onChange={changeHandler}
                 className="w-full h-11 px-3 "
                 placeholder="Mobile Number"
+                onFocus={() => setErr()}
               />
             </div>
             <div className="col-span-2 border border-gray-300 outline-none">
@@ -147,6 +150,7 @@ const Address_Form = ({
                 onChange={changeHandler}
                 className="w-full h-11 px-3 "
                 placeholder="Locality"
+                onFocus={() => setErr()}
               />
             </div>
             <div className="col-span-2 border border-gray-300 outline-none">
@@ -157,6 +161,7 @@ const Address_Form = ({
                 onChange={changeHandler}
                 className="w-full h-11 px-3 "
                 placeholder="State"
+                onFocus={() => setErr()}
               />
             </div>
           </div>
