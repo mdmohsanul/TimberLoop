@@ -6,7 +6,7 @@ export const loginUser = createAsyncThunk(
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/login",
+        "https://timber-backend.vercel.app/api/login",
         { email, password },
         {
           headers: {
@@ -16,7 +16,7 @@ export const loginUser = createAsyncThunk(
       );
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("token", response.data.token);
-      console.log(response.data);
+
       return response.data;
     } catch (error) {
       // console.error(
@@ -36,12 +36,15 @@ export const fetchUser = createAsyncThunk(
       console.log("slice ", token);
       if (!token) throw new Error("No token found");
 
-      const response = await axios.get("http://localhost:5000/api/protected", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.get(
+        "https://timber-backend.vercel.app/api/protected",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       console.log(response.data);
       if (response.status !== 200) throw new Error("Failed to fetch user data");
       return response.data;
