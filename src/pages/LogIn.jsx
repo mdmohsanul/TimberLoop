@@ -23,7 +23,7 @@ const LogIn = () => {
     if (token) {
       navigate("/");
     }
-  }, []);
+  }, [token, navigate]);
   function validation() {
     if (!email || !password) {
       setErr("Enter valid email & password");

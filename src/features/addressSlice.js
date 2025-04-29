@@ -62,7 +62,7 @@ const addressSlice = createSlice({
   // extraReducers handles asynchronous requests,
   extraReducers: (builders) => {
     builders
-      .addCase(fetchAddress.pending, (state, action) => {
+      .addCase(fetchAddress.pending, (state) => {
         state.status = "loading";
       })
       .addCase(fetchAddress.fulfilled, (state, action) => {

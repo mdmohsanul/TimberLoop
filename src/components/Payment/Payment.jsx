@@ -9,9 +9,9 @@ const Payment = ({ newOrder }) => {
   const navigate = useNavigate();
   const { cartTotalPriceWithDelivery } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.userLogIn);
-
   // get payment value
-  let payment = cartTotalPriceWithDelivery;
+  let payment = 500000;
+  console.log(typeof payment);
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -22,16 +22,13 @@ const Payment = ({ newOrder }) => {
   const handlePayment = async () => {
     let data;
     try {
-      const res = await fetch(
-        "https://timber-backend.vercel.app/api/order/create-order",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ amount: payment }),
-        }
-      );
+      const res = await fetch("http://localhost:5000/api/order/create-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ amount: payment }),
+      });
 
       if (!res.ok) {
         const errorText = await res.text();

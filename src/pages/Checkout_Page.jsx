@@ -2,9 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Address_List from "../components/Address/Address_List";
 import Order_Summary from "../components/Order_Summary";
-import { addOrder, fetchOrder } from "../features/orderSlice";
-import { fetchCart, removeAllProducts } from "../features/cartSlice";
-import { ToastContainer, toast } from "react-toastify";
+
+import { fetchCart } from "../features/cartSlice";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Payment from "../components/Payment/Payment";
 import { useEffect } from "react";
@@ -18,9 +18,7 @@ const Checkout_Page = () => {
   const { defaultAddress, addresses } = useSelector((state) => state.addresses);
 
   const { user } = useCurrentUser();
-  const { cartProducts, cartTotalPriceWithDelivery } = useSelector(
-    (state) => state.cart
-  );
+  const { cartProducts } = useSelector((state) => state.cart);
   const products = cartProducts.map((item) => ({
     productId: item.productId._id,
     quantity: item.quantity,
@@ -38,30 +36,30 @@ const Checkout_Page = () => {
     userId: user?._id,
     products: products,
   };
-  const placeOrderHandler = async () => {
-    /* 
-      remove all cart items
-      add placed order to order API
-    
-    */
+  // const placeOrderHandler = async () => {
+  //   /*
+  //     remove all cart items
+  //     add placed order to order API
 
-    // validate Address
-    if (defaultAddress !== null) {
-      const newOrder = {
-        userId: user?._id,
-        products: products,
-      };
+  //   */
 
-      dispatch(addOrder(newOrder));
-      dispatch(fetchOrder(user?._id));
-      dispatch(removeAllProducts(user?._id));
-      setTimeout(() => {
-        navigate("/cart/checkout/orderSummary");
-      }, 2000);
-    } else {
-      toast.error("Select Address");
-    }
-  };
+  //   // validate Address
+  //   if (defaultAddress !== null) {
+  //     const newOrder = {
+  //       userId: user?._id,
+  //       products: products,
+  //     };
+
+  //     dispatch(addOrder(newOrder));
+  //     dispatch(fetchOrder(user?._id));
+  //     dispatch(removeAllProducts(user?._id));
+  //     setTimeout(() => {
+  //       navigate("/cart/checkout/orderSummary");
+  //     }, 2000);
+  //   } else {
+  //     toast.error("Select Address");
+  //   }
+  // };
   return (
     <>
       <section className=" max-w-6xl mx-auto min-h-screen pt-20 px-3">

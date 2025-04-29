@@ -4,16 +4,17 @@ import { Link } from "react-router-dom";
 
 import { fetchOrder } from "../features/orderSlice";
 import Shimmer_OrdersPage from "../components/ShimmerUI/Shimmer_OrdersPage";
+import useCurrentUser from "../hooks/useCurrentUser";
 
 const OrderSummary = () => {
   const dispatch = useDispatch();
 
   const { orders, status } = useSelector((state) => state.order);
-  const { user } = useSelector((state) => state.userLogIn);
-  console.log(orders);
+  const { user } = useCurrentUser();
+
   useEffect(() => {
     dispatch(fetchOrder(user?._id));
-  }, [dispatch]);
+  }, [dispatch, user?._id]);
   if (status === "loading")
     return (
       <>
