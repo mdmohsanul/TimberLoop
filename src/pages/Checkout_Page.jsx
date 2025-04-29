@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Payment from "../components/Payment/Payment";
 import { useEffect } from "react";
 import { setDefaultAddress } from "../features/addressSlice";
+import useCurrentUser from "../hooks/useCurrentUser";
 
 const Checkout_Page = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Checkout_Page = () => {
 
   const { defaultAddress, addresses } = useSelector((state) => state.addresses);
 
-  const { user } = useSelector((state) => state.userLogIn);
+  const { user } = useCurrentUser();
   const { cartProducts, cartTotalPriceWithDelivery } = useSelector(
     (state) => state.cart
   );
@@ -28,11 +29,11 @@ const Checkout_Page = () => {
       (item?.productId?.price * item?.productId?.discount) / 100
     ).toFixed(2),
   }));
-  console.log("cartTotalPriceWithDelivery ", cartTotalPriceWithDelivery);
+
   useEffect(() => {
     dispatch(fetchCart(user?._id));
     dispatch(setDefaultAddress(addresses[0]));
-  }, []);
+  }, [user?._id, dispatch, addresses]);
   const newOrder = {
     userId: user?._id,
     products: products,

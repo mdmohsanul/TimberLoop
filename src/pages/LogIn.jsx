@@ -1,16 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "../features/userLogInSlice";
-import { signUpUser } from "../features/userSignUpSlice";
 
 const LogIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, status, error, token } = useSelector(
-    (state) => state.userLogIn
-  );
+  const { token } = useSelector((state) => state.userLogIn);
   const [err, setErr] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +37,6 @@ const LogIn = () => {
     setIsLogIn(true);
     try {
       dispatch(loginUser({ email, password })).then((result) => {
-        console.log(result.payload);
         if (result?.error?.message === "Rejected") {
           setErr(result.payload);
           setIsLogIn(false);

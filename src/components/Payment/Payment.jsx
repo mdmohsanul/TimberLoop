@@ -10,7 +10,6 @@ const Payment = ({ newOrder }) => {
   const { cartTotalPriceWithDelivery } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.userLogIn);
 
-  console.log(cartTotalPriceWithDelivery);
   // get payment value
   let payment = cartTotalPriceWithDelivery;
   useEffect(() => {
@@ -40,7 +39,6 @@ const Payment = ({ newOrder }) => {
       }
 
       data = await res.json();
-      console.log(data);
     } catch (err) {
       console.error("Fetch failed:", err);
     }
