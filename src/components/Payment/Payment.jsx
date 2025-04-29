@@ -22,13 +22,16 @@ const Payment = ({ newOrder }) => {
   const handlePayment = async () => {
     let data;
     try {
-      const res = await fetch("http://localhost:5000/api/order/create-order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ amount: payment }),
-      });
+      const res = await fetch(
+        "https://timber-weld.vercel.app/api/order/create-order",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ amount: payment }),
+        }
+      );
 
       if (!res.ok) {
         const errorText = await res.text();
