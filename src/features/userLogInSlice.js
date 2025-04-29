@@ -56,7 +56,7 @@ export const fetchUser = createAsyncThunk(
 const userLogInSlice = createSlice({
   name: "user",
   initialState: {
-    user: null,
+    user: JSON.parse(localStorage.getItem("user")) || null,
     token: localStorage.getItem("token") || null,
     status: "idle",
     error: null,
@@ -68,10 +68,21 @@ const userLogInSlice = createSlice({
       localStorage.setItem("user", JSON.stringify(action.payload.user));
       localStorage.setItem("token", action.payload.token);
     },
+    logout: (state) => {
+      state.user = null;
+      state.token = null;
+      state.status = "idle";
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+    },
+    clearError: (state) => {
+      state.error = null;
+    },
   },
+
   extraReducers: (builders) => {
     builders
-      .addCase(loginUser.pending, (state, action) => {
+      .addCase(loginUser.pending, (state) => {
         state.status = "loading";
       })
       .addCase(loginUser.fulfilled, (state, action) => {
@@ -80,8 +91,8 @@ const userLogInSlice = createSlice({
         state.token = action.payload.token;
       })
       .addCase(loginUser.rejected, (state, action) => {
-        state.status = "error";
-        state.error = action.error.message;
+        state.status = "failed";
+        state.error = action.payload || action.error.message;
       }),
       builders
         .addCase(fetchUser.pending, (state) => {
@@ -89,15 +100,15 @@ const userLogInSlice = createSlice({
         })
         .addCase(fetchUser.fulfilled, (state, action) => {
           state.user = action.payload.user;
-          state.status = "Success";
+          state.status = "success";
         })
         .addCase(fetchUser.rejected, (state, action) => {
           state.error = action.error.message;
-          state.status = "failed";
+          state.status = action.payload || action.error.message;
         });
   },
 });
 
-export const { loginSuccess } = userLogInSlice.actions;
+export const { loginSuccess, logout, clearError } = userLogInSlice.actions;
 
 export default userLogInSlice.reducer;

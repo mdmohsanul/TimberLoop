@@ -1,19 +1,23 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Address_List from "../components/Address/Address_List";
 import Order_Summary from "../components/Order_Summary";
 import { addOrder, fetchOrder } from "../features/orderSlice";
-import { removeAllProducts } from "../features/cartSlice";
+import { fetchCart, removeAllProducts } from "../features/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Payment from "../components/Payment/Payment";
+import { useEffect } from "react";
+import { setDefaultAddress } from "../features/addressSlice";
 
 const Checkout_Page = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const { defaultAddress, addresses } = useSelector((state) => state.addresses);
+
   const { user } = useSelector((state) => state.userLogIn);
-  const { cartProducts, cartTotalPrice, cartTotalQuantity } = useSelector(
+  const { cartProducts, cartTotalPriceWithDelivery } = useSelector(
     (state) => state.cart
   );
   const products = cartProducts.map((item) => ({
@@ -24,32 +28,37 @@ const Checkout_Page = () => {
       (item?.productId?.price * item?.productId?.discount) / 100
     ).toFixed(2),
   }));
-
+  console.log("cartTotalPriceWithDelivery ", cartTotalPriceWithDelivery);
+  useEffect(() => {
+    dispatch(fetchCart(user?._id));
+    dispatch(setDefaultAddress(addresses[0]));
+  }, []);
+  const newOrder = {
+    userId: user?._id,
+    products: products,
+  };
   const placeOrderHandler = async () => {
     /* 
       remove all cart items
       add placed order to order API
     
     */
-    try {
-      // validate Address
-      if (defaultAddress !== null) {
-        const newOrder = {
-          userId: user?._id,
-          products: products,
-        };
 
-        dispatch(addOrder(newOrder));
-        dispatch(fetchOrder(user?._id));
-        dispatch(removeAllProducts(user?._id));
-        setTimeout(() => {
-          navigate("/cart/checkout/orderSummary");
-        }, 2000);
-      } else {
-        toast.error("Select Address");
-      }
-    } catch (error) {
-      throw error;
+    // validate Address
+    if (defaultAddress !== null) {
+      const newOrder = {
+        userId: user?._id,
+        products: products,
+      };
+
+      dispatch(addOrder(newOrder));
+      dispatch(fetchOrder(user?._id));
+      dispatch(removeAllProducts(user?._id));
+      setTimeout(() => {
+        navigate("/cart/checkout/orderSummary");
+      }, 2000);
+    } else {
+      toast.error("Select Address");
     }
   };
   return (
@@ -94,33 +103,18 @@ const Checkout_Page = () => {
                   <p>Select Address</p>
                 )}
                 <Address_List />
-                {/* <span>
-                  <p className="pb-2 font-medium">{defaultAddress?.name}</p>
-                  <p>
-                    {defaultAddress?.locality}, {defaultAddress?.fullAddress}
-                  </p>
-                  <p>
-                    {defaultAddress?.city}, {defaultAddress?.state} -
-                    {defaultAddress?.pincode}
-                  </p>
-                </span>
-                <button
-                  className="cursor-pointer border py-2 px-4 text-blue-700"
-                  onClick={() => navigate("/userProfile/address")}
-                >
-                  CHANGE
-                </button> */}
               </div>
             </div>
           </div>
           <div className=" mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
             <Order_Summary />
-            <button
+            {/* <button
               className="flex w-full items-center justify-center rounded-lg text-white bg-blue-700 px-5 py-2.5 text-sm font-medium  hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               onClick={placeOrderHandler}
             >
               Place Order
-            </button>
+            </button> */}
+            <Payment newOrder={newOrder} />
           </div>
         </div>
       </section>

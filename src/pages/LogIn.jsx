@@ -21,7 +21,7 @@ const LogIn = () => {
     location.state?.from === "/userProfile" || location.state?.from == undefined
       ? "/"
       : location.state?.from;
-  console.log(from);
+
   useEffect(() => {
     if (token) {
       navigate("/");

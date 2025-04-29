@@ -4,7 +4,6 @@ import axios from "axios";
 export const fetchOrder = createAsyncThunk(
   "order/fetchOrder",
   async (userId) => {
-    console.log(userId);
     const response = await axios.get(
       `https://timber-backend.vercel.app/api/order/${userId}`
     );
@@ -36,7 +35,7 @@ const orderSlice = createSlice({
   reducers: {},
   extraReducers: (builders) => {
     builders
-      .addCase(fetchOrder.pending, (state, action) => {
+      .addCase(fetchOrder.pending, (state) => {
         state.status = "loading";
       })
       .addCase(fetchOrder.fulfilled, (state, action) => {
@@ -45,8 +44,8 @@ const orderSlice = createSlice({
       })
       .addCase(fetchOrder.rejected, (state, action) => {
         state.error = action.error.message;
-      }),
-      builders.addCase(addOrder.fulfilled, (state, action) => {
+      })
+      .addCase(addOrder.fulfilled, (state, action) => {
         state.orders.push(action.payload);
       });
   },

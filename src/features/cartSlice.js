@@ -48,6 +48,7 @@ const cartSlice = createSlice({
     cartTotalQuantity: 0,
     cartTotalDiscount: 0,
     cartTotalSavings: 0,
+    cartTotalPriceWithDelivery: 0,
   },
   reducers: {
     incrementQuantity: (state, action) => {
@@ -94,10 +95,13 @@ const cartSlice = createSlice({
       });
       state.cartTotalSavings = totalDiscountPrice;
     },
+    getCartTotalWithDelivery: (state, action) => {
+      state.cartTotalPriceWithDelivery = action.payload;
+    },
   },
   extraReducers: (builders) => {
     builders
-      .addCase(fetchCart.pending, (state, action) => {
+      .addCase(fetchCart.pending, (state) => {
         state.status = "loading";
       })
       .addCase(fetchCart.fulfilled, (state, action) => {
@@ -106,7 +110,7 @@ const cartSlice = createSlice({
         state.cartProducts = action.payload;
       })
       .addCase(fetchCart.rejected, (state, action) => {
-        state.status = "error";
+        state.status = "failed";
         state.error = action.error.message;
       }),
       builders.addCase(addProduct.fulfilled, (state, action) => {
@@ -117,7 +121,7 @@ const cartSlice = createSlice({
           (item) => item.productId._id !== action.payload
         );
       }),
-      builders.addCase(removeAllProducts.fulfilled, (state, action) => {
+      builders.addCase(removeAllProducts.fulfilled, (state) => {
         state.cartProducts = [];
       });
   },
@@ -129,5 +133,6 @@ export const {
   getCartTotalPrice,
   getCartTotalQuantity,
   getCartTotalSavings,
+  getCartTotalWithDelivery,
 } = cartSlice.actions;
 export default cartSlice.reducer;

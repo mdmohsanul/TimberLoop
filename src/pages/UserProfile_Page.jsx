@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchCart } from "../features/cartSlice";
 import { fetchOrder } from "../features/orderSlice";
 import { fetchWishlist } from "../features/wishlistSlice";
+import useCurrentUser from "../hooks/useCurrentUser";
 
 const UserProfile_Page = () => {
   const dispatch = useDispatch();
-  const { state, error, user } = useSelector((state) => state.userLogIn);
+  const { user, status, error } = useCurrentUser();
+  const userId = user?._id;
 
   const navigate = useNavigate();
   const btnClasses =
@@ -17,13 +19,28 @@ const UserProfile_Page = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     window.location.reload();
-    navigate("/login");
+    navigate("/login", { replace: true });
   };
   useEffect(() => {
-    dispatch(fetchCart(user?._id));
-    dispatch(fetchWishlist(user?._id));
-    dispatch(fetchOrder(user?._id));
-  }, [dispatch]);
+    if (userId) {
+      dispatch(fetchCart(userId));
+      dispatch(fetchWishlist(userId));
+      dispatch(fetchOrder(userId));
+    }
+  }, [dispatch, userId]);
+  if (status === "loading")
+    return (
+      <>
+        <h1>Loading.....</h1>
+      </>
+    );
+  if (status === "failed")
+    return (
+      <>
+        <h1>{error}</h1>
+      </>
+    );
+
   return (
     <>
       <section className="w-full min-h-screen pt-20">

@@ -1,20 +1,25 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-import { setDefaultAddress } from "../features/addressSlice";
+import { Link } from "react-router-dom";
+
 import { fetchOrder } from "../features/orderSlice";
+import Shimmer_OrdersPage from "../components/ShimmerUI/Shimmer_OrdersPage";
 
 const OrderSummary = () => {
   const dispatch = useDispatch();
 
-  const { defaultAddress, addresses } = useSelector((state) => state.addresses);
-  const { orders, status, error } = useSelector((state) => state.order);
+  const { orders, status } = useSelector((state) => state.order);
   const { user } = useSelector((state) => state.userLogIn);
-
+  console.log(orders);
   useEffect(() => {
     dispatch(fetchOrder(user?._id));
-    // dispatch(setDefaultAddress(null));
   }, [dispatch]);
+  if (status === "loading")
+    return (
+      <>
+        <Shimmer_OrdersPage />
+      </>
+    );
   return (
     <>
       <section className="w-full min-h-screen pt-20">
@@ -22,7 +27,6 @@ const OrderSummary = () => {
           <h2 className="text-center md:text-3xl text-2xl font-medium text-gray-700 py-2 mb-5">
             Order Summary
           </h2>
-          {status === "loading" && <p>Loading ....</p>}
 
           {status === "success" && (
             <div className="border border-gray-600 rounded-md py-4 md:px-5 px-3 mb-8 mx-3">

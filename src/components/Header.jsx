@@ -15,7 +15,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const { cartProducts, status } = useSelector((state) => state.cart);
   const { wishlistProducts } = useSelector((state) => state.wishlist);
-  const { state, error, user } = useSelector((state) => state.userLogIn);
+  const { user } = useSelector((state) => state.userLogIn);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [nav, setNav] = useState(false);

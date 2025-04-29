@@ -9,13 +9,13 @@ import { fetchWishlist } from "../features/wishlistSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { state, error, user } = useSelector((state) => state.userLogIn);
+  const { user } = useSelector((state) => state.userLogIn);
 
   useEffect(() => {
     dispatch(fetchCart(user?._id));
     dispatch(fetchWishlist(user?._id));
     dispatch(fetchOrder(user?._id));
-  }, [dispatch]);
+  }, [dispatch, user?._id]);
   return (
     <>
       <section className=" min-h-screen">

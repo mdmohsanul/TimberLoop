@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Empty_Products from "../components/Empty_Products";
 import ShimerUI_ProductsPage from "../components/ShimmerUI/ShimerUI_ProductsPage";
 import Wishlist_Product_Card from "../components/Wishlist_Product_Card";
 import { fetchWishlist } from "../features/wishlistSlice";
 
-const Wishilist_Page = () => {
+const Wishlist_Page = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userLogIn);
   const { status, error, wishlistProducts } = useSelector(
@@ -13,11 +13,20 @@ const Wishilist_Page = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchWishlist(user?._id));
-  }, [dispatch]);
-  useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    if (user?._id) {
+      dispatch(fetchWishlist(user._id));
+    }
+  }, [dispatch, user?._id]);
+
+  if (status === "loading")
+    return (
+      <>
+        <ShimerUI_ProductsPage />
+      </>
+    );
+  if (status === "failed") return <>{error}</>;
+
   return (
     <>
       <section className="w-full min-h-screen pt-20">
@@ -28,21 +37,16 @@ const Wishilist_Page = () => {
               ({wishlistProducts?.length})
             </span>
           </h2>
-
-          {status === "loading" && <ShimerUI_ProductsPage />}
           {wishlistProducts?.length === 0 && <Empty_Products name="wishlist" />}
-          {/* {status === "error" && <p>{error}</p>} */}
-          {status === "success" && (
-            <div className="pt-4 pb-7 grid gap-y-7 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 md:justify-items-center">
-              {wishlistProducts?.map((item) => (
-                <Wishlist_Product_Card key={item?._id} product={item} />
-              ))}
-            </div>
-          )}
+          <div className="pt-4 pb-7 grid gap-y-7 md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2 md:justify-items-center">
+            {wishlistProducts?.map((item) => (
+              <Wishlist_Product_Card key={item?._id} product={item} />
+            ))}
+          </div>
         </div>
       </section>
     </>
   );
 };
 
-export default Wishilist_Page;
+export default Wishlist_Page;

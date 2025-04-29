@@ -7,7 +7,6 @@ export const fetchWishlist = createAsyncThunk(
     const response = await axios.get(
       `https://timber-backend.vercel.app/api/wishlist/${userId}`
     );
-
     return response.data.products;
   }
 );
@@ -37,30 +36,39 @@ export const removeWishListProduct = createAsyncThunk(
 const wishlistSlice = createSlice({
   name: "wishlist",
   initialState: {
-    wishlistProducts: [],
+    wishlistProducts: JSON.parse(localStorage.getItem("wishlist")) || [],
     error: null,
     status: "idle",
   },
   reducers: {},
   extraReducers: (builders) => {
     builders
-      .addCase(fetchWishlist.pending, (state, action) => {
+      .addCase(fetchWishlist.pending, (state) => {
         state.status = "loading";
       })
       .addCase(fetchWishlist.fulfilled, (state, action) => {
         state.status = "success";
         state.wishlistProducts = action.payload;
+        localStorage.setItem("wishlist", JSON.stringify(action.payload));
       })
       .addCase(fetchWishlist.rejected, (state, action) => {
-        state.status = "error";
+        state.status = "failed";
         state.error = action.error.message;
-      }),
-      builders.addCase(addWishlistProduct.fulfilled, (state, action) => {
+      })
+      .addCase(addWishlistProduct.fulfilled, (state, action) => {
         state.wishlistProducts.push(action.payload);
-      }),
-      builders.addCase(removeWishListProduct.fulfilled, (state, action) => {
+        localStorage.setItem(
+          "wishlist",
+          JSON.stringify(state.wishlistProducts)
+        );
+      })
+      .addCase(removeWishListProduct.fulfilled, (state, action) => {
         state.wishlistProducts = state?.wishlistProducts?.filter(
           (item) => item._id !== action.payload
+        );
+        localStorage.setItem(
+          "wishlist",
+          JSON.stringify(state.wishlistProducts)
         );
       });
   },
