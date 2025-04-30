@@ -10,8 +10,8 @@ const Payment = ({ newOrder }) => {
   const { cartTotalPriceWithDelivery } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.userLogIn);
   // get payment value
-  let payment = 500000;
-  console.log(typeof payment);
+  let payment = cartTotalPriceWithDelivery;
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://checkout.razorpay.com/v1/checkout.js";
@@ -22,8 +22,10 @@ const Payment = ({ newOrder }) => {
   const handlePayment = async () => {
     let data;
     try {
+      // http://localhost:5000/api/order/create-order
+
       const res = await fetch(
-        "https://timber-weld.vercel.app/api/order/create-order",
+        "https://timber-backend.vercel.app/api/order/create-order",
         {
           method: "POST",
           headers: {
@@ -44,7 +46,7 @@ const Payment = ({ newOrder }) => {
     }
 
     var options = {
-      key: "rzp_test_OrR3hm4r2fnDlo",
+      key: "rzp_test_7NNVSIUmM7hCiF",
       amount: payment, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
       name: "Timber", //your business name

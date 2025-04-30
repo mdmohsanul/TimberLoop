@@ -34,8 +34,10 @@ const OrderSummary = () => {
               <h2 className="text-center text-gray-600 text-xl md:text-2xl pb-4">
                 Thanks for shopping with us!
               </h2>
-              <p>Order ID: {orders[0]?._id}</p>
-              <p className="pb-3">Order Date: {orders[0]?.createdAt}</p>
+              <p>Order ID: OD{orders[0]?.orderId?.split("_")[1]}</p>
+              <p className="pb-3">
+                Order Date: {orders[0]?.createdAt?.split("T")[0]}
+              </p>
               <ul>
                 {orders[0]?.products?.map((item) => (
                   <li
